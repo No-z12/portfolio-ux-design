@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="作品集附录：早期方案与设计补充">
+  <title>附录｜早期方案与设计补充</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+    @font-face{font-family:"Portfolio DIN";src:local("DINPro-Bold"),local("DIN Pro Bold"),local("D-DIN-PRO-Bold");font-display:swap}
+    :root{--ink:#131313;--paper:#edf1f6;--muted:#727b88;--line:rgba(19,19,19,.12);--slate:#526175;--blue:#4568ff;--font:"Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",Arial,sans-serif;--heading:"Alibaba PuHuiTi 3.0 115 Black","AlibabaPuHuiTi-3-115-Black","Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;overflow-x:hidden;color:var(--ink);font-family:var(--font);background:radial-gradient(circle at 52% -8%,#fff 0,transparent 36rem),linear-gradient(180deg,#f0f3f7,#e9edf3 58%,#eef1f5);background-attachment:fixed}body::before{content:"";position:fixed;z-index:-1;inset:0;opacity:.22;pointer-events:none;background-image:linear-gradient(rgba(19,19,19,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(19,19,19,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent 78%)}a{color:inherit}h1,h2,h3,.projects b{font-family:var(--heading)}button,a{-webkit-tap-highlight-color:transparent}.progress{position:fixed;z-index:160;left:0;top:0;width:0;height:2px;background:linear-gradient(90deg,#263449,#6d7e98,#9eb1ce)}
+    .topbar{position:fixed;z-index:100;top:10px;left:14px;right:14px;height:58px;padding:0 16px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border:1px solid rgba(255,255,255,.68);border-radius:17px;background:rgba(238,242,247,.76);box-shadow:0 12px 40px rgba(24,31,43,.09),inset 0 0 0 1px rgba(19,19,19,.03);backdrop-filter:blur(24px) saturate(135%)}.home,.anchors a,.project-menu a{font-size:12px;line-height:1;text-decoration:none}.home{width:max-content;font-family:"Portfolio DIN","Staatliches",var(--font);font-weight:700;letter-spacing:.08em;transition:transform .25s}.home:hover{transform:translateX(3px)}.anchors{position:relative;isolation:isolate;display:flex;gap:2px;padding:4px;border:1px solid rgba(19,19,19,.05);border-radius:999px;background:rgba(19,19,19,.055)}.anchors a{z-index:2;padding:8px 12px;border-radius:999px;color:#7b8390;white-space:nowrap;transition:.2s}.anchors a:hover{color:var(--ink)}.anchors a.active{color:#fff;font-weight:700}.nav-glider{position:absolute;z-index:1;top:4px;left:0;width:0;height:calc(100% - 8px);border-radius:999px;background:var(--ink);box-shadow:0 5px 14px rgba(19,19,19,.18);transition:left .46s cubic-bezier(.16,1,.3,1),width .46s cubic-bezier(.16,1,.3,1)}.project-menu{justify-self:end;display:flex;gap:4px;padding:3px;border-radius:12px;background:rgba(19,19,19,.045)}.project-menu a{padding:9px 12px;border-radius:9px;color:#747c88;transition:.2s}.project-menu a:hover{color:var(--ink);background:rgba(255,255,255,.56);transform:translateY(-1px)}.project-menu a.current{color:#fff;background:var(--ink);box-shadow:0 5px 16px rgba(19,19,19,.18)}
+    .hero{--mx:50%;--my:45%;position:relative;min-height:min(900px,96vh);padding:170px 24px 120px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;border-bottom:1px solid var(--line);background:radial-gradient(circle 360px at var(--mx) var(--my),rgba(255,255,255,.96),rgba(222,230,242,.64) 52%,transparent 74%),linear-gradient(145deg,#eef2f7,#e2e8f0)}.hero::before{content:"04";position:absolute;right:clamp(20px,7vw,136px);top:82px;color:rgba(52,68,89,.045);font:800 clamp(190px,31vw,540px)/.8 "Portfolio DIN","Staatliches",sans-serif}.hero::after{content:"APPENDIX / OPTIONAL DESIGN ARCHIVE";position:absolute;left:30px;bottom:28px;color:#7b8490;font:10px/1 "Portfolio DIN",monospace;letter-spacing:.12em}.archive-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(69,82,102,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(69,82,102,.075) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 72% 70% at 50% 47%,#000 0 65%,transparent 100%)}.archive-stack{position:absolute;left:50%;top:48%;width:min(720px,62vw);aspect-ratio:1.55;transform:translate(-50%,-50%);pointer-events:none}.archive-stack i{position:absolute;inset:0;border:1px solid rgba(69,82,102,.12);border-radius:26px;background:rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(42,55,74,.08)}.archive-stack i:nth-child(1){transform:rotate(-8deg) scale(.84);opacity:.45}.archive-stack i:nth-child(2){transform:rotate(6deg) scale(.91);opacity:.66}.archive-stack i:nth-child(3){transform:scale(.98);background:rgba(255,255,255,.25)}.hero-content{position:relative;z-index:2;width:min(1760px,calc(100vw - 48px));max-width:none;transform:translateY(36px)}.eyebrow{display:inline-flex;padding:9px 13px;border:1px solid rgba(19,19,19,.16);border-radius:999px;background:rgba(255,255,255,.58);font:700 10px/1 "Portfolio DIN",monospace;letter-spacing:.1em}.hero h1{margin:24px 0 30px;font-family:var(--heading);font-size:clamp(42px,5.2vw,88px);font-weight:900;line-height:1.22;letter-spacing:0;text-wrap:balance}.hero h1 em{display:inline-block;font:inherit;font-style:normal;background:linear-gradient(90deg,#263449,#71829a,#263449);background-size:220% 100%;color:transparent;background-clip:text;animation:hero-title-reveal .9s cubic-bezier(.16,1,.3,1) both,archive-gradient 7s ease-in-out .45s infinite alternate}.hero h1 em.is-revealed{opacity:1;filter:none;transform:none;clip-path:none;animation:archive-gradient 7s ease-in-out infinite alternate}.hero p{max-width:760px;margin:0 auto;color:#68717e;font-size:14px;line-height:26px}.legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:34px;font-size:12px;line-height:17px;color:#68707d}.legend span{display:flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid rgba(19,19,19,.08);border-radius:999px;background:rgba(255,255,255,.48)}.legend i{width:8px;height:8px;border-radius:50%;background:#aab0bb}.legend .live i{background:#13ee89;box-shadow:0 0 0 5px rgba(19,238,137,.15)}@keyframes archive-gradient{to{background-position:100% 50%}}@keyframes hero-title-reveal{0%{opacity:0;filter:blur(5px);transform:translateY(18px);clip-path:inset(100% 0 0 0)}45%{opacity:.78;filter:blur(1.5px)}100%{opacity:1;filter:blur(0);transform:none;clip-path:inset(0 0 0 0)}}
+    .chapter{position:relative;isolation:isolate;overflow:hidden;max-width:1600px;margin:108px auto 22px;padding:62px 24px 40px;border-top:1px solid rgba(19,19,19,.16);scroll-margin-top:80px}.chapter::before{content:"";position:absolute;left:24px;top:-2px;width:74px;height:3px;background:var(--ink)}.chapter::after{content:attr(data-index);position:absolute;z-index:-1;right:24px;top:10px;color:rgba(19,19,19,.035);font:800 clamp(130px,17vw,270px)/1 "Portfolio DIN",sans-serif}.chapter>span{color:#737b87;font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em}.chapter h2{max-width:1050px;margin:14px 0 12px;font-size:clamp(38px,5vw,76px);font-weight:700;line-height:1.08;letter-spacing:-.045em}.chapter p{max-width:720px;margin:0;color:#737b87;font-size:14px;line-height:26px}.page{position:relative;max-width:1600px;margin:0 auto;padding:16px 24px 38px;scroll-margin-top:80px}.page::before{content:"";position:absolute;left:24px;top:0;width:84px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .7s}.page.is-current::before{transform:scaleX(1)}.page-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.page-no{color:#858c97;font:600 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}.page.is-current .page-no{color:var(--ink)}.page-title{display:none}.frame{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(19,19,19,.13);border-radius:12px;background:#f2f3f5;box-shadow:0 2px 3px rgba(28,38,55,.04),0 24px 64px rgba(28,38,55,.11);transform:translateY(var(--shift,0));transition:box-shadow .45s,border-color .45s,transform .45s}.page.is-current .frame{border-color:rgba(19,19,19,.24);box-shadow:0 3px 6px rgba(28,38,55,.05),0 38px 100px rgba(28,38,55,.17)}.page .frame:not(.is-expanded):hover{transform:translateY(calc(var(--shift,0px) - 5px));border-color:rgba(19,19,19,.28);box-shadow:0 8px 16px rgba(28,38,55,.07),0 44px 110px rgba(28,38,55,.2)}.frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}.frame-expand{position:absolute;z-index:9;right:14px;top:14px;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(19,19,19,.14);border-radius:50%;color:#131313;background:rgba(250,251,252,.82);box-shadow:0 8px 24px rgba(19,19,19,.1);backdrop-filter:blur(12px);cursor:pointer;opacity:0;transform:translateY(-5px) scale(.94);transition:.2s}.frame:hover .frame-expand,.frame-expand:focus-visible,.frame.is-expanded .frame-expand{opacity:1;transform:none}.frame-expand:hover{background:#131313;color:#fff}.frame-expand svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8}.long-badge{position:absolute;z-index:8;left:14px;top:14px;padding:8px 11px;border:1px solid rgba(19,19,19,.1);border-radius:999px;background:rgba(250,251,252,.86);box-shadow:0 8px 24px rgba(19,19,19,.08);backdrop-filter:blur(12px);color:#566173;font-size:10px;line-height:1}.frame.is-long:not(.is-expanded){height:auto;aspect-ratio:auto;overflow:visible}.frame.is-long>img{display:block;position:relative;inset:auto;width:100%;height:auto;min-height:0;object-fit:contain;cursor:default}.frame.is-long>.frame-expand{display:none}.frame.is-long:not(.is-expanded):hover{transform:translateY(var(--shift,0))}.page-foot{display:none}
+    .line-sidebar-shell{position:fixed;z-index:85;left:24px;top:50%;width:190px;max-height:calc(100vh - 110px);padding:14px 0;overflow:auto;transform:translateY(-50%);opacity:1;transition:opacity .3s;scrollbar-width:none}.line-sidebar-shell::-webkit-scrollbar{display:none}body:not(.story-started) .line-sidebar-shell{opacity:0;pointer-events:none}.line-sidebar{--accent-color:#131313;--text-color:#afb5be;--max-shift:24px;--item-gap:20px;--font-size:.76rem;position:relative;display:flex;justify-content:flex-start}.line-sidebar__list{list-style:none;margin:0;padding:1rem 0;display:flex;flex-direction:column;gap:var(--item-gap)}.line-sidebar__item{position:relative;cursor:pointer;--effect:0}.line-sidebar__item::before{content:"";position:absolute;inset:-6px -48px}.line-sidebar__label{position:relative;display:inline-flex;align-items:baseline;font-size:var(--font-size);line-height:1.2;letter-spacing:.01em;color:color-mix(in srgb,var(--accent-color) calc(var(--effect) * 100%),var(--text-color));text-decoration:none;transform:translateX(calc(var(--effect) * var(--max-shift)));white-space:nowrap}.line-sidebar__index{font-family:"Portfolio DIN",ui-monospace,SFMono-Regular,Menlo,monospace;margin-right:.6rem;font-size:.85em;opacity:calc(.55 + var(--effect) * .45);font-variant-numeric:tabular-nums}.line-sidebar__item[aria-current] .line-sidebar__label{font-weight:800}
+    .lightbox-backdrop{position:fixed;z-index:190;inset:0;background:linear-gradient(145deg,rgba(25,30,38,.38),rgba(8,12,18,.5));backdrop-filter:blur(28px) saturate(72%);-webkit-backdrop-filter:blur(28px) saturate(72%);opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease}.lightbox-backdrop.open{opacity:1;visibility:visible}.frame.is-expanded{position:fixed!important;z-index:200!important;left:50%!important;top:50%!important;width:min(94vw,167.111vh)!important;height:auto!important;max-width:none!important;aspect-ratio:16/9!important;margin:0!important;transform:translate(-50%,-50%) scale(1)!important;border-radius:14px;border-color:rgba(255,255,255,.22);box-shadow:0 40px 140px rgba(0,0,0,.5);animation:frame-expand-in .42s cubic-bezier(.16,1,.3,1) both}.frame.is-expanded .frame-expand{top:16px;right:16px;opacity:1;transform:none;background:rgba(19,19,19,.74);border-color:rgba(255,255,255,.24);color:#fff}.frame.is-expanded .frame-expand:hover{background:#fff;color:#131313}.frame.is-expanded>img{cursor:zoom-out}.frame.is-long.is-expanded{height:94vh!important;aspect-ratio:auto!important;overflow-y:auto;overscroll-behavior:contain}.frame.is-long.is-expanded>img{cursor:default}.lightbox-open{overflow:hidden}@keyframes frame-expand-in{from{opacity:.25;transform:translate(-50%,-50%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.bottom-nav{position:relative;margin-top:88px;padding:108px 24px 90px;background:#111318;color:#fff}.bottom-nav::before{content:"END / OPTIONAL APPENDIX";position:absolute;top:30px;left:30px;color:#727987;font:10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em}.bottom-nav h2{max-width:1000px;margin:0 auto 40px;text-align:center;font-size:clamp(34px,5vw,68px)}.projects{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #343944}.projects a{min-height:150px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;border:0;border-right:1px solid #343944;text-decoration:none;transition:background .25s ease,color .25s ease}.projects a:last-child{border-right:0}.projects a:hover{background:#f2f4f7;color:#131313}.projects a:hover span{color:#656d79}.projects span{font:12px/1 "Portfolio DIN",sans-serif;color:#aeb5c2}.projects b{font-size:22px}.project-card__body{display:grid;gap:5px}.project-card__subtitle{display:block;color:#7f8794;font-family:"Portfolio DIN","DIN Pro","D-DIN",sans-serif;font-size:11px;font-weight:700;line-height:16px;letter-spacing:0}.projects a:hover .project-card__subtitle{color:#656d79}.projects .appendix-card{background:rgba(255,255,255,.025)}.top{position:fixed;z-index:80;right:20px;bottom:20px;width:46px;height:46px;border:0;border-radius:50%;background:var(--ink);color:#fff;cursor:pointer;opacity:0;transform:translateY(10px);transition:.25s}.top.show{opacity:1;transform:none}
+    body.motion .chapter,body.motion .page{opacity:0;transform:translateY(38px);transition:opacity .7s,transform .85s cubic-bezier(.2,.72,.18,1)}body.motion .in-view{opacity:1;transform:none}
+    @media(min-width:1381px) and (max-width:2050px){.page,.chapter{width:calc(100% - 238px);margin-left:214px;margin-right:24px}}
+    @media(min-width:1051px) and (max-width:1380px){.page,.chapter{width:calc(100% - 94px);max-width:none;margin-left:70px;margin-right:24px}}
+    @media(max-width:1780px){.line-sidebar-shell{left:16px;width:170px}.line-sidebar{--max-shift:18px;--font-size:.7rem}}
+    @media(max-width:1380px){.line-sidebar__text{display:none}.line-sidebar-shell{width:54px}}
+    @media(max-width:1180px){.topbar{grid-template-columns:1fr auto}.anchors{display:none}}
+    @media(max-width:1050px){.line-sidebar-shell{display:none}.project-menu a{display:none}.project-menu a.current{display:block}.page,.chapter{padding-left:14px;padding-right:14px}.chapter::before{left:14px}.projects{grid-template-columns:repeat(2,1fr);border-left:0;border-right:0}.projects a:nth-child(2){border-right:0}.projects a:nth-child(-n+2){border-bottom:1px solid #343944}}
+    @media(max-width:650px){.topbar{left:8px;right:8px;padding:0 14px}.hero{min-height:760px;padding:130px 18px 96px}.hero::after{left:18px}.hero-content{width:100%;transform:translateY(38px)}.hero h1{font-size:clamp(42px,13vw,68px)}.archive-stack{width:86vw}.chapter{margin-top:78px;padding-top:58px}.chapter::after{right:10px}.page{padding-bottom:52px}.page::before{left:14px}.frame{margin-left:-14px;margin-right:-14px;border-left:0;border-right:0;border-radius:7px}.frame-expand{top:8px;right:8px;opacity:1;transform:none}.long-badge{left:8px;top:8px}.frame.is-expanded{width:96vw!important;border-radius:8px}.frame.is-long.is-expanded{height:96vh!important}.projects{grid-template-columns:1fr;border:0}.projects a{border:1px solid #343944!important;margin-top:-1px}.bottom-nav{margin-top:60px;padding-top:100px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1 em{animation:none;opacity:1;filter:none;transform:none;clip-path:none}body.motion .chapter,body.motion .page{opacity:1;transform:none}.frame{transform:none!important}}
+  </style>
+  <style>
+    /* Appendix live demos: same interaction frame, fallback and guide language as Projects 01–03. */
+    .live-badge{display:inline-flex;align-items:center;gap:8px;padding:2px 0;border:0;color:#5e6875;background:transparent;font-family:var(--font);font-size:10px;line-height:20px;letter-spacing:.04em;cursor:default}
+    button.live-badge{cursor:pointer}button.live-badge:hover{color:var(--ink)}
+    .live-badge i{width:7px;height:7px;border-radius:50%;background:#24d990;box-shadow:0 0 0 4px rgba(36,217,144,.15)}
+    .frame>.static-frame{z-index:3;transition:opacity .42s ease}
+    .frame>.embedded-media{position:absolute;z-index:4;inset:auto;left:var(--media-x);top:var(--media-y);width:var(--media-w);height:var(--media-h);object-fit:cover;border-radius:var(--media-radius,0);transform:rotate(var(--media-rotation,0deg)) scaleX(var(--media-scale-x,1));transform-origin:center;pointer-events:none;transition:opacity .22s ease}
+    .frame>.media-foreground{position:absolute;z-index:5;inset:auto;left:var(--media-x);top:var(--media-y);width:var(--media-w);height:var(--media-h);object-fit:fill;pointer-events:none;transition:opacity .22s ease}
+    .frame.native-media-paused>.native-gif,.frame.native-media-paused>.media-foreground{opacity:0}
+    .frame iframe{position:absolute;z-index:2;left:-7.5%;top:-7.5%;width:115%;height:115%;border:0;background:#f2f3f5}
+    .frame.interactive-ready>.static-frame,.frame.interactive-ready>.native-gif{opacity:0;pointer-events:none}
+    .frame.interactive-ready iframe{z-index:5}
+    .prototype-demo .frame>.static-frame{cursor:default}
+    .fallback{position:absolute;z-index:8;right:14px;bottom:14px;display:none;padding:8px 11px;border-radius:999px;color:#fff;background:rgba(19,19,19,.78);font-size:11px;line-height:18px;backdrop-filter:blur(12px)}
+    .frame.failed .fallback{display:block}
+    .interaction-guide{display:flex;align-items:center;gap:14px;margin-top:10px;padding:8px 10px;border:1px solid rgba(19,19,19,.09);border-radius:12px;background:rgba(246,248,251,.66);box-shadow:0 10px 30px rgba(28,38,55,.055);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .interaction-guide__label{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:0 4px;color:#6f7783;font-family:var(--font);font-size:10px;line-height:1;font-weight:600;white-space:nowrap}
+    .interaction-guide__label svg{width:14px;height:14px;fill:none;stroke:#131313;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .interaction-guide__steps{min-width:0;display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+    .interaction-guide__step{display:flex;align-items:center;gap:8px;min-width:0;margin:0;padding:3px 9px 3px 3px;border:1px solid rgba(19,19,19,.065);border-radius:9px;background:rgba(255,255,255,.6);transition:border-color .22s ease,background .22s ease,transform .28s cubic-bezier(.2,.72,.18,1)}
+    .interaction-guide__step:hover{transform:translateY(-1px);border-color:rgba(19,19,19,.16);background:rgba(255,255,255,.88)}
+    .interaction-guide__thumb{position:relative;flex:0 0 auto;width:64px;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(19,19,19,.09);border-radius:6px;background:#edf0f4}
+    .interaction-guide__thumb img{position:absolute;display:block;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+    .interaction-guide__copy{display:grid;gap:1px;min-width:0}.interaction-guide__copy strong,.interaction-guide__copy span{font-family:var(--font);white-space:nowrap}
+    .interaction-guide__copy strong{color:#262a31;font-size:11px;line-height:1.4;font-weight:700}.interaction-guide__copy span{color:#7b838f;font-size:10px;line-height:1.45}
+    @media(max-width:760px){.interaction-guide{align-items:flex-start;flex-direction:column;gap:7px;margin-left:-4px;margin-right:-4px}.interaction-guide__steps{width:100%;align-items:stretch;flex-direction:column}.interaction-guide__step{width:100%}.interaction-guide__copy strong,.interaction-guide__copy span{white-space:normal}}
+    @media(prefers-reduced-motion:reduce){.interaction-guide__step,.frame>.embedded-media{transition:none}}
+  </style>
+  <link rel="stylesheet" href="portfolio-typography.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="home" href="portfolio-home-v2-editorial.html">← 早期方案与设计补充</a>
+    <nav class="anchors" aria-label="附录章节">
+      <i class="nav-glider"></i>
+      <a href="#help-system">帮助体系</a>
+      <a href="#workbench">工作台</a>
+      <a href="#data-list">数据列表</a>
+      <a href="#data-detail">数据详情</a>
+      <a href="#form-flow">表单与流程</a>
+    </nav>
+    <nav class="project-menu" aria-label="项目切换">
+      <a href="portfolio-project1-saas.html">项目一</a>
+      <a href="portfolio-project2-ai-agent.html">项目二</a>
+      <a href="portfolio-project3-vibe-coding.html">项目三</a>
+      <a class="current" href="#top" aria-current="page">附录</a>
+    </nav>
+  </header>
+  <aside class="line-sidebar-shell" aria-label="附录页面导航"><nav class="line-sidebar" aria-label="当前章节页面锚点"><ul class="line-sidebar__list"></ul></nav></aside>
+  <main id="top">
+    <section class="hero">
+      <div class="archive-grid" aria-hidden="true"></div>
+      <div class="archive-stack" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="hero-content">
+        <span class="eyebrow">MODULE 04 / OPTIONAL APPENDIX</span>
+        <h1><em>附录</em><br><span>早期方案与设计补充</span></h1>
+        <p>收录表单编辑器、流程画布、工作台、数据列表与帮助体系的补充页面，作为前三个核心项目之外的可选查看内容。</p>
+        <div class="legend" aria-label="页面类型说明"><span><i></i>静态设计页面</span><span class="live"><i></i>交互 / 动效演示</span></div>
+      </div>
+    </section>
+    <div id="pages"></div>
+    <section class="bottom-nav">
+      <h2>返回核心项目</h2>
+      <div class="projects">
+        <a href="portfolio-project1-saas.html"><span>PROJECT 01</span><div class="project-card__body"><b>SaaS 低代码平台</b><small class="project-card__subtitle">SAAS LOW-CODE PLATFORM</small></div></a>
+        <a href="portfolio-project2-ai-agent.html"><span>PROJECT 02</span><div class="project-card__body"><b>AI 智能体平台</b><small class="project-card__subtitle">AI AGENT PLATFORM</small></div></a>
+        <a href="portfolio-project3-vibe-coding.html"><span>PROJECT 03</span><div class="project-card__body"><b>AI 设计交付流程</b><small class="project-card__subtitle">AI-NATIVE DESIGN DELIVERY</small></div></a>
+        <a class="appendix-card" href="#top"><span>APPENDIX / CURRENT</span><div class="project-card__body"><b>早期方案与设计补充</b><small class="project-card__subtitle">EARLY CONCEPTS &amp; DESIGN ARCHIVE</small></div></a>
+      </div>
+    </section>
+  </main>
+  <button class="top" aria-label="返回顶部">↑</button>
+  <div class="lightbox-backdrop" aria-hidden="true"></div>
+  <script>
+    const pages=[
+      {chapter:['form-flow','05','表单与流程','表单编辑器与流程设定的早期布局迭代。'],title:'布局迭代背景：从轻量化到业务适配的全链路迭代'},
+      {title:'表单编辑器：控件持续增长，横向承载开始失效'},
+      {title:'表单编辑器：从横向溢出到扩展分类导航'},
+      {title:'流程设定：画布视觉与节点配置优化'},
+      {title:'流程设定：节点视觉与状态体系'},
+      {title:'流程设定：审批与办理配置面板'},
+      {chapter:['workbench','02','工作台与跨端','工作台信息架构、角色化配置与移动端适配。'],title:'工作台导航：应用分组与多任务标签联动'},
+      {title:'工作台首页：任务优先的信息布局重组'},
+      {title:'工作台管理员页面：业务运行数据看板'},
+      {title:'工作台普通员工页面：高频办公入口聚合'},
+      {title:'自定义工作台：跨端布局配置与适配'},
+      {title:'自定义工作台：角色化配置权限划分'},
+      {title:'AI 工作台搭建：从自然语言到可编辑布局'},
+      {title:'移动工作台：同源配置与跨端适配规则'},
+      {chapter:['data-detail','04','数据详情','详情处理、协作补全与筛选结构迭代。'],title:'数据详情：处理、追溯与协作能力补全'},
+      {title:'数据详情移动端：核心任务重排与触控适配'},
+      {title:'数据筛选：结构重组与交互迭代'},
+      {chapter:['data-list','03','数据列表与筛选','列表框架、筛选规则与多视图组织方式。'],title:'数据列表：业务数据管理界面'},
+      {title:'数据列表：问题与设计挑战'},
+      {title:'筛选优化：兼顾自定义与一致性'},
+      {title:'打破通用性局限：按需配置与组合查询'},
+      {title:'构建通用性准则：通用框架的思考与推导'},
+      {title:'构建通用性准则：选、填、点三类通用框架',long:true},
+      {title:'数据列表：字段统计与分组能力'},
+      {title:'数据列表：跨端一致与操作适配'},
+      {title:'数据列表：项目进度与依赖关系'},
+      {title:'数据列表：按时间组织业务数据'},
+      {title:'数据列表：按状态管理任务流转'},
+      {title:'数据列表：卡片化呈现业务信息'},
+      {chapter:['help-system','01','帮助体系','从使用障碍到分层帮助与新手引导。'],title:'帮助体系：降低使用门槛'},
+      {title:'帮助体系：用户障碍与体验问题'},
+      {title:'帮助体系：分层策略与通用框架'},
+      {title:'帮助体系：即时提示与场景说明'},
+      {title:'帮助体系：多形态内容引导'},
+      {title:'帮助体系：新手引导与产品文档'}
+    ];
+    const DISPLAY_ORDER=[30,31,32,33,34,35,7,8,9,10,11,12,13,14,18,19,20,21,22,23,24,25,26,27,28,29,15,16,17,1,2,3,4,5,6];
+    const SOURCE_TO_DISPLAY=new Map(DISPLAY_ORDER.map((sourcePage,index)=>[sourcePage,index+1]));
+    const sideTitles=['布局迭代背景','控件增长与溢出','扩展分类导航','画布与节点配置','节点状态体系','审批办理配置','应用分组与任务标签','首页信息重组','管理员数据看板','员工办公入口','跨端布局配置','角色权限配置','AI 工作台搭建','移动端适配','详情协作补全','移动详情适配','筛选结构迭代','数据管理界面','问题与设计挑战','自定义与一致性','组合查询配置','通用准则推导','选填点通用框架','字段统计与分组','跨端操作适配','进度与依赖关系','时间视图','状态任务流转','卡片化信息','使用门槛','障碍与体验问题','分层策略','即时提示','多形态引导','新手引导与文档'];
+    const chapters=[{id:'help-system',start:1,end:6},{id:'workbench',start:7,end:14},{id:'data-list',start:15,end:26},{id:'data-detail',start:27,end:29},{id:'form-flow',start:30,end:35}];
+    const moduleForPage=n=>chapters.find(chapter=>n>=chapter.start&&n<=chapter.end)||chapters[0];
+    const FIGMA_FILE='2vQipjJOKXdAFosgtJHBMA';
+    const FIGMA_TOKEN='wl9MO0lHPfi3e5Lc-1';
+    const PROTOTYPE_NODES={32:'1:12414',33:'1:12532'};
+    const GIFS={
+      11:[
+        {src:'assets/project4/p11-mobile-layout.gif',alt:'P11 移动端工作台布局 Smart Animate 演示',x:33.1771,y:24.9074,w:13.3333,h:14.0741},
+        {src:'assets/project4/p11-web-layout.gif',alt:'P11 Web 端工作台布局 Smart Animate 演示',x:82.5,y:24.9074,w:13.3333,h:14.0741}
+      ],
+      14:[{src:'assets/project4/p14-mobile-workbench.gif',alt:'P14 移动端工作台同源配置动效',x:75.7,y:25.2778,w:4.1217,h:7.0923,rotation:-1}],
+      33:[
+        {src:'assets/project4/p33-dropdown-search.gif',alt:'下拉搜索框帮助动效',x:55.8301,y:25.1678,w:9.0497,h:9.555},
+        {src:'assets/project4/p33-button-dialog.gif',alt:'按钮与弹窗帮助动效',x:62.1695,y:25.0861,w:9.0956,h:9.6367},
+        {src:'assets/project4/p33-dropdown.gif',alt:'下拉框帮助动效',x:68.6007,y:25.0861,w:9.0956,h:9.6367}
+      ],
+      34:[{src:'assets/project4/p34-ai-helper.gif',alt:'AI 助手即时提示动效',x:54.9479,y:43.9815,w:3.0729,h:6.6667,flipX:true}]
+    };
+    const MEDIA_FOREGROUNDS={
+      14:[{src:'assets/project4/p14-gif-foreground@3x.png',x:63.9335378,y:26.3888889,w:16.5937996,h:11.215549}]
+    };
+    const INTERACTION_GUIDES={
+      11:{label:'动效演示',action:'等待演示自动播放',result:'查看移动端与 Web 端布局状态的循环变化'},
+      14:{label:'动效演示',action:'移动端工作台动效',result:'进入本页后从头播放'},
+      32:{label:'动效演示',action:'等待组件自动播放',result:'查看帮助内容的渐进式反馈'},
+      33:{label:'交互提示',action:'点击右侧示例卡片顶部的「‹ / ›」箭头',result:'切换 3 组帮助示例，查看不同图片与对应说明'},
+      34:{label:'动效演示',action:'AI 助手即时反馈',result:'进入本页后从头播放'}
+    };
+    const gifMarkup=items=>(items||[]).map(item=>`<img class="embedded-media native-gif" src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%;--media-rotation:${item.rotation||0}deg;--media-scale-x:${item.flipX?-1:1}">`).join('');
+    const foregroundMarkup=items=>(items||[]).map(item=>`<img class="media-foreground" src="${item.src}" alt="" aria-hidden="true" loading="lazy" decoding="async" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%">`).join('');
+    const root=document.querySelector('#pages');
+    DISPLAY_ORDER.forEach((sourcePage,orderIndex)=>{
+      const displayPage=orderIndex+1,page=pages[sourcePage-1],pad=String(displayPage).padStart(2,'0'),sourcePad=String(sourcePage).padStart(2,'0'),isPrototype=Boolean(PROTOTYPE_NODES[sourcePage]),hasGif=Boolean(GIFS[sourcePage]),isInteractive=isPrototype||hasGif;
+      if(page.chapter){const chapter=page.chapter;root.insertAdjacentHTML('beforeend',`<section class="chapter" id="${chapter[0]}" data-index="${chapter[1]}"><span>CHAPTER ${chapter[1]}</span><h2>${chapter[2]}</h2><p>${chapter[3]}</p></section>`)}
+      const badge=isPrototype?'<span class="live-badge"><i></i><span>整页交互 / 动效演示</span></span>':hasGif?'<button class="live-badge" type="button" aria-pressed="true" title="切换 GIF 播放状态"><i></i><span>暂停 GIF 动效</span></button>':'';
+      root.insertAdjacentHTML('beforeend',`<article class="page${isInteractive?' interactive demo-page':''}${isPrototype?' prototype-demo':''}${hasGif?' native-demo':''}" id="p${pad}" data-source-page="${sourcePage}"><header class="page-head"><span class="page-no">P${pad} / 35</span><span class="page-title">${page.title}</span>${badge}</header><div class="frame${page.long?' is-long':''}" data-page="${sourcePage}" data-display-page="${displayPage}"><img class="static-frame" src="../附录_3px/${sourcePage}.png?v=20260717-appendix-live" alt="附录第 ${displayPage} 页：${page.title}（源页 ${sourcePad}）" loading="${orderIndex<2?'eager':'lazy'}" decoding="async">${gifMarkup(GIFS[sourcePage])}${foregroundMarkup(MEDIA_FOREGROUNDS[sourcePage])}<span class="fallback">交互内容加载失败，已保留静态首帧</span><button class="frame-expand" aria-label="放大查看"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg></button></div></article>`);
+    });
+
+    const guideMouseIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 3v5"/></svg>';
+    Object.entries(INTERACTION_GUIDES).forEach(([number,guideData])=>{
+      const displayPage=SOURCE_TO_DISPLAY.get(Number(number)),pad=String(displayPage).padStart(2,'0'),article=document.querySelector(`.page[data-source-page="${number}"]`),frame=article?.querySelector('.frame');
+      if(!frame)return;
+      const guide=document.createElement('aside');guide.className='interaction-guide';guide.setAttribute('aria-label',`P${pad} ${guideData.label}`);
+      guide.innerHTML=`<span class="interaction-guide__label">${guideMouseIcon}<span>${guideData.label}</span></span><div class="interaction-guide__steps"><figure class="interaction-guide__step"><span class="interaction-guide__thumb"><img src="../附录_3px/${Number(number)}.png?v=20260717-appendix-guide" alt="P${pad} 演示区域" loading="lazy" decoding="async"></span><span class="interaction-guide__copy"><strong>${guideData.action}</strong><span>${guideData.result}</span></span></figure></div>`;
+      frame.insertAdjacentElement('afterend',guide);
+    });
+
+    function mountPrototype(frame){
+      const page=Number(frame.dataset.page),displayPage=Number(frame.dataset.displayPage),node=PROTOTYPE_NODES[page].replace(':','-'),iframe=document.createElement('iframe');
+      frame.classList.add('whole-page-demo');iframe.title=`P${String(displayPage).padStart(2,'0')} 整页交互演示`;iframe.loading='eager';iframe.allowFullscreen=true;iframe.allow='autoplay; fullscreen';
+      iframe.src=`https://embed.figma.com/proto/${FIGMA_FILE}/%E9%99%84%E5%BD%95?node-id=${node}&t=${FIGMA_TOKEN}&scaling=contain&embed-host=share&hide-ui=1`;
+      const timeout=setTimeout(()=>frame.classList.add('failed'),15000);
+      iframe.addEventListener('load',()=>{clearTimeout(timeout);setTimeout(()=>frame.classList.add('interactive-ready'),800)},{once:true});
+      frame.appendChild(iframe);
+    }
+    document.querySelectorAll('.prototype-demo .frame').forEach(mountPrototype);
+
+    function setGifState(article,playing,restart=false){
+      const frame=article.querySelector('.frame'),button=article.querySelector('button.live-badge'),gifs=[...frame.querySelectorAll('.native-gif')];
+      gifs.forEach(gif=>{const source=gif.dataset.src||gif.getAttribute('src');gif.dataset.src=source;if(!playing){gif.removeAttribute('src');return}if(restart)gif.removeAttribute('src');requestAnimationFrame(()=>gif.setAttribute('src',source))});
+      frame.classList.toggle('native-media-paused',!playing);
+      if(button){button.setAttribute('aria-pressed',String(playing));button.querySelector('span').textContent=playing?'暂停 GIF 动效':'播放 GIF 动效'}
+    }
+    document.querySelectorAll('.native-demo').forEach(article=>{article.querySelectorAll('.native-gif').forEach(gif=>gif.dataset.src=gif.getAttribute('src'));const button=article.querySelector('button.live-badge');button?.addEventListener('click',()=>setGifState(article,button.getAttribute('aria-pressed')!=='true',true))});
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce)document.querySelectorAll('.native-demo:not(.prototype-demo)').forEach(article=>setGifState(article,false));
+    else{const gifFocus=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting&&!entry.target.querySelector('.frame').classList.contains('interactive-ready'))setGifState(entry.target,true,true)}),{rootMargin:'-20% 0px -48%',threshold:0});document.querySelectorAll('.native-demo').forEach(article=>gifFocus.observe(article))}
+    const hero=document.querySelector('.hero');
+    hero.addEventListener('pointermove',event=>{const rect=hero.getBoundingClientRect();hero.style.setProperty('--mx',`${event.clientX-rect.left}px`);hero.style.setProperty('--my',`${event.clientY-rect.top}px`)},{passive:true});
+    hero.addEventListener('pointerleave',()=>{hero.style.setProperty('--mx','50%');hero.style.setProperty('--my','45%')});
+    const heroTitle=document.querySelector('.hero h1 em');if(!reduce)heroTitle.addEventListener('animationend',event=>{if(event.animationName==='hero-title-reveal')heroTitle.classList.add('is-revealed')},{once:true});
+    const rail=document.querySelector('.line-sidebar__list');
+    let renderedModule='',sideItems=[],sideTargets=[],sideCurrent=[],sideActive=0,sideRaf=null,sideLast=0;
+    function renderSideModule(mod){rail.innerHTML='';for(let n=mod.start;n<=mod.end;n++){const pad=String(n).padStart(2,'0'),sourcePage=DISPLAY_ORDER[n-1];rail.insertAdjacentHTML('beforeend',`<li class="line-sidebar__item" data-page="${n}"><a class="line-sidebar__label" href="#p${pad}" aria-label="P${pad} ${pages[sourcePage-1].title}"><span class="line-sidebar__index">${pad}</span><span class="line-sidebar__text">${sideTitles[sourcePage-1]}</span></a></li>`)}sideItems=[...rail.querySelectorAll('.line-sidebar__item')];sideTargets=sideItems.map(()=>0);sideCurrent=sideItems.map(()=>0);renderedModule=mod.id}
+    const sideFrame=now=>{const dt=Math.min((now-sideLast)/1000,.05),k=1-Math.exp(-dt/.1);sideLast=now;let moving=false;sideItems.forEach((item,i)=>{const target=Math.max(sideTargets[i]||0,sideActive===i?1:0),cur=sideCurrent[i]||0,next=cur+(target-cur)*k,settled=Math.abs(target-next)<.0015,value=settled?target:next;sideCurrent[i]=value;item.style.setProperty('--effect',value.toFixed(4));if(!settled)moving=true});sideRaf=moving?requestAnimationFrame(sideFrame):null};
+    const startSideLoop=()=>{if(sideRaf!==null)return;sideLast=performance.now();sideRaf=requestAnimationFrame(sideFrame)};
+    rail.addEventListener('pointermove',event=>{const rect=rail.getBoundingClientRect(),pointerY=event.clientY-rect.top;sideItems.forEach((item,i)=>{const center=item.offsetTop+item.offsetHeight/2,distance=Math.abs(pointerY-center),p=Math.max(0,1-distance/100);sideTargets[i]=p*p*(3-2*p)});startSideLoop()});
+    rail.addEventListener('pointerleave',()=>{sideTargets=sideTargets.map(()=>0);startSideLoop()});
+    const blocks=[...document.querySelectorAll('.chapter,.page')],articles=[...document.querySelectorAll('.page')];
+    if(!reduce){document.body.classList.add('motion');const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');reveal.unobserve(entry.target)}}),{rootMargin:'0px 0px -8%',threshold:.06});blocks.forEach(block=>reveal.observe(block))}else blocks.forEach(block=>block.classList.add('in-view'));
+    const setPage=n=>{const mod=moduleForPage(n);if(renderedModule!==mod.id)renderSideModule(mod);sideActive=n-mod.start;sideItems.forEach((item,i)=>item.toggleAttribute('aria-current',i===sideActive));startSideLoop()};
+    const focus=new IntersectionObserver(entries=>entries.forEach(entry=>{entry.target.classList.toggle('is-current',entry.isIntersecting);if(entry.isIntersecting)setPage(+entry.target.id.slice(1))}),{rootMargin:'-38% 0px -54%',threshold:0});articles.forEach(article=>focus.observe(article));setPage(1);
+    const nav=document.querySelector('.anchors'),navLinks=[...nav.querySelectorAll('a')],glider=nav.querySelector('.nav-glider');
+    function syncGlider(){const active=nav.querySelector('.active')||navLinks[0];glider.style.left=active.offsetLeft+'px';glider.style.width=active.offsetWidth+'px'}
+    const spy=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(link=>link.classList.toggle('active',link.hash==='#'+entry.target.id));syncGlider()}}),{rootMargin:'-25% 0px -65%'});navLinks.forEach(link=>spy.observe(document.querySelector(link.hash)));addEventListener('resize',syncGlider,{passive:true});requestAnimationFrame(syncGlider);
+    const lightbox=document.querySelector('.lightbox-backdrop');let expandedFrame=null;
+    const closeExpanded=()=>{if(!expandedFrame)return;expandedFrame.classList.remove('is-expanded');const button=expandedFrame.querySelector('.frame-expand');button.setAttribute('aria-label','放大查看');button.title='放大查看';expandedFrame=null;lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open')};
+    const openExpanded=frame=>{if(expandedFrame===frame){closeExpanded();return}if(expandedFrame)closeExpanded();expandedFrame=frame;frame.classList.add('is-expanded');const button=frame.querySelector('.frame-expand');button.setAttribute('aria-label','关闭放大查看');button.title='关闭';lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open')};
+    document.querySelectorAll('.frame').forEach(frame=>{const img=frame.querySelector('.static-frame'),button=frame.querySelector('.frame-expand');if(!frame.classList.contains('is-long')&&!frame.closest('.prototype-demo'))img.addEventListener('click',()=>openExpanded(frame));button.addEventListener('click',event=>{event.stopPropagation();openExpanded(frame)})});lightbox.addEventListener('click',closeExpanded);addEventListener('keydown',event=>{if(event.key==='Escape')closeExpanded()});
+    let tick=false;function update(){tick=false;const doc=document.documentElement,height=doc.scrollHeight-doc.clientHeight,y=doc.scrollTop;document.querySelector('.progress').style.width=(height?y/height*100:0)+'%';document.querySelector('.top').classList.toggle('show',y>700);document.body.classList.toggle('story-started',y>hero.offsetHeight*.62);if(!reduce)articles.forEach(article=>{const rect=article.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)return;const distance=Math.max(-1,Math.min(1,(rect.top+rect.height/2-innerHeight/2)/innerHeight));article.querySelector('.frame').style.setProperty('--shift',(-distance*6).toFixed(2)+'px')})}addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});update();document.querySelector('.top').onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+  </script>
+  <script src="portfolio-page-transition.js"></script>
+</body>
+</html>

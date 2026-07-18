@@ -1,0 +1,131 @@
+/* Shared portfolio typography contract.
+   Chinese/body: Alibaba PuHuiTi 3.0 Regular
+   Chinese headings: Alibaba PuHuiTi 3.0 SemiBold / Black for hero display
+   English, labels and numerals: DIN Pro
+   Tracking: 0, matching the portfolio specification. */
+@font-face {
+  font-family: "Portfolio DIN";
+  src: local("DINPro-Bold"), local("DIN Pro Bold"), local("D-DIN-PRO-Bold");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Portfolio Staatliches";
+  src: url("../portfolio-assets/fonts/staatliches-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --portfolio-font-body: "Alibaba PuHuiTi 3.0", "AlibabaPuHuiTi-3-55-Regular", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  --portfolio-font-heading: "Alibaba PuHuiTi 3.0", "AlibabaPuHuiTi-3-75-SemiBold", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  --portfolio-font-display: "Alibaba PuHuiTi 3.0 115 Black", "AlibabaPuHuiTi-3-115-Black", "Alibaba PuHuiTi 3.0", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  --portfolio-font-latin: "Portfolio DIN", "DIN Pro", "DINPro", "D-DIN", Arial, sans-serif;
+
+  /* Bridge the variable names already used by the five pages. */
+  --font: var(--portfolio-font-body);
+  --font-sans: var(--portfolio-font-body);
+  --heading: var(--portfolio-font-heading);
+  --font-heading: var(--portfolio-font-heading);
+  --font-latin: var(--portfolio-font-latin);
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--portfolio-font-body) !important;
+}
+
+body *,
+body *::before,
+body *::after {
+  letter-spacing: 0 !important;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .projects b,
+body .project-card strong,
+body .speaker-notes__title {
+  font-family: var(--portfolio-font-heading) !important;
+}
+
+body .hero h1,
+body .intro h1 {
+  font-family: var(--portfolio-font-display) !important;
+}
+
+/* Mixed Chinese/English product names follow the surrounding heading/body style. */
+body .saas-case {
+  font-family: inherit !important;
+}
+
+/* Editorial background display on the home uses its own condensed face. */
+body .display-title,
+body .display-title * {
+  font-family: "Portfolio Staatliches", "Arial Narrow", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-synthesis: none;
+}
+
+/* Other English-only display copy on the editorial home. */
+body .hero-intro h1 em,
+body .hero-intro h1 .name-en,
+body .case-copy h3,
+body .about-intro h3 em,
+body .life-head h3,
+body .contact h2,
+body .contact h2 em {
+  font-family: var(--portfolio-font-latin) !important;
+}
+
+/* English labels, page numerals and metadata shared by all project pages. */
+body .home,
+body .wordmark,
+body .topright,
+body .micro,
+body .eyebrow,
+body .portrait-meta,
+body .hero-bottom .center-note,
+body .hero-bottom .scroll,
+body .case-index,
+body .case-top,
+body .case-keywords span,
+body .case-visual::before,
+body .case-link,
+body .life-index,
+body .life-title span,
+body .life-foot,
+body .footer,
+body .chapter > span,
+body .page-no,
+body .page-foot,
+body .projects > a > span,
+body .project-card > span,
+body .project-card__subtitle,
+body .line-sidebar__index,
+body .speaker-notes__label,
+body .speaker-notes__page,
+body .interaction-guide__marker {
+  font-family: var(--portfolio-font-latin) !important;
+}
+
+body .hero::before,
+body .intro::before,
+body .chapter::after,
+body .hero::after,
+body .intro::after,
+body .bottom-nav::before {
+  font-family: var(--portfolio-font-latin) !important;
+}
