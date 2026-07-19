@@ -1,4 +1,4 @@
-const BUILD_REV = 'b4dacb26fd77';
+const BUILD_REV = '5e1a0d27ea8c';
 const CACHE_PREFIX = 'portfolio-runtime-';
 const CACHE_NAME = `${CACHE_PREFIX}${BUILD_REV}`;
 
@@ -72,6 +72,13 @@ self.addEventListener('fetch', event => {
 
   if (request.destination === 'document') {
     respondWithBackgroundCache(event, request, networkFirst(request, null));
+    return;
+  }
+
+  const isLanyardRuntimeImage = request.destination === 'image' &&
+    /\/assets\/lanyard\/(?:lanyard-poster|profile-portrait|wechat-contact-qr)[^/]*\.png$/i.test(url.pathname);
+  if (isLanyardRuntimeImage) {
+    respondWithBackgroundCache(event, request, cacheFirstHashed(request));
     return;
   }
 

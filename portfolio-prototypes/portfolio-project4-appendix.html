@@ -9,9 +9,9 @@
   <link rel="dns-prefetch" href="//www.figma.com">
   <link rel="preconnect" href="https://embed.figma.com" crossorigin>
   <link rel="preconnect" href="https://www.figma.com" crossorigin>
-  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=b4dacb26fd77">
-  <link rel="stylesheet" href="portfolio-performance.css?v=b4dacb26fd77">
-  <script src="portfolio-performance.js?v=b4dacb26fd77"></script>
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=5e1a0d27ea8c">
+  <link rel="stylesheet" href="portfolio-performance.css?v=5e1a0d27ea8c">
+  <script src="portfolio-performance.js?v=5e1a0d27ea8c"></script>
   <style>
     @font-face{font-family:"Portfolio DIN";src:local("DINPro-Bold"),local("DIN Pro Bold"),local("D-DIN-PRO-Bold");font-display:swap}
     :root{--ink:#131313;--paper:#edf1f6;--muted:#727b88;--line:rgba(19,19,19,.12);--slate:#526175;--blue:#4568ff;--font:"Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",Arial,sans-serif;--heading:"Alibaba PuHuiTi 3.0 115 Black","AlibabaPuHuiTi-3-115-Black","Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",sans-serif}
@@ -61,8 +61,8 @@
     @media(max-width:760px){.interaction-guide{align-items:flex-start;flex-direction:column;gap:7px;margin-left:-4px;margin-right:-4px}.interaction-guide__steps{width:100%;align-items:stretch;flex-direction:column}.interaction-guide__step{width:100%}.interaction-guide__copy strong,.interaction-guide__copy span{white-space:normal}}
     @media(prefers-reduced-motion:reduce){.interaction-guide__step,.frame>.embedded-media{transition:none}}
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css?v=b4dacb26fd77">
-  <link rel="stylesheet" href="portfolio-project-header.css?v=b4dacb26fd77">
+  <link rel="stylesheet" href="portfolio-typography.css?v=5e1a0d27ea8c">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=5e1a0d27ea8c">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -313,7 +313,7 @@
     document.querySelectorAll('.frame').forEach(frame=>{const img=frame.querySelector('.static-frame'),button=frame.querySelector('.frame-expand');if(!frame.classList.contains('is-long')&&!frame.closest('.prototype-demo'))img.addEventListener('click',()=>openExpanded(frame));button.addEventListener('click',event=>{event.stopPropagation();openExpanded(frame)})});lightbox.addEventListener('click',closeExpanded);addEventListener('keydown',event=>{if(event.key==='Escape')closeExpanded()});
     let tick=false;function update(){tick=false;const doc=document.documentElement,height=doc.scrollHeight-doc.clientHeight,y=doc.scrollTop;document.querySelector('.progress').style.width=(height?y/height*100:0)+'%';document.querySelector('.top').classList.toggle('show',y>700);document.body.classList.toggle('story-started',y>hero.offsetHeight*.62);if(!reduce)visibleDepthPages.forEach(article=>{const rect=article.getBoundingClientRect(),frame=depthFrames.get(article);if(!frame||rect.bottom<0||rect.top>innerHeight)return;const distance=Math.max(-1,Math.min(1,(rect.top+rect.height/2-innerHeight/2)/innerHeight));frame.style.setProperty('--shift',(-distance*6).toFixed(2)+'px')})}addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});update();document.querySelector('.top').onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   </script>
-  <script src="portfolio-lightbox-navigation.js?v=b4dacb26fd77"></script>
-  <script src="portfolio-page-transition.js?v=b4dacb26fd77"></script>
+  <script src="portfolio-lightbox-navigation.js?v=5e1a0d27ea8c"></script>
+  <script src="portfolio-page-transition.js?v=5e1a0d27ea8c"></script>
 </body>
 </html>
