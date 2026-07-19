@@ -6,7 +6,7 @@
 window.PROJECT1_INTERACTION_GUIDES = {
   8: [
     {
-      image: '../项目1_3px/8.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/8.png?v=20260719-r2',
       alt: '项目预算字段的切换按钮',
       action: '项目预算：点击「切换」',
       result: '仅该字段配置了本次预设交互',
@@ -15,7 +15,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
       thumbOrigin: '69% 67%'
     },
     {
-      image: '../项目1_3px/8.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/8.png?v=20260719-r2',
       alt: '项目预算字段的上移按钮',
       action: '点击「上移」',
       result: '继续预设布局路径',
@@ -24,7 +24,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
       thumbOrigin: '33% 56%'
     },
     {
-      image: '../项目1_3px/8.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/8.png?v=20260719-r2',
       alt: '项目预算字段的第二次切换按钮',
       action: '再次点击「切换」',
       result: '进入下一预设状态',
@@ -33,7 +33,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
       thumbOrigin: '33% 68%'
     },
     {
-      image: '../项目1_3px/8.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/8.png?v=20260719-r2',
       alt: '项目预算字段的下移按钮',
       action: '点击「下移」',
       result: '完成字段排布演示',
@@ -44,7 +44,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
   ],
   20: [
     {
-      image: '../项目1_3px/20.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/20.png?v=20260719-r2',
       alt: 'AI 工作台搭建助手输入框右侧发送按钮',
       action: '点击右下角发送按钮',
       result: '启动 AI 工作台生成流程',
@@ -53,7 +53,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
       thumbOrigin: '90% 81%'
     },
     {
-      image: '../项目1_3px/20.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/20.png?v=20260719-r2',
       alt: 'AI 工作台从解析需求到写入画布的生成反馈',
       action: '等待演示自动推进',
       result: '依次查看需求解析、结构生成与写入画布',
@@ -64,7 +64,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
   ],
   24: [
     {
-      image: '../项目1_3px/24.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/24.png?v=20260719-r2',
       alt: '数据详情左侧可滚动的数据内容区域',
       action: '滚动左侧数据内容',
       result: '使用滚轮浏览完整字段信息',
@@ -73,7 +73,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
       thumbOrigin: '23% 58%'
     },
     {
-      image: '../项目1_3px/24.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/24.png?v=20260719-r2',
       alt: '数据详情右侧辅助信息面板与收起按钮',
       action: '移入右侧辅助信息区',
       result: '点击收起按钮折叠面板，扩展主信息区',
@@ -84,7 +84,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
   ],
   34: [
     {
-      image: '../项目1_3px/34.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/34.png?v=20260719-r2',
       alt: '设计规范网页版说明文字入口',
       action: '网页版规范说明',
       result: '打开可浏览的规范说明',
@@ -93,7 +93,7 @@ window.PROJECT1_INTERACTION_GUIDES = {
       thumbOrigin: '12% 32%'
     },
     {
-      image: '../项目1_3px/34.png?v=20260716-3x',
+      image: 'assets/responsive/project1/thumb/34.png?v=20260719-r2',
       alt: '设计规范源文件文字入口',
       action: '设计规范源文件',
       result: '打开 Figma 规范文件',

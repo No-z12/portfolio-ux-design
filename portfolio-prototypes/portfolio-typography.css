@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: "Portfolio Staatliches";
-  src: url("../portfolio-assets/fonts/staatliches-latin.woff2") format("woff2");
+  src: url("../portfolio-assets/fonts/staatliches-latin.woff2?v=40b4273b77eb") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#e9e9e5" />
+  <link rel="stylesheet" href="portfolio-performance.css?v=40b4273b77eb" />
+  <script src="portfolio-performance.js?v=40b4273b77eb"></script>
   <title>Portfolio 2026 · Editorial Home</title>
   <style>
     :root {
@@ -173,6 +175,7 @@
       pointer-events:none;
     }
     .lanyard-react-root,
+    .lanyard-react-mount,
     .lanyard-wrapper {
       position:relative;
       width:100%;
@@ -190,6 +193,56 @@
       max-width:none;
       transform:none;
     }
+    .lanyard-react-mount {
+      position:absolute;
+      inset:0;
+      z-index:1;
+      opacity:0;
+      transition:opacity .34s ease;
+    }
+    .lanyard-poster-action {
+      position:absolute;
+      z-index:2;
+      top:0;
+      left:50%;
+      width:clamp(300px,25vw,430px);
+      aspect-ratio:360 / 830;
+      padding:0;
+      border:0;
+      background:transparent;
+      transform:translateX(-50%);
+      opacity:1;
+      cursor:default;
+      transition:opacity .34s ease,transform .24s ease;
+    }
+    .lanyard-poster-action img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:50% 0;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+    .lanyard-react-root[data-lanyard-mode="balanced"] .lanyard-poster-action,
+    .lanyard-react-root[data-lanyard-mode="lite"] .lanyard-poster-action { cursor:pointer; }
+    .lanyard-react-root[data-lanyard-mode="balanced"] .lanyard-poster-action:hover,
+    .lanyard-react-root[data-lanyard-mode="lite"] .lanyard-poster-action:hover { transform:translateX(-50%) translateY(-2px); }
+    .lanyard-react-root[data-lanyard-state="live"] .lanyard-react-mount { opacity:1; }
+    .lanyard-react-root[data-lanyard-state="loading"] .lanyard-react-mount {
+      opacity:1;
+      transition:none;
+    }
+    .lanyard-react-root[data-lanyard-state="loading"] .lanyard-poster-action {
+      opacity:0;
+      pointer-events:none;
+      transition:none;
+    }
+    .lanyard-react-root[data-lanyard-state="live"] .lanyard-poster-action {
+      opacity:0;
+      pointer-events:none;
+    }
+    .lanyard-poster-action:focus-visible { outline:2px solid var(--blue); outline-offset:4px; border-radius:18px; }
     .lanyard-wrapper { display:flex; align-items:center; justify-content:center; }
     .lanyard-wrapper canvas {
       display:block;
@@ -639,8 +692,8 @@
 
     .cursor {
       width:12px;height:12px;border:1px solid rgba(255,255,255,.8);border-radius:50%;
-      position:fixed;left:-40px;top:-40px;z-index:100;pointer-events:none;
-      transform:translate(-50%,-50%);mix-blend-mode:difference;
+      position:fixed;left:0;top:0;z-index:100;pointer-events:none;
+      transform:translate3d(-40px,-40px,0) translate(-50%,-50%);mix-blend-mode:difference;
       transition:width .18s ease,height .18s ease,background .18s ease;
     }
     .cursor.active { width:34px;height:34px;background:white; }
@@ -664,8 +717,7 @@
       .hero-dot-field { opacity:.46; }
       .hero-kicker { order:1; padding:0; }
       .hero-intro { order:2; padding:42px 0 0; }
-      .portrait-stage { order:3; width:min(520px,100%); min-height:590px; margin:48px 0 0; }
-      .lanyard-react-root,.lanyard-wrapper { min-height:590px; }
+      .portrait-stage,.lanyard-react-root { display:none; }
       .hero-actions { margin-top:26px; }
       .hero-bottom { order:4; }
       .hero-intro h1 { font-size:62px; }
@@ -1421,9 +1473,10 @@
     @media (prefers-reduced-motion:reduce) {
       *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; }
       .cursor { display:none; }
+      .lanyard-react-mount,.lanyard-poster-action { transition:none; }
     }
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css">
+  <link rel="stylesheet" href="portfolio-typography.css?v=40b4273b77eb">
 </head>
 <body>
   <div class="cursor" aria-hidden="true"></div>
@@ -1438,7 +1491,12 @@
       <canvas class="hero-dot-field" aria-hidden="true"></canvas>
       <div class="display-title" aria-hidden="true"><span>PRODUCT</span><span>DESIGNER</span></div>
 
-      <div id="lanyard-react-root" class="lanyard-react-root" role="img" aria-label="可拖拽、可点击翻面并具有真实绳带物理效果的个人身份卡片"></div>
+      <div id="lanyard-react-root" class="lanyard-react-root" role="group" aria-label="可拖拽、可点击翻面并具有真实绳带物理效果的个人身份卡片" data-lanyard-state="loading">
+        <button class="lanyard-poster-action" type="button" aria-label="启用可拖拽的 3D 身份卡片">
+          <img alt="" width="720" height="1660" decoding="async">
+        </button>
+        <div id="lanyard-react-mount" class="lanyard-react-mount" aria-hidden="true"></div>
+      </div>
       <div class="portrait-stage reveal">
         <span class="lanyard-hint">Drag · Click to flip</span>
       </div>
@@ -1510,17 +1568,17 @@
         <a class="project-card interactive reveal" href="portfolio-project1-saas.html">
           <div class="project-card-meta"><span>01 / SaaS</span><span>System Design</span></div>
           <div class="project-card-copy"><div class="project-card-title"><h3>SaaS 低代码平台</h3><i aria-hidden="true">↗</i></div><p>0–1 全链路产品设计</p><div class="project-module-tags" aria-label="项目模块"><span>低代码表单编辑器</span><span>SaaS 工作台</span><span>数据详情</span><span>帮助体系与设计规范</span></div></div>
-          <figure><img src="assets/home-project-covers/project-01-saas-hero.jpg" alt="SaaS 低代码平台项目英雄页" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/home-project-covers/project-01-saas-hero.jpg" srcset="assets/responsive/home-covers/project-01-saas-hero-320.jpg 320w, assets/responsive/home-covers/project-01-saas-hero-480.jpg 480w, assets/responsive/home-covers/project-01-saas-hero-800.jpg 800w, assets/responsive/home-covers/project-01-saas-hero-1200.jpg 1200w, assets/home-project-covers/project-01-saas-hero.jpg 1600w" sizes="(max-width:520px) calc(100vw - 24px), (max-width:900px) 46vw, (max-width:1864px) calc((100vw - 64px) / 3), 600px" width="1600" height="864" alt="SaaS 低代码平台项目英雄页" loading="lazy" decoding="async"></figure>
         </a>
         <a class="project-card interactive reveal" data-reveal-delay="70" href="portfolio-project2-ai-agent.html">
           <div class="project-card-meta"><span>02 / AI Agent</span><span>Productization</span></div>
           <div class="project-card-copy"><div class="project-card-title"><h3>AI 智能体平台</h3><i aria-hidden="true">↗</i></div><p>0–1 全链路产品设计</p><div class="project-module-tags" aria-label="项目模块"><span>智能体基础配置</span><span>工作流后台</span><span>SaaS 深度融合</span><span>对话交互与动效</span></div></div>
-          <figure><img src="assets/home-project-covers/project-02-agent-hero.jpg" alt="AI 智能体平台项目英雄页" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/home-project-covers/project-02-agent-hero.jpg" srcset="assets/responsive/home-covers/project-02-agent-hero-320.jpg 320w, assets/responsive/home-covers/project-02-agent-hero-480.jpg 480w, assets/responsive/home-covers/project-02-agent-hero-800.jpg 800w, assets/responsive/home-covers/project-02-agent-hero-1200.jpg 1200w, assets/home-project-covers/project-02-agent-hero.jpg 1600w" sizes="(max-width:520px) calc(100vw - 24px), (max-width:900px) 46vw, (max-width:1864px) calc((100vw - 64px) / 3), 600px" width="1600" height="864" alt="AI 智能体平台项目英雄页" loading="lazy" decoding="async"></figure>
         </a>
         <a class="project-card interactive reveal" data-reveal-delay="140" href="portfolio-project3-vibe-coding.html">
           <div class="project-card-meta"><span>03 / Vibe Coding</span><span>Design Delivery</span></div>
           <div class="project-card-copy"><div class="project-card-title"><h3>AI 设计交付流程</h3><i aria-hidden="true">↗</i></div><p>AI 协作重构 B 端设计交付链路</p><div class="project-module-tags" aria-label="项目模块"><span>AI 调研 Skill</span><span>视觉与组件探索</span><span>3D 动态 Demo</span><span>设计走查插件</span></div></div>
-          <figure><img src="assets/home-project-covers/project-03-vibe-hero.jpg" alt="Vibe Coding 设计交付项目英雄页" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/home-project-covers/project-03-vibe-hero.jpg" srcset="assets/responsive/home-covers/project-03-vibe-hero-320.jpg 320w, assets/responsive/home-covers/project-03-vibe-hero-480.jpg 480w, assets/responsive/home-covers/project-03-vibe-hero-800.jpg 800w, assets/responsive/home-covers/project-03-vibe-hero-1200.jpg 1200w, assets/home-project-covers/project-03-vibe-hero.jpg 1600w" sizes="(max-width:520px) calc(100vw - 24px), (max-width:900px) 46vw, (max-width:1864px) calc((100vw - 64px) / 3), 600px" width="1600" height="864" alt="Vibe Coding 设计交付项目英雄页" loading="lazy" decoding="async"></figure>
         </a>
       </div>
 
@@ -1562,7 +1620,7 @@
       <a class="appendix-entry interactive reveal" href="portfolio-project4-appendix.html">
         <div class="appendix-index">06 / APPENDIX</div>
         <div class="appendix-copy"><span>OPTIONAL ARCHIVE</span><h3>早期方案与设计补充</h3><p>作为前三个核心项目之后的补充内容，可选查看。</p></div>
-        <img src="assets/home-project-covers/project-04-appendix-hero.jpg" alt="附录早期方案与设计补充英雄页" loading="lazy" decoding="async">
+        <img src="assets/home-project-covers/project-04-appendix-hero.jpg" srcset="assets/responsive/home-covers/project-04-appendix-hero-320.jpg 320w, assets/responsive/home-covers/project-04-appendix-hero-480.jpg 480w, assets/responsive/home-covers/project-04-appendix-hero-800.jpg 800w, assets/responsive/home-covers/project-04-appendix-hero-1200.jpg 1200w, assets/home-project-covers/project-04-appendix-hero.jpg 1600w" sizes="(max-width:520px) 0px, (max-width:900px) 150px, 160px" width="1600" height="864" alt="附录早期方案与设计补充英雄页" loading="lazy" decoding="async">
         <i aria-hidden="true">↗</i>
       </a>
     </section>
@@ -1580,8 +1638,88 @@
     </section>
   </main>
 
-  <script src="portfolio-page-transition.js"></script>
-  <script src="./lanyard-island.js"></script>
+  <script src="portfolio-page-transition.js?v=40b4273b77eb"></script>
+  <script>
+    (()=>{
+      const mobileLanyard=matchMedia('(max-width:820px)');
+      if(mobileLanyard.matches){
+        document.getElementById('lanyard-react-root')?.remove();
+        document.querySelector('.portrait-stage')?.remove();
+        return;
+      }
+      const root=document.getElementById('lanyard-react-root');
+      const mount=document.getElementById('lanyard-react-mount');
+      const posterButton=root?.querySelector('.lanyard-poster-action');
+      const posterImage=posterButton?.querySelector('img');
+      const hint=document.querySelector('.lanyard-hint');
+      if(!root||!mount||!posterButton||!posterImage)return;
+
+      const html=document.documentElement;
+      const requestedMode=String(
+        html.dataset.portfolioTier||html.dataset.lanyardMode||html.dataset.performanceMode||html.dataset.performanceProfile||html.dataset.portfolioPerformance||html.dataset.runtimeMode||''
+      ).toLowerCase();
+      const explicitMode=requestedMode==='high'?'full':requestedMode==='medium'?'balanced':(['low','save','reduced'].includes(requestedMode)?'lite':requestedMode);
+      const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+      const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const constrainedHardware=(navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4);
+      const mode=explicitMode==='lite'||explicitMode==='balanced'||explicitMode==='full'
+        ?explicitMode
+        :(connection?.saveData||reducedMotion?'lite':constrainedHardware?'balanced':'full');
+      const posterSource='assets/lanyard/lanyard-poster.png';
+      let scriptRequested=false;
+      let live=false;
+      html.dataset.lanyardMode=mode;
+      root.dataset.lanyardMode=mode;
+
+      const setHint=text=>{if(hint)hint.textContent=text};
+      const ensurePoster=()=>{
+        if(!posterImage.getAttribute('src'))posterImage.setAttribute('src',posterSource);
+      };
+      const showPoster=(message='Static 3D preview')=>{
+        live=false;
+        ensurePoster();
+        mount.setAttribute('aria-hidden','true');
+        root.dataset.lanyardState='poster';
+        setHint(message);
+      };
+      const showLive=()=>{
+        live=true;
+        mount.setAttribute('aria-hidden','false');
+        root.dataset.lanyardState='live';
+        setHint('Drag · Click to flip');
+        window.setTimeout(()=>{
+          if(live)posterImage.removeAttribute('src');
+        },520);
+      };
+      const loadLanyard=()=>{
+        if(scriptRequested)return;
+        scriptRequested=true;
+        root.dataset.lanyardState='loading';
+        setHint('Drag · Click to flip');
+        const appendScript=source=>new Promise((resolve,reject)=>{
+          const script=document.createElement('script');
+          script.src=source;
+          script.async=true;
+          script.addEventListener('load',resolve,{once:true});
+          script.addEventListener('error',reject,{once:true});
+          document.head.appendChild(script);
+        });
+        const boot=location.protocol==='file:'
+          ?appendScript('./lanyard-file-assets.js').then(()=>appendScript('./lanyard-island.js'))
+          :appendScript('./lanyard-island.js');
+        boot.catch(()=>showPoster('Static 3D preview'));
+      };
+
+      addEventListener('portfolio-lanyard:ready',showLive);
+      addEventListener('portfolio-lanyard:error',()=>showPoster('Static 3D preview'));
+      addEventListener('portfolio-lanyard:context-lost',()=>showPoster('Static preview · WebGL paused'));
+      addEventListener('portfolio-lanyard:context-restored',()=>{
+        if(scriptRequested)window.setTimeout(showLive,120);
+      });
+      posterButton.addEventListener('click',loadLanyard);
+      loadLanyard();
+    })();
+  </script>
   <script>
     if (window.location.hash === "#about") {
       window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#contact`);
@@ -1600,40 +1738,68 @@
       siteNavIndicator.style.transform=`translateX(${link.offsetLeft}px)`;
       siteTopnav.classList.add('has-indicator');
     };
+    let topbarRaf=0;
     const syncTopbar=()=>{
+      topbarRaf=0;
       siteTopbar.classList.toggle('is-scrolled',scrollY>20);
       const marker=siteTopbar.offsetHeight+32;
       activeSiteNavLink=null;
       siteNavLinks.forEach(link=>{
         const section=document.querySelector(link.getAttribute('href'));
-        const isActive=section&&section.getBoundingClientRect().top<=marker&&section.getBoundingClientRect().bottom>marker;
+        const rect=section?.getBoundingClientRect();
+        const isActive=rect&&rect.top<=marker&&rect.bottom>marker;
         link.classList.toggle('is-active',Boolean(isActive));
         if(isActive)activeSiteNavLink=link;
         isActive?link.setAttribute('aria-current','page'):link.removeAttribute('aria-current');
       });
       moveSiteNavIndicator(activeSiteNavLink);
     };
+    const scheduleTopbar=()=>{
+      if(topbarRaf)return;
+      topbarRaf=requestAnimationFrame(syncTopbar);
+    };
     siteNavLinks.forEach(link=>{
       link.addEventListener('pointerenter',()=>moveSiteNavIndicator(link));
       link.addEventListener('focus',()=>moveSiteNavIndicator(link));
     });
-    siteTopnav.addEventListener('pointermove',event=>{
-      siteNavLinks.forEach(link=>{
+    let siteNavPointerRaf=0,siteNavPointerX=0,siteNavPointerInside=false;
+    const syncSiteNavPointer=()=>{
+      siteNavPointerRaf=0;
+      if(!siteNavPointerInside)return;
+      const centers=siteNavLinks.map(link=>{
         const rect=link.getBoundingClientRect();
-        const proximity=Math.max(0,1-Math.abs(event.clientX-(rect.left+rect.width/2))/120);
+        return rect.left+rect.width/2;
+      });
+      siteNavLinks.forEach((link,index)=>{
+        const proximity=Math.max(0,1-Math.abs(siteNavPointerX-centers[index])/120);
         link.style.setProperty('--nav-lift',`${(-proximity*2).toFixed(2)}px`);
       });
+    };
+    siteTopnav.addEventListener('pointermove',event=>{
+      siteNavPointerInside=true;
+      siteNavPointerX=event.clientX;
+      if(!siteNavPointerRaf)siteNavPointerRaf=requestAnimationFrame(syncSiteNavPointer);
     },{passive:true});
     siteTopnav.addEventListener('pointerleave',()=>{
+      siteNavPointerInside=false;
+      if(siteNavPointerRaf){cancelAnimationFrame(siteNavPointerRaf);siteNavPointerRaf=0}
       siteNavLinks.forEach(link=>link.style.removeProperty('--nav-lift'));
       moveSiteNavIndicator(activeSiteNavLink);
     });
     siteTopnav.addEventListener('focusout',event=>{if(!siteTopnav.contains(event.relatedTarget))moveSiteNavIndicator(activeSiteNavLink)});
-    addEventListener('scroll',syncTopbar,{passive:true});
-    addEventListener('resize',syncTopbar,{passive:true});
+    addEventListener('scroll',scheduleTopbar,{passive:true});
+    addEventListener('resize',scheduleTopbar,{passive:true});
     syncTopbar();
     const cursor=document.querySelector('.cursor');
-    addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+    let cursorX=-40,cursorY=-40,cursorMoveRaf=0;
+    addEventListener('pointermove',event=>{
+      cursorX=event.clientX;cursorY=event.clientY;
+      if(cursorMoveRaf)return;
+      cursorMoveRaf=requestAnimationFrame(()=>{
+        cursorMoveRaf=0;
+        cursor.style.transform=`translate3d(${cursorX}px,${cursorY}px,0) translate(-50%,-50%)`;
+      });
+    },{passive:true});
     document.querySelectorAll('.interactive').forEach(el=>{el.addEventListener('pointerenter',()=>cursor.classList.add('active'));el.addEventListener('pointerleave',()=>cursor.classList.remove('active'))});
 
     const homeHero=document.querySelector('.hero');
@@ -1645,16 +1811,20 @@
       lanyardRoot.style.top='0px';
       lanyardRoot.style.height=`${slotRect.bottom-heroRect.top}px`;
     };
-    new ResizeObserver(syncLanyardCanvas).observe(lanyardSlot);
-    addEventListener('resize',syncLanyardCanvas,{passive:true});
-    document.fonts?.ready.then(syncLanyardCanvas);
-    requestAnimationFrame(syncLanyardCanvas);
+    if(lanyardRoot&&lanyardSlot){
+      new ResizeObserver(syncLanyardCanvas).observe(lanyardSlot);
+      addEventListener('resize',syncLanyardCanvas,{passive:true});
+      document.fonts?.ready.then(syncLanyardCanvas);
+      requestAnimationFrame(syncLanyardCanvas);
+    }
     const dotCanvas=homeHero.querySelector('.hero-dot-field');
     const dotContext=dotCanvas.getContext('2d');
     const dotPointer={x:0,y:0,targetX:0,targetY:0,strength:0,active:false};
-    let dotWidth=0,dotHeight=0,dotVisible=true;
+    let dotWidth=0,dotHeight=0,dotVisible=true,dotFrame=0,dotLastFrame=0;
+    const constrainedDotField=document.documentElement.dataset.portfolioTier!=='full';
+    const dotFrameInterval=constrainedDotField?1000/30:0;
     const resizeDotField=()=>{
-      const rect=homeHero.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,1.6);
+      const rect=homeHero.getBoundingClientRect(),dpr=constrainedDotField?1:Math.min(devicePixelRatio||1,1.6);
       dotWidth=rect.width;dotHeight=rect.height;
       dotCanvas.width=Math.round(dotWidth*dpr);dotCanvas.height=Math.round(dotHeight*dpr);
       dotCanvas.style.width=`${dotWidth}px`;dotCanvas.style.height=`${dotHeight}px`;
@@ -1682,7 +1852,20 @@
         }
       }
     };
-    const animateDotField=time=>{if(dotVisible)drawDotField(time);requestAnimationFrame(animateDotField)};
+    const animateDotField=time=>{
+      dotFrame=0;
+      if(!dotVisible||document.hidden||reduceMotion)return;
+      if(dotFrameInterval&&dotLastFrame&&time-dotLastFrame<dotFrameInterval){dotFrame=requestAnimationFrame(animateDotField);return}
+      dotLastFrame=time;
+      drawDotField(time);
+      dotFrame=requestAnimationFrame(animateDotField);
+    };
+    const syncDotFieldActivity=()=>{
+      const shouldAnimate=dotVisible&&!document.hidden&&!reduceMotion;
+      if(shouldAnimate&&!dotFrame)dotFrame=requestAnimationFrame(animateDotField);
+      if(!shouldAnimate&&dotFrame){cancelAnimationFrame(dotFrame);dotFrame=0}
+      if(dotVisible&&!document.hidden&&reduceMotion)drawDotField(0);
+    };
     homeHero.addEventListener('pointermove',event=>{
       if(event.pointerType==='touch')return;
       const rect=homeHero.getBoundingClientRect();
@@ -1691,10 +1874,14 @@
       dotPointer.active=true;
     },{passive:true});
     homeHero.addEventListener('pointerleave',()=>{dotPointer.active=false});
-    new IntersectionObserver(([entry])=>{dotVisible=entry.isIntersecting},{threshold:0}).observe(homeHero);
+    new IntersectionObserver(([entry])=>{
+      dotVisible=entry.isIntersecting;
+      syncDotFieldActivity();
+    },{threshold:0}).observe(homeHero);
+    document.addEventListener('visibilitychange',syncDotFieldActivity);
     addEventListener('resize',resizeDotField,{passive:true});
     resizeDotField();
-    if(!reduceMotion)requestAnimationFrame(animateDotField);
+    syncDotFieldActivity();
 
     const revealElements=[...document.querySelectorAll('.reveal')];
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{

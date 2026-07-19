@@ -7,7 +7,8 @@
     .portfolio-transition-skeleton{width:min(420px,72vw);padding:28px;border:1px solid rgba(17,18,20,.09);border-radius:16px;background:rgba(255,255,255,.52)}
     .portfolio-transition-line{position:relative;height:10px;margin-top:12px;overflow:hidden;border-radius:999px;background:rgba(17,18,20,.075)}
     .portfolio-transition-line:first-child{width:34%;height:8px;margin-top:0}.portfolio-transition-line:nth-child(2){width:78%;height:17px;margin-top:22px}.portfolio-transition-line:nth-child(3){width:56%}
-    .portfolio-transition-line::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:translateX(-110%);animation:portfolio-skeleton-shimmer 1.1s ease-in-out infinite}
+    .portfolio-transition-line::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:translateX(-110%);animation:portfolio-skeleton-shimmer 1.1s ease-in-out infinite;animation-play-state:paused}
+    .portfolio-transition-layer.is-active .portfolio-transition-line::after{animation-play-state:running}
     @keyframes portfolio-skeleton-shimmer{to{transform:translateX(110%)}}
   `;
   document.head.appendChild(style);
@@ -17,13 +18,23 @@
   layer.setAttribute('aria-hidden', 'true');
   layer.innerHTML = '<div class="portfolio-transition-skeleton"><div class="portfolio-transition-line"></div><div class="portfolio-transition-line"></div><div class="portfolio-transition-line"></div></div>';
   document.body.appendChild(layer);
+  let leaving = false;
+
+  const resetTransition = () => {
+    leaving = false;
+    layer.classList.remove('is-active');
+    layer.getAnimations().forEach(animation => animation.cancel());
+    layer.firstElementChild.getAnimations().forEach(animation => animation.cancel());
+    layer.style.opacity = '0';
+    document.documentElement.style.pointerEvents = '';
+  };
 
   document.body.animate([
     { opacity: .82 },
     { opacity: 1 }
   ], { duration: 340, easing: 'ease-out', fill: 'both' });
 
-  let leaving = false;
+  addEventListener('pageshow', resetTransition);
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');
     if (!link || leaving || event.defaultPrevented || event.button !== 0) return;
@@ -37,6 +48,7 @@
     event.preventDefault();
     leaving = true;
     document.documentElement.style.pointerEvents = 'none';
+    layer.classList.add('is-active');
     layer.animate([
       { opacity: 0 },
       { opacity: 1 }

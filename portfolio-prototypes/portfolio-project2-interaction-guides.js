@@ -6,7 +6,7 @@
 window.PROJECT2_INTERACTION_GUIDES = {
   4: [
     {
-      image: '../项目2_3px/4.png?v=20260715-1724',
+      image: 'assets/responsive/project2/thumb/4.png?v=20260719-r2',
       alt: '工作流下载链接文字入口',
       action: '① 先下载工作流文件',
       result: '查看工作流前需要先完成下载',
@@ -16,7 +16,7 @@ window.PROJECT2_INTERACTION_GUIDES = {
       thumbOrigin: '57% 88%'
     },
     {
-      image: '../项目2_3px/4.png?v=20260715-1724',
+      image: 'assets/responsive/project2/thumb/4.png?v=20260719-r2',
       alt: '腾讯云智能体开发平台访问地址入口',
       action: '② 前往腾讯云智能体平台',
       result: '导入已下载的文件并打开工作流',
@@ -91,7 +91,7 @@ window.PROJECT2_INTERACTION_GUIDES = {
       result: '启动 Multi-Agent 业务任务'
     },
     {
-      image: '../项目2_3px/29.png?v=20260715-1724',
+      image: 'assets/responsive/project2/thumb/29.png?v=20260719-r2',
       alt: '可单击推进思考过程的完整交互演示区域',
       action: '思考加载中，单击演示区',
       result: '逐步推进直至结果；真实业务会自动执行',
@@ -129,7 +129,7 @@ window.PROJECT2_INTERACTION_GUIDES = {
   ],
   30: [
     {
-      image: '../项目2_3px/30.png?v=20260715-1724',
+      image: 'assets/responsive/project2/thumb/30.png?v=20260719-r2',
       alt: '点击完整产品演示区域可逐步推进的思考过程可视化',
       action: '点击演示区域任意位置',
       result: '逐步查看思考过程；真实业务流程会自动流转',

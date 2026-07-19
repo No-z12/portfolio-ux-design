@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="SaaS 低代码 0→1 全链路设计作品集项目">
   <title>SaaS 低代码 0→1 全链路设计</title>
-  <link rel="stylesheet" href="portfolio-speaker-notes.css">
+  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=40b4273b77eb">
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=40b4273b77eb">
+  <link rel="stylesheet" href="portfolio-performance.css?v=40b4273b77eb">
+  <script src="portfolio-performance.js?v=40b4273b77eb"></script>
+  <link rel="dns-prefetch" href="//embed.figma.com">
+  <link rel="dns-prefetch" href="//www.figma.com">
+  <link rel="preconnect" href="https://embed.figma.com" crossorigin>
+  <link rel="preconnect" href="https://www.figma.com" crossorigin>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
-
     @font-face {
       font-family: "Portfolio DIN";
       src: local("DINPro-Bold"), local("DIN Pro Bold"), local("D-DIN-PRO-Bold");
@@ -269,6 +274,10 @@
     @keyframes hero-title-gradient-flow {
       0% { background-position: 100% 50%; }
       100% { background-position: 0 50%; }
+    }
+    .hero.motion-paused .hero-mark,
+    .hero.motion-paused .hero-title-motion {
+      animation-play-state: paused !important;
     }
     .hero p {
       max-width: 700px;
@@ -932,7 +941,9 @@
     @media (max-width:1050px) { .projects { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width:650px) { .projects { grid-template-columns: 1fr; } }
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css">
+  <link rel="stylesheet" href="portfolio-typography.css?v=40b4273b77eb">
+  <link rel="stylesheet" href="portfolio-project-meta.css?v=40b4273b77eb">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=40b4273b77eb">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -944,7 +955,7 @@
   </aside>
 
   <header class="topbar">
-    <a class="home" href="portfolio-home-v2-editorial.html">← SaaS 低代码平台</a>
+      <a class="home" href="portfolio-home-v2-editorial.html" aria-label="返回作品集首页"><span class="home__icon" aria-hidden="true">←</span><span class="home__label">SaaS 低代码平台</span></a>
     <nav class="anchors" aria-label="项目章节">
       <a href="#overview">项目总览</a>
       <a href="#form-editor">表单编辑器</a>
@@ -963,7 +974,7 @@
   <main id="top">
     <section class="hero">
       <canvas class="hero-grid" aria-hidden="true"></canvas>
-      <img class="hero-mark" src="../portfolio-assets/project1/media/hero-icon.png" alt="" aria-hidden="true">
+      <img class="hero-mark" src="../portfolio-assets/project1/media/hero-icon.png" srcset="assets/responsive/hero-icons/project1/hero-icon-96.png 96w, assets/responsive/hero-icons/project1/hero-icon-192.png 192w, assets/responsive/hero-icons/project1/hero-icon-288.png 288w, assets/responsive/hero-icons/project1/hero-icon-408.png 408w, assets/responsive/hero-icons/project1/hero-icon-544.png 544w" sizes="(max-width:650px) 76px, (max-width:1280px) 96px, (max-width:1813px) 7.5vw, 136px" width="1924" height="1916" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
       <div class="hero-content">
         <span class="eyebrow">PROJECT 01 / SAAS LOW-CODE PLATFORM</span>
         <h1><span class="hero-title-motion">SaaS 低代码</span><br><span>0–1全链路产品设计</span></h1>
@@ -973,7 +984,7 @@
           <span class="live"><i></i>交互 / 动效演示</span>
         </div>
       </div>
-      <a class="scroll-cue" href="#overview">SCROLL TO BEGIN</a>
+    <span class="scroll-cue project-time">项目时间 2022–2026</span>
     </section>
 
     <div id="pages"></div>
@@ -991,7 +1002,7 @@
 
   <button class="top" type="button" aria-label="返回顶部">↑</button>
 
-  <script src="portfolio-project1-interaction-guides.js"></script>
+  <script src="portfolio-project1-interaction-guides.js?v=40b4273b77eb"></script>
   <script>
     const FIGMA_FILE = "s8kmgucUlwLnqj90hKE8xF";
     const FIGMA_TOKEN = "HfM09U8aV9AyiBuD-1";
@@ -1019,8 +1030,8 @@
     };
     const NATIVE_MEDIA = {
       11: {
-        kind: "gif",
-        src: "assets/project1/p11-demo.gif",
+        kind: "video",
+        src: "assets/perf-media/workbench-p1-p11-p4-p14-96w.mp4",
         alt: "工作台中的原始 GIF 动效",
         x: 68.3464,
         y: 71.1213,
@@ -1030,7 +1041,7 @@
       },
       18: {
         kind: "video",
-        src: "assets/project1/p18-demo.mp4",
+        src: "assets/perf-media/project1-p18-demo-silent.mp4",
         alt: "工作台模块自适应布局视频演示",
         x: 50.7292,
         y: 23.2407,
@@ -1164,12 +1175,12 @@
           : "";
       const nativeMediaMarkup = nativeMedia
         ? nativeMedia.kind === "video"
-          ? `<video class="embedded-media native-video${nativeMedia.clickToPlay ? " click-to-play" : ""}" src="${nativeMedia.src}" muted loop playsinline preload="metadata"
+          ? `<video class="embedded-media native-video${nativeMedia.clickToPlay ? " click-to-play" : ""}" data-src="${nativeMedia.src}" muted loop playsinline preload="none"
               aria-label="${nativeMedia.alt}"
               style="--media-x:${nativeMedia.x}%;--media-y:${nativeMedia.y}%;--media-w:${nativeMedia.width}%;--media-h:${nativeMedia.height}%;--media-radius:${nativeMedia.radius}px"></video>
               ${nativeMedia.clickToPlay ? `<button class="native-video-control" type="button" aria-label="播放视频演示"
                 style="--media-x:${nativeMedia.x}%;--media-y:${nativeMedia.y}%;--media-w:${nativeMedia.width}%;--media-h:${nativeMedia.height}%;--media-radius:${nativeMedia.radius}px"><span aria-hidden="true"></span></button>` : ""}`
-          : `<img class="embedded-media native-gif" src="${nativeMedia.src}" alt="${nativeMedia.alt}" loading="lazy" decoding="async"
+          : `<img class="embedded-media native-gif" data-src="${nativeMedia.src}" data-srcset="${nativeMedia.srcset || ""}" data-sizes="${nativeMedia.sizes || ""}" alt="${nativeMedia.alt}" loading="lazy" decoding="async"
               style="--media-x:${nativeMedia.x}%;--media-y:${nativeMedia.y}%;--media-w:${nativeMedia.width}%;--media-h:${nativeMedia.height}%;--media-radius:${nativeMedia.radius}px">`
         : "";
       root.insertAdjacentHTML("beforeend",
@@ -1179,7 +1190,11 @@
             ${liveBadgeMarkup}
           </header>
           <div class="frame ${sourcePage === 27 ? "transition-frame" : ""}" data-page="${sourcePage}" data-display-page="${displayPage}">
-            <img class="static-frame" src="../项目1_3px/${sourcePage}.png?v=20260716-3x" alt="第一个项目页面 P${number}：${PAGE_TITLES[sourcePage - 1]}" loading="${displayPage <= 2 ? "eager" : "lazy"}" decoding="async">
+            <img class="static-frame" src="../项目1_3px/${sourcePage}.png?v=20260716-3x"
+              srcset="assets/responsive/project1/960/${sourcePage}.png?v=20260719-r2 960w, assets/responsive/project1/1440/${sourcePage}.png?v=20260719-r2 1440w, assets/responsive/project1/1920/${sourcePage}.png?v=20260719-r2 1920w, assets/responsive/project1/2880/${sourcePage}.png?v=20260719-r2 2880w, assets/responsive/project1/3840/${sourcePage}.png?v=20260719-r2 3840w"
+              sizes="(max-width: 650px) 100vw, (max-width: 1600px) calc(100vw - 48px), 1552px"
+              data-full-src="../项目1_3px/${sourcePage}.png?v=20260716-3x"
+              alt="第一个项目页面 P${number}：${PAGE_TITLES[sourcePage - 1]}" loading="lazy" fetchpriority="low" decoding="async">
             ${nativeMediaMarkup}
             <span class="fallback">交互内容加载失败，已保留静态首帧</span>
           </div>
@@ -1225,7 +1240,25 @@
       frame.insertAdjacentElement("afterend", guide);
     });
 
+    const prototypeFrames = [...document.querySelectorAll(".prototype-demo .frame")];
+    // Figma 讲解体验优先：所有性能档都在进入前 5 页开始预热。
+    const PREWARM_PAGE_LEAD = 5;
+    const PROTOTYPE_POOL_SIZE = 3;
+    const PROTOTYPE_READY_RETENTION = 90000;
+    const PROTOTYPE_BACKGROUND_RELEASE_DELAY = 120000;
+    const prototypeFramesByDisplayPage = new Map(
+      prototypeFrames.map(frame => [Number(frame.dataset.displayPage), frame])
+    );
+    let prototypeUseOrder = 0;
+    let prototypeIntentPage = 1;
+    let prototypeScrollDirection = 1;
+    let prototypeProtectedFrames = new Set();
+    let prototypeBackgroundTimer = 0;
+    let prototypeIdleHandle = 0;
+
     function mountPrototype(frame) {
+      if (frame._prototypeState?.iframe) return frame._prototypeState.iframe;
+      if (document.hidden) return null;
       const page = Number(frame.dataset.page);
       const displayPage = Number(frame.dataset.displayPage);
       const source = PROTOTYPE_SOURCES[page] || {
@@ -1242,31 +1275,228 @@
       iframe.allow = "autoplay; fullscreen";
       iframe.src = `https://embed.figma.com/proto/${source.file}/${encodeURIComponent(source.name)}?node-id=${nodeId}&t=${source.token}&scaling=contain&embed-host=share&hide-ui=1`;
       frame.classList.add("whole-page-demo");
+      frame.classList.remove("failed");
 
       const timeout = window.setTimeout(() => {
+        if (frame._prototypeState?.iframe !== iframe) return;
         frame.classList.add("failed");
       }, 15000);
+      const now = Date.now();
+      const state = {
+        iframe,
+        timeout,
+        readyTimer: 0,
+        readyAt: 0,
+        mountedAt: now,
+        lastUsedAt: now,
+        useOrder: ++prototypeUseOrder
+      };
+      frame._prototypeState = state;
       iframe.addEventListener("load", () => {
         window.clearTimeout(timeout);
-        window.setTimeout(() => {
+        if (frame._prototypeState !== state) return;
+        state.readyTimer = window.setTimeout(() => {
+          if (frame._prototypeState !== state) return;
+          state.readyAt = Date.now();
           frame.classList.add("interactive-ready");
         }, 800);
       }, { once: true });
       frame.appendChild(iframe);
+      return iframe;
     }
-    document.querySelectorAll(".prototype-demo .frame").forEach(mountPrototype);
+
+    function unmountPrototype(frame, force = false) {
+      const state = frame._prototypeState;
+      if (!state || (!force && frame.classList.contains("is-expanded"))) return;
+      window.clearTimeout(state.timeout);
+      window.clearTimeout(state.readyTimer);
+      state.iframe.remove();
+      frame._prototypeState = null;
+      frame.classList.remove("interactive-ready", "failed");
+    }
+
+    function trimPrototypeFrames(protectedFrames = prototypeProtectedFrames) {
+      const mounted = prototypeFrames
+        .filter(frame => frame._prototypeState)
+        .sort((a, b) => {
+          const expandedDelta = Number(b.classList.contains("is-expanded")) - Number(a.classList.contains("is-expanded"));
+          if (expandedDelta) return expandedDelta;
+          const protectedDelta = Number(protectedFrames.has(b)) - Number(protectedFrames.has(a));
+          if (protectedDelta) return protectedDelta;
+          return b._prototypeState.useOrder - a._prototypeState.useOrder;
+        });
+      const keep = new Set(mounted.slice(0, PROTOTYPE_POOL_SIZE));
+      mounted.forEach(frame => {
+        if (!keep.has(frame)) unmountPrototype(frame);
+      });
+    }
+
+    function activatePrototype(frame, protectedFrames = prototypeProtectedFrames) {
+      mountPrototype(frame);
+      if (!frame._prototypeState) return;
+      frame._prototypeState.useOrder = ++prototypeUseOrder;
+      frame._prototypeState.lastUsedAt = Date.now();
+      const keep = new Set(protectedFrames);
+      keep.add(frame);
+      trimPrototypeFrames(keep);
+    }
+
+    function pruneDistantPrototypes(protectedFrames = prototypeProtectedFrames) {
+      const now = Date.now();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      prototypeFrames.forEach(frame => {
+        const state = frame._prototypeState;
+        if (!state || protectedFrames.has(frame) || frame.classList.contains("is-expanded")) return;
+        const retainedFrom = state.readyAt || state.mountedAt;
+        if (now - retainedFrom < PROTOTYPE_READY_RETENTION) return;
+        const rect = frame.getBoundingClientRect();
+        if (rect.bottom < -viewportHeight * 1.5 || rect.top > viewportHeight * 2.5) {
+          unmountPrototype(frame);
+        }
+      });
+    }
+
+    function prewarmPrototypesForPage(displayPage, direction = prototypeScrollDirection) {
+      if (document.hidden || !Number.isFinite(displayPage)) return;
+      const currentFrame = prototypeFramesByDisplayPage.get(displayPage) || null;
+      const candidates = prototypeFrames
+        .map(frame => ({ frame, displayPage: Number(frame.dataset.displayPage) }))
+        .filter(item => direction >= 0
+          ? item.displayPage > displayPage && item.displayPage - displayPage <= PREWARM_PAGE_LEAD
+          : item.displayPage < displayPage && displayPage - item.displayPage <= PREWARM_PAGE_LEAD)
+        .sort((a, b) => direction >= 0
+          ? a.displayPage - b.displayPage
+          : b.displayPage - a.displayPage);
+      const targetFrames = candidates.map(item => item.frame);
+      const protectedFrames = new Set([currentFrame, ...targetFrames].filter(Boolean));
+      prototypeProtectedFrames = protectedFrames;
+      protectedFrames.forEach(frame => activatePrototype(frame, protectedFrames));
+      trimPrototypeFrames(protectedFrames);
+      pruneDistantPrototypes(protectedFrames);
+    }
+
+    function cancelPrototypeIdleWarmup() {
+      if (!prototypeIdleHandle) return;
+      if ("cancelIdleCallback" in window) window.cancelIdleCallback(prototypeIdleHandle);
+      else window.clearTimeout(prototypeIdleHandle);
+      prototypeIdleHandle = 0;
+    }
+
+    function schedulePrototypeWarmup(displayPage, direction = prototypeScrollDirection) {
+      cancelPrototypeIdleWarmup();
+      const run = () => {
+        prototypeIdleHandle = 0;
+        prewarmPrototypesForPage(displayPage, direction);
+      };
+      prototypeIdleHandle = "requestIdleCallback" in window
+        ? window.requestIdleCallback(run, { timeout: 1200 })
+        : window.setTimeout(run, 320);
+    }
+
+    function setPrototypeIntent(displayPage, direction, immediate = true) {
+      if (!Number.isFinite(displayPage)) return;
+      const inferredDirection = direction || (displayPage === prototypeIntentPage
+        ? prototypeScrollDirection
+        : displayPage > prototypeIntentPage ? 1 : -1);
+      prototypeScrollDirection = inferredDirection;
+      prototypeIntentPage = displayPage;
+      if (immediate) {
+        cancelPrototypeIdleWarmup();
+        prewarmPrototypesForPage(displayPage, inferredDirection);
+      } else {
+        schedulePrototypeWarmup(displayPage, inferredDirection);
+      }
+    }
+
+    function displayPageFromHash(hash) {
+      const pageMatch = /^#p(\d{1,2})$/i.exec(hash || "");
+      if (pageMatch) return Math.max(1, Math.min(TOTAL_PAGES, Number(pageMatch[1])));
+      if (!hash || hash === "#top") return 1;
+      const chapter = Object.entries(CHAPTERS).find(([, value]) => `#${value.id}` === hash);
+      return chapter ? Number(chapter[0]) : null;
+    }
+
+    const prototypeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || document.hidden) return;
+        const protectedFrames = new Set(prototypeProtectedFrames);
+        protectedFrames.add(entry.target);
+        activatePrototype(entry.target, protectedFrames);
+      });
+      pruneDistantPrototypes();
+    }, { rootMargin: "20% 0px 20%", threshold: 0 });
+
+    const prototypePageObserver = new IntersectionObserver(entries => {
+      const current = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => Math.abs(a.boundingClientRect.top - innerHeight * .4) - Math.abs(b.boundingClientRect.top - innerHeight * .4))[0];
+      if (!current) return;
+      const displayPage = Number(current.target.id.slice(1));
+      setPrototypeIntent(displayPage, displayPage === prototypeIntentPage
+        ? prototypeScrollDirection
+        : displayPage > prototypeIntentPage ? 1 : -1);
+    }, { rootMargin: "-34% 0px -55%", threshold: 0 });
+
+    prototypeFrames.forEach(frame => {
+      frame.classList.add("whole-page-demo");
+      prototypeObserver.observe(frame);
+      const warmFromFrame = () => {
+        const displayPage = Number(frame.dataset.displayPage);
+        setPrototypeIntent(displayPage, prototypeScrollDirection);
+      };
+      frame.addEventListener("pointerenter", warmFromFrame, { passive: true });
+      frame.addEventListener("focusin", warmFromFrame);
+      frame.addEventListener("click", warmFromFrame, { capture: true });
+    });
+    document.querySelectorAll(".page").forEach(page => prototypePageObserver.observe(page));
+
+    function warmAnchorTarget(event) {
+      const anchor = event.target.closest?.('a[href^="#"]');
+      if (!anchor) return;
+      const targetPage = displayPageFromHash(anchor.getAttribute("href"));
+      if (!targetPage) return;
+      setPrototypeIntent(targetPage, targetPage === prototypeIntentPage
+        ? prototypeScrollDirection
+        : targetPage > prototypeIntentPage ? 1 : -1);
+    }
+    document.addEventListener("pointerdown", warmAnchorTarget, { passive: true });
+    document.addEventListener("focusin", warmAnchorTarget);
+
+    document.addEventListener("visibilitychange", () => {
+      window.clearTimeout(prototypeBackgroundTimer);
+      prototypeBackgroundTimer = 0;
+      if (document.hidden) {
+        cancelPrototypeIdleWarmup();
+        prototypeBackgroundTimer = window.setTimeout(() => {
+          prototypeFrames.forEach(frame => unmountPrototype(frame, true));
+          prototypeProtectedFrames = new Set();
+        }, PROTOTYPE_BACKGROUND_RELEASE_DELAY);
+        return;
+      }
+      setPrototypeIntent(prototypeIntentPage, prototypeScrollDirection);
+    });
+
+    const initialPrototypePage = displayPageFromHash(location.hash) || 1;
+    prototypeIntentPage = initialPrototypePage;
+    schedulePrototypeWarmup(initialPrototypePage, 1);
 
     function playNativeMedia(page, restart = true) {
       const frame = page.querySelector(".frame");
       const button = page.querySelector(".live-badge");
       const media = frame.querySelector(".embedded-media");
       if (media.matches("video")) {
+        const source = media.dataset.src;
+        if (!media.getAttribute("src") && source) {
+          media.setAttribute("src", source);
+          media.load();
+        }
         const start = () => {
           if (restart) {
             try { media.currentTime = 0; } catch (error) { /* metadata may still be settling */ }
           }
           media.play().then(() => {
             media.classList.add("is-ready");
+            page.dataset.mediaResume = "true";
             button.setAttribute("aria-pressed", "true");
             button.querySelector("span").textContent = "暂停视频演示";
           }).catch(() => {
@@ -1279,9 +1509,13 @@
         return;
       }
       const source = media.dataset.src || media.getAttribute("src");
+      const sourceSet = media.dataset.srcset;
+      const sizes = media.dataset.sizes;
       media.dataset.src = source;
-      media.removeAttribute("src");
+      ["src", "srcset", "sizes"].forEach(attribute => media.removeAttribute(attribute));
       window.requestAnimationFrame(() => {
+        if (sizes) media.setAttribute("sizes", sizes);
+        if (sourceSet) media.setAttribute("srcset", sourceSet);
         media.setAttribute("src", source);
         frame.classList.remove("native-media-paused");
         button.setAttribute("aria-pressed", "true");
@@ -1289,10 +1523,14 @@
       });
     }
 
-    document.querySelectorAll(".native-demo").forEach(page => {
+    const nativeDemoPages = [...document.querySelectorAll(".native-demo")];
+    nativeDemoPages.forEach(page => {
       const frame = page.querySelector(".frame");
       const button = page.querySelector(".live-badge");
       const media = frame.querySelector(".embedded-media");
+      page.dataset.mediaEnabled = String(!media.matches("video"));
+      page.dataset.mediaVisible = "false";
+      page.dataset.mediaResume = String(media.matches("video") && !media.classList.contains("click-to-play"));
       if (media.matches("video")) {
         media.addEventListener("play", () => page.classList.add("media-playing"));
         media.addEventListener("pause", () => page.classList.remove("media-playing"));
@@ -1302,24 +1540,28 @@
           media.play().catch(() => {});
         });
       } else {
-        media.dataset.src = media.getAttribute("src");
+        frame.classList.add("native-media-paused");
       }
       button.addEventListener("click", () => {
         const isPlaying = button.getAttribute("aria-pressed") === "true";
         if (media.matches("video")) {
           if (isPlaying) {
+            page.dataset.mediaResume = "false";
             media.pause();
             button.setAttribute("aria-pressed", "false");
             button.querySelector("span").textContent = "继续视频演示";
           } else {
+            page.dataset.mediaResume = "true";
             playNativeMedia(page, false);
           }
           return;
         }
         if (isPlaying) {
+          page.dataset.mediaEnabled = "false";
           frame.classList.add("native-media-paused");
-          media.removeAttribute("src");
+          ["src", "srcset", "sizes"].forEach(attribute => media.removeAttribute(attribute));
         } else {
+          page.dataset.mediaEnabled = "true";
           playNativeMedia(page);
         }
         button.setAttribute("aria-pressed", String(!isPlaying));
@@ -1329,6 +1571,38 @@
         media.addEventListener("click", () => button.click());
         page.querySelector(".native-video-control")?.addEventListener("click", () => button.click());
       }
+    });
+
+    const syncNativeDemo = (page, restart = false) => {
+      const frame = page.querySelector(".frame");
+      const media = frame.querySelector(".embedded-media");
+      const isVisible = page.dataset.mediaVisible === "true" && !document.hidden;
+      if (media.matches("video")) {
+        if (!isVisible) {
+          if (!media.paused) page.dataset.mediaResume = "true";
+          media.pause();
+        } else if (page.dataset.mediaResume === "true") {
+          playNativeMedia(page, false);
+        }
+        return;
+      }
+      if (isVisible && page.dataset.mediaEnabled === "true") {
+        if (!media.getAttribute("src") || restart) playNativeMedia(page, restart);
+      } else {
+        frame.classList.add("native-media-paused");
+        ["src", "srcset", "sizes"].forEach(attribute => media.removeAttribute(attribute));
+      }
+    };
+
+    const nativeDemoObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.dataset.mediaVisible = String(entry.isIntersecting);
+        syncNativeDemo(entry.target, entry.isIntersecting);
+      });
+    }, { rootMargin: "100px 0px", threshold: 0 });
+    nativeDemoPages.forEach(page => nativeDemoObserver.observe(page));
+    document.addEventListener("visibilitychange", () => {
+      nativeDemoPages.forEach(page => syncNativeDemo(page));
     });
 
     const page34Frame = document.querySelector('.page[data-source-page="34"] .frame');
@@ -1362,12 +1636,59 @@
     const expandIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>';
     let expandedFrame = null;
 
+    function upgradeFrameImage(frame) {
+      const image = frame.querySelector(":scope > img[data-full-src]");
+      if (!image) return;
+      const requestId = (image._fullSourceRequest || 0) + 1;
+      image._fullSourceRequest = requestId;
+      image._responsiveState = {
+        currentSrc: image.currentSrc,
+        srcset: image.getAttribute("srcset"),
+        sizes: image.getAttribute("sizes")
+      };
+      const preload = new Image();
+      preload.decoding = "async";
+      let settled = false;
+      const activate = () => {
+        if (settled) return;
+        settled = true;
+        if (expandedFrame !== frame || image._fullSourceRequest !== requestId || preload.naturalWidth < 5760) return;
+        image.removeAttribute("srcset");
+        image.removeAttribute("sizes");
+        image.src = image.dataset.fullSrc;
+        image.dataset.fullSourceActive = "true";
+      };
+      const finish = () => {
+        if (typeof preload.decode === "function") preload.decode().catch(() => {}).then(activate);
+        else activate();
+      };
+      preload.addEventListener("load", finish, { once: true });
+      preload.src = image.dataset.fullSrc;
+      if (preload.complete && preload.naturalWidth) finish();
+    }
+
+    function restoreFrameImage(frame) {
+      const image = frame.querySelector(":scope > img[data-full-src]");
+      if (!image) return;
+      image._fullSourceRequest = (image._fullSourceRequest || 0) + 1;
+      if (image._responsiveState?.currentSrc) {
+        image.removeAttribute("srcset");
+        image.removeAttribute("sizes");
+        image.src = image._responsiveState.currentSrc;
+      }
+      if (image._responsiveState?.sizes) image.setAttribute("sizes", image._responsiveState.sizes);
+      if (image._responsiveState?.srcset) image.setAttribute("srcset", image._responsiveState.srcset);
+      delete image.dataset.fullSourceActive;
+    }
+
     function closeExpanded() {
       if (!expandedFrame) return;
-      expandedFrame.classList.remove("is-expanded");
-      const button = expandedFrame.querySelector(".frame-expand");
+      const frame = expandedFrame;
+      frame.classList.remove("is-expanded");
+      const button = frame.querySelector(".frame-expand");
       button.setAttribute("aria-label", "放大查看");
       button.title = "放大查看";
+      restoreFrameImage(frame);
       expandedFrame = null;
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
@@ -1381,6 +1702,7 @@
       if (expandedFrame) closeExpanded();
       expandedFrame = frame;
       frame.classList.add("is-expanded");
+      upgradeFrameImage(frame);
       const button = frame.querySelector(".frame-expand");
       button.setAttribute("aria-label", "关闭放大查看");
       button.title = "关闭";
@@ -1454,6 +1776,9 @@
     let sideActive = 0;
     let sideRaf = null;
     let sideLast = 0;
+    let sidePointerRaf = 0;
+    let sidePointerY = 0;
+    let sidePointerInside = false;
 
     function sideFrame(now) {
       const delta = Math.min((now - sideLast) / 1000, .05);
@@ -1512,18 +1837,30 @@
     }, { rootMargin: "-38% 0px -54%", threshold: 0 });
     pageCards.forEach(page => sideObserver.observe(page));
 
-    rail.addEventListener("pointermove", event => {
+    function syncSidePointer() {
+      sidePointerRaf = 0;
+      if (!sidePointerInside) return;
       const rect = rail.getBoundingClientRect();
-      const pointerY = event.clientY - rect.top;
-      sideItems.forEach((item, index) => {
-        const center = item.offsetTop + item.offsetHeight / 2;
+      const pointerY = sidePointerY - rect.top;
+      const centers = sideItems.map(item => item.offsetTop + item.offsetHeight / 2);
+      centers.forEach((center, index) => {
         const distance = Math.abs(pointerY - center);
         const proximity = Math.max(0, 1 - distance / 100);
         sideTargets[index] = proximity * proximity * (3 - 2 * proximity);
       });
       startSideLoop();
-    });
+    }
+    rail.addEventListener("pointermove", event => {
+      sidePointerInside = true;
+      sidePointerY = event.clientY;
+      if (!sidePointerRaf) sidePointerRaf = requestAnimationFrame(syncSidePointer);
+    }, { passive: true });
     rail.addEventListener("pointerleave", () => {
+      sidePointerInside = false;
+      if (sidePointerRaf) {
+        cancelAnimationFrame(sidePointerRaf);
+        sidePointerRaf = 0;
+      }
       sideTargets = sideTargets.map(() => 0);
       startSideLoop();
     });
@@ -1564,12 +1901,16 @@
     }));
     let gridWidth = 0;
     let gridHeight = 0;
-    let gridVisible = true;
+    let gridInViewport = true;
+    let gridVisible = !document.hidden;
     let gridRaf = 0;
+    let gridLastFrame = 0;
+    const constrainedGrid = document.documentElement.dataset.portfolioTier !== "full";
+    const gridFrameInterval = constrainedGrid ? 1000 / 30 : 0;
 
     function resizeHeroGrid() {
       const rect = hero.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = constrainedGrid ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
       gridWidth = rect.width;
       gridHeight = rect.height;
       gridCanvas.width = Math.round(gridWidth * dpr);
@@ -1581,6 +1922,11 @@
 
     function drawHeroGrid(time) {
       gridRaf = 0;
+      if (!reduceMotion && gridFrameInterval && gridLastFrame && time - gridLastFrame < gridFrameInterval) {
+        if (gridVisible && !document.hidden) gridRaf = requestAnimationFrame(drawHeroGrid);
+        return;
+      }
+      gridLastFrame = time;
       gridContext.clearRect(0, 0, gridWidth, gridHeight);
       const offset = reduceMotion ? 0 : (time * .000025 * gridCell) % gridCell;
       gridContext.lineWidth = 1;
@@ -1610,7 +1956,7 @@
         gridContext.fillStyle = "rgba(19,19,19,.14)";
         gridContext.fillRect(activeX + 1, activeY + 1, gridCell - 2, gridCell - 2);
       }
-      if (!reduceMotion && gridVisible) gridRaf = requestAnimationFrame(drawHeroGrid);
+      if (!reduceMotion && gridVisible && !document.hidden) gridRaf = requestAnimationFrame(drawHeroGrid);
     }
 
     hero.addEventListener("pointermove", event => {
@@ -1623,15 +1969,44 @@
       gridPointer.x = -9999;
       gridPointer.y = -9999;
     });
+    const syncHeroMotionState = () => {
+      hero.classList.toggle("motion-paused", !gridVisible || reduceMotion);
+    };
     new IntersectionObserver(([entry]) => {
       const wasVisible = gridVisible;
-      gridVisible = entry.isIntersecting;
+      gridInViewport = entry.isIntersecting;
+      gridVisible = gridInViewport && !document.hidden;
+      if (!gridVisible && gridRaf) {
+        cancelAnimationFrame(gridRaf);
+        gridRaf = 0;
+      }
       if (!wasVisible && gridVisible && !reduceMotion && !gridRaf) gridRaf = requestAnimationFrame(drawHeroGrid);
+      syncHeroMotionState();
     }, { threshold: 0 }).observe(hero);
+    document.addEventListener("visibilitychange", () => {
+      gridVisible = gridInViewport && !document.hidden;
+      if (!gridVisible && gridRaf) {
+        cancelAnimationFrame(gridRaf);
+        gridRaf = 0;
+      } else if (gridVisible && !reduceMotion && !gridRaf) {
+        gridRaf = requestAnimationFrame(drawHeroGrid);
+      }
+      syncHeroMotionState();
+    });
     window.addEventListener("resize", resizeHeroGrid, { passive: true });
     resizeHeroGrid();
+    syncHeroMotionState();
 
     let scrollQueued = false;
+    const visibleDepthPages = new Set();
+    const depthFrames = new Map(pageCards.map(page => [page, page.querySelector(".frame")]));
+    const depthObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleDepthPages.add(entry.target);
+        else visibleDepthPages.delete(entry.target);
+      });
+    }, { rootMargin: "18% 0px 18%", threshold: 0 });
+    pageCards.forEach(page => depthObserver.observe(page));
     function updateScrollUI() {
       scrollQueued = false;
       const doc = document.documentElement;
@@ -1642,28 +2017,30 @@
 
       if (reduceMotion) return;
       const viewportHeight = window.innerHeight;
-      pageCards.forEach(page => {
-        const frame = page.querySelector(".frame");
+      visibleDepthPages.forEach(page => {
+        const frame = depthFrames.get(page);
         const rect = page.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > viewportHeight || frame.classList.contains("is-expanded")) return;
+        if (!frame || rect.bottom < 0 || rect.top > viewportHeight || frame.classList.contains("is-expanded")) return;
         const center = rect.top + rect.height / 2;
         const distance = Math.max(-1, Math.min(1, (center - viewportHeight / 2) / viewportHeight));
         frame.style.setProperty("--frame-shift", `${(-distance * 6).toFixed(2)}px`);
         frame.style.setProperty("--frame-scale", (1 - Math.abs(distance) * .0025).toFixed(4));
       });
     }
-    window.addEventListener("scroll", () => {
+    function scheduleScrollUI() {
       if (scrollQueued) return;
       scrollQueued = true;
       requestAnimationFrame(updateScrollUI);
-    }, { passive: true });
-    window.addEventListener("resize", updateScrollUI, { passive: true });
+    }
+    window.addEventListener("scroll", scheduleScrollUI, { passive: true });
+    window.addEventListener("resize", scheduleScrollUI, { passive: true });
     document.querySelector(".top").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     updateScrollUI();
   </script>
   <!-- INTERVIEW REHEARSAL MODULE — remove these two scripts and the stylesheet link above to delete. -->
-  <script src="portfolio-page-transition.js"></script>
-  <script src="portfolio-project1-speaker-notes.js"></script>
-  <script src="portfolio-speaker-notes.js"></script>
+  <script src="portfolio-lightbox-navigation.js?v=40b4273b77eb"></script>
+  <script src="portfolio-page-transition.js?v=40b4273b77eb"></script>
+  <script src="portfolio-project1-speaker-notes.js?v=40b4273b77eb"></script>
+  <script src="portfolio-speaker-notes.js?v=40b4273b77eb"></script>
 </body>
 </html>
