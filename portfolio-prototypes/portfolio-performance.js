@@ -1,5 +1,5 @@
 (() => {
-  const BUILD_REV = '40b4273b77eb';
+  const BUILD_REV = 'b4dacb26fd77';
   const root = document.documentElement;
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
