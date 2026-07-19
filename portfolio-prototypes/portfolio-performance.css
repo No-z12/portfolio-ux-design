@@ -1,0 +1,16 @@
+/* Shared, quality-preserving rendering isolation.
+   Frames already own an explicit aspect ratio, so skipping their offscreen
+   descendants does not alter page height, anchors, or reading order. */
+@supports (content-visibility: auto) {
+  .frame:not(.is-long):not(.is-expanded) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none;
+  }
+}
+
+/* Managed by portfolio-performance.js and removed on restore. */
+html.portfolio-page-suspended *,
+html.portfolio-page-suspended *::before,
+html.portfolio-page-suspended *::after {
+  animation-play-state: paused !important;
+}

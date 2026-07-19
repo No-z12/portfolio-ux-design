@@ -1,0 +1,20 @@
+.project-time {
+  position: absolute;
+  z-index: 2;
+  right: 30px;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  color: #747d89;
+  font: 10px/1 "Portfolio DIN", ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+
+.intro > .project-time { position: absolute; z-index: 2; }
+
+.scroll-cue.project-time::after { content: none; }
+
+@media (max-width: 650px) {
+  .project-time { display: none; }
+}
