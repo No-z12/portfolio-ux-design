@@ -12,8 +12,8 @@
     1920
   ],
   "pixelVerification": "decoded RGBA equals generated tier RGBA",
-  "source1920PngBytes": 21727593,
-  "allGeneratedWebpBytes": 32365334,
+  "source1920PngBytes": 21603060,
+  "allGeneratedWebpBytes": 32311016,
   "pages": [
     {
       "sourcePage": 2,
@@ -223,7 +223,7 @@
     {
       "sourcePage": 7,
       "source": "assets/responsive/project1/1920/7.png",
-      "sourceBytes": 536671,
+      "sourceBytes": 412138,
       "normalizedSize": [
         1920,
         1080
@@ -232,32 +232,32 @@
         {
           "width": 640,
           "height": 360,
-          "bytes": 52606,
-          "sha256": "8bf26472ff4f9eef0b71a2631f48fc1b5b38195b72c414d268f807e417e958fb"
+          "bytes": 50592,
+          "sha256": "2a1eb243264d31c08d5bdd755de47e78858d42673aecafc7ebbab2f24f967c91"
         },
         {
           "width": 960,
           "height": 540,
-          "bytes": 93118,
-          "sha256": "8faa27f508c9e38627a51f685bf8ff5e7f4a087f09ac0c252827c52f8eefa163"
+          "bytes": 89976,
+          "sha256": "c7cb2bd52ea17f0a4fb99da1d2925dbb8f0b71b43f60d8a6d271b6a275f19c19"
         },
         {
           "width": 1280,
           "height": 720,
-          "bytes": 143992,
-          "sha256": "143be3bdb1f6f33f7bb1f5691f2f7b0e151f1475ff7fe85d5e0280e8b7223383"
+          "bytes": 139636,
+          "sha256": "40dc191a89f962d316f3e5000fe7e655afd0a18cfcdfc370897af1670e59294d"
         },
         {
           "width": 1440,
           "height": 810,
-          "bytes": 176652,
-          "sha256": "72cbba613a4d225452eeb6f333103756d2472641527ad1a96ea40feb582ab472"
+          "bytes": 169360,
+          "sha256": "c4b0bfb60908206c34c6ba792e7df08f1403b9aacc66d38b1c2264789b9e2ea1"
         },
         {
           "width": 1920,
           "height": 1080,
-          "bytes": 239218,
-          "sha256": "cb7ae4a1ccd39b10a9bf4c50a92518ecb463e141470c65e08c80c21ec5e4332f"
+          "bytes": 201704,
+          "sha256": "76e59893ed5c3238d5a1ebe87decd7112465596f41f6553ae91f996ad68ddfa0"
         }
       ]
     },

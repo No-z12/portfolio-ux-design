@@ -1,0 +1,223 @@
+{
+  "sourcePage": 23,
+  "format": "WebP lossless",
+  "source": "native appendix page-23 PNG tiles",
+  "responsiveWidths": [
+    640,
+    960,
+    1280,
+    1440,
+    1920
+  ],
+  "aspectRatio": "preserved per tile",
+  "pixelVerification": "decoded WebP RGBA equals generated tier RGBA",
+  "sourcePngBytes": 5526921,
+  "generatedWebpBytes": 2721606,
+  "tiles": [
+    {
+      "tile": "part-01",
+      "source": "assets/responsive/project4/23-tiles/part-01.png",
+      "sourceBytes": 1379389,
+      "sourceSize": [
+        5760,
+        3240
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 60018,
+          "sha256": "af917f0de093ba0f787509e78c22289bc94a4886af444e0bcff569f5778c1836"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 113334,
+          "sha256": "836e1d55fcd6318a34ea5961ba0d73b71f55ef53da4422ade7295e8fdc892800"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 182910,
+          "sha256": "2ab3fa4cdea30de25050e0f2bcd1c152aff2948cb789b0179c74f1b8e85d2d9b"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 224708,
+          "sha256": "678293d45feef9fd04b83776c8bf0718630d8751c9eec44f89251fc5c27ff366"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 333616,
+          "sha256": "ed58998fd28c86fee946935d9598f8f671f9383e08c95f128cb748736e15e62c"
+        }
+      ]
+    },
+    {
+      "tile": "part-02",
+      "source": "assets/responsive/project4/23-tiles/part-02.png",
+      "sourceBytes": 1186901,
+      "sourceSize": [
+        5760,
+        3240
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 30642,
+          "sha256": "ac35579899c95a2a762f182bbed9abe54389d358a5d781ee29d9c30e22a70966"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 54630,
+          "sha256": "1b8fb24c5e90cc3504fb36de43d33b838c948dc9bc325af5cfa2d056665fd434"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 84598,
+          "sha256": "dbc723372756def615eb01f4c38c01e82ce441ca608665e24a1d9b890a5d99b0"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 97776,
+          "sha256": "e8024ce66e4eb05e83258a190a86597cd2c1566a3bf69580c19ddd51687b7b94"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 142376,
+          "sha256": "09f2e7fa7e96dcdbeb112fb182fefd859ecfce176c7650152b94b6f766f4517f"
+        }
+      ]
+    },
+    {
+      "tile": "part-03",
+      "source": "assets/responsive/project4/23-tiles/part-03.png",
+      "sourceBytes": 1530807,
+      "sourceSize": [
+        5760,
+        3240
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 46910,
+          "sha256": "d9df993f5264c4817428e802a05366e171065b81f6f04f4119c9280b6265900f"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 87000,
+          "sha256": "61e3d8d13355849a9f369479fdd681b7aeb03d15249ee5de3d0401490794876a"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 144576,
+          "sha256": "4bd06fde0ce4d6d6a5ba69f19b1f3a2d3464877d99ce8f38d487e9d7dca8843d"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 176604,
+          "sha256": "07f94b75c610c92d4eb10ed1af00490341e06a11db5a7af84523e7b0744870ce"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 263430,
+          "sha256": "ee0dbf09e5d84f9ee87a13eed324fc38dae0bfe9059581f6f8370966926b2421"
+        }
+      ]
+    },
+    {
+      "tile": "part-04",
+      "source": "assets/responsive/project4/23-tiles/part-04.png",
+      "sourceBytes": 968752,
+      "sourceSize": [
+        5760,
+        3240
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 33302,
+          "sha256": "1e0cc6030c4c8566d25752bf2ac71d6633a8a41adffda102cc95e02140195aac"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 59528,
+          "sha256": "dd21fc5a0e55cebcce59df0dedc9e9d6dfc14eee5ad2a62ab8df662aef805a9b"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 94182,
+          "sha256": "f34695d524a95ad9e5d802f1bad4108c489e76ae292cfb2812dc999bc0cc7604"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 116254,
+          "sha256": "83ee716488dde5541e0210627abafd72efcec88e4ef2175ed63838178cd16852"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 173782,
+          "sha256": "cdc0b6a6f3361024d03143e437d0e7f8b170ab642d44a36209e38ce7f6891c9e"
+        }
+      ]
+    },
+    {
+      "tile": "part-05",
+      "source": "assets/responsive/project4/23-tiles/part-05.png",
+      "sourceBytes": 461072,
+      "sourceSize": [
+        5760,
+        1710
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 190,
+          "bytes": 13534,
+          "sha256": "b79ddb001f9905722ba3d187b007192a8108a3f4a909278b70178f9e7f790c91"
+        },
+        {
+          "width": 960,
+          "height": 285,
+          "bytes": 25088,
+          "sha256": "db27a1684839f92fce624185656d11a7c5005990c5b450f72cc672f963e1e191"
+        },
+        {
+          "width": 1280,
+          "height": 380,
+          "bytes": 40574,
+          "sha256": "c4e509268636a8c48ad1341193bda37ab2f037f98cfe18db06ce2ecc0536b922"
+        },
+        {
+          "width": 1440,
+          "height": 428,
+          "bytes": 48864,
+          "sha256": "243fc9ae593f299bc7b6fab3a66ec73f82776ba993cdd26c108f2435ca22b709"
+        },
+        {
+          "width": 1920,
+          "height": 570,
+          "bytes": 73370,
+          "sha256": "4c1cfe3fb725ede2908910006ba899fbd573b694462c22d5905a7daea462b90b"
+        }
+      ]
+    }
+  ]
+}

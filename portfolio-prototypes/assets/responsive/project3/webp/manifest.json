@@ -1,0 +1,308 @@
+{
+  "project": "project3",
+  "format": "WebP lossless",
+  "normalPageSource": "existing 1920px responsive PNG",
+  "normalCanvas": [
+    1920,
+    1080
+  ],
+  "responsiveWidths": [
+    640,
+    960,
+    1280,
+    1440,
+    1920
+  ],
+  "pixelVerification": "decoded WebP RGBA equals generated tier RGBA",
+  "sourcePngBytes": 6703602,
+  "generatedWebpBytes": 11083282,
+  "pages": [
+    {
+      "sourcePage": 1,
+      "source": "assets/responsive/project3/1920/1.png",
+      "sourceBytes": 933409,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 97886,
+          "sha256": "23e7481ba54f612264dbaa7d1519a1653da271ab88032fb374e1a3892181b01c"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 190002,
+          "sha256": "0bc8327cf9095f0415015ccb7ef433441650c9c7e8521da9f6dbee9c2d8f6870"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 332748,
+          "sha256": "d8913782bc555ebd7d5bacd7295732e4fd1139749100fdcceafdde564c13a2b3"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 442258,
+          "sha256": "2d2a4a442c0e77c73f475f6bc238724f09491d7d125b9eeae6337c8aeb6e0548"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 631094,
+          "sha256": "ed516d59d8da4f6d78bfbdcac41f07ed936cdd5baa8791e6ffe05e06388ecc84"
+        }
+      ]
+    },
+    {
+      "sourcePage": 2,
+      "source": "assets/responsive/project3/1920/2.png",
+      "sourceBytes": 1144876,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 97484,
+          "sha256": "1188a963bec21be72da5df808f460352571a0f5cb95acf598ca7f970af9bdc27"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 196928,
+          "sha256": "aa78cd8554b3176b3a906b994c1a28a7766dd70f44a9e5b01f54228aa8374ee1"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 349016,
+          "sha256": "cf2147619c1d0021be3283c6ef8b9bbe02a06ecb3e2e5c564bbce8d6129b90f6"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 439138,
+          "sha256": "6efca5aa05c0d63d93141cb1a37871eb05b3991ef40fb95c1489d8d364f4e5f5"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 611674,
+          "sha256": "514f612fff261a38692aff10cb90c6957bb12322219e6a439b99274bf6b4f938"
+        }
+      ]
+    },
+    {
+      "sourcePage": 3,
+      "source": "assets/responsive/project3/1920/3.png",
+      "sourceBytes": 1163772,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 115646,
+          "sha256": "e6fe3f0fce7322d52fc2546fb404991f4675f8a4974b8e827eca5372d21093c5"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 225420,
+          "sha256": "bea28a713af65ac25a82f87242043e17fabb10136f467f7397b646fad1d99664"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 392346,
+          "sha256": "de26ad1cd8ac88514034971bfbd6bc6d3eb4ace1570a440935bc85f62b8d3753"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 497464,
+          "sha256": "83373cd2f07e93fc7a67b4764ff163497933e9aa85b56315be9a362e08c71ccd"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 717946,
+          "sha256": "4130388d4548b04797c686eba87d0a3e007612bf0e73d55996b5e800ce078d23"
+        }
+      ]
+    },
+    {
+      "sourcePage": 4,
+      "source": "assets/responsive/project3/1920/4.png",
+      "sourceBytes": 1634901,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 164294,
+          "sha256": "d99a36678e332ffb4e8f355752dfd0e0bf8aed0f8348b7719c5922247feb26bb"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 335312,
+          "sha256": "2540c388cdd634ad778c377d3d5ad6eca4094a394512e42a22ee064b41f8e012"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 585286,
+          "sha256": "a4316af1f8865631bc7df0f2fff592aae6fd93584ec344aa5f673df9e79e04d8"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 736610,
+          "sha256": "5af13739a098bd3a8ebe27d6ccba208fda773a679cdde0722948af58312dc547"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 1123720,
+          "sha256": "325c79282217bde70e0949840658b8af4e2bf91360ca7d979fc3d49198228722"
+        }
+      ]
+    },
+    {
+      "sourcePage": 5,
+      "source": "assets/responsive/project3/1920/5.png",
+      "sourceBytes": 965348,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 91408,
+          "sha256": "ecb81c4aa3490decb1ef438d0d093c48f264a58d6ba3e0fcc28cad17c6b7e257"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 181754,
+          "sha256": "9301f9bdc6beb4b59abcc2098fb2adacb6d49609e3a1cc2f2f021f2073a7f1c5"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 327758,
+          "sha256": "dfdb05e42c4ff412741424bd9138e11bc0a88dfc0e5c08ca7b3b561dd46d1d81"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 420404,
+          "sha256": "146a32ee4979fec98abff423610e0afcf49f8f1d9f8215680ff536f61bbd7ef3"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 607184,
+          "sha256": "eec6abeeb016d22155783b0c6c2aa78c0ad3fd1f2bf0c9c617d88157470747f8"
+        }
+      ]
+    },
+    {
+      "sourcePage": 6,
+      "source": "assets/responsive/project3/1920/6.png",
+      "sourceBytes": 648187,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 59204,
+          "sha256": "c91dde591475beb8ecd6a9867dba9e07e8542e55e6b58d06ae5fbf00ddc421cd"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 110658,
+          "sha256": "b5aeb20a12cb267f6c969d56896470c7cdd542bbb512c635a37fdddb21272413"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 181830,
+          "sha256": "22cb8967e99c68eb413730af60988868dde103d04d7307c4e5f7a2aaad470a01"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 218126,
+          "sha256": "bf04b53256e6fd6ebdfea6f71bef29cf954faec411ab492aab91df9de64f1743"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 303248,
+          "sha256": "e1712e745d5e27f76f5207fad49c72d9360a49ee5877cb47d05205601690b26a"
+        }
+      ]
+    },
+    {
+      "sourcePage": 7,
+      "source": "assets/responsive/project3/1920/7.png",
+      "sourceBytes": 213109,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "tiers": [
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 24276,
+          "sha256": "84d76a83967275fa869fbc483592774b2e2fad87ca6c8d7ebc9e1bc5204298a4"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 44714,
+          "sha256": "45f238e2fc331acfd44156873af0003c990b070a3db3f91aa5461814ba40d5bf"
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "bytes": 61102,
+          "sha256": "0362e9707cdaa8db8717abb083e57f936772995a126a3ddd73d5661c709dc7de"
+        },
+        {
+          "width": 1440,
+          "height": 810,
+          "bytes": 73278,
+          "sha256": "f47c5839f7d6d44e1b30c3a3d71513e3ec3e633dfb64fa6f8b86eb9d8c999e53"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 96066,
+          "sha256": "d0dd67312c534b3d31b72d92717a3636f7b1766fc81b07f50be102be03a41424"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 (() => {
   const frames = [...document.querySelectorAll('.frame')].filter(frame => {
     if (frame.classList.contains('is-long')) return false;
-    if (frame.closest('.interactive, .prototype-demo')) return false;
+    if (frame.closest('.interactive, .prototype-demo') && frame.dataset.lightboxNavigable !== 'true') return false;
     return Boolean(
       frame.querySelector(':scope > img') &&
       frame.querySelector('.frame-expand')
@@ -35,7 +35,14 @@
     if (currentIndex < 0) return;
     const target = frames[(currentIndex + step + frames.length) % frames.length];
     const control = target.querySelector('.frame-expand');
-    if (control) control.click();
+    if (control) {
+      window.__PORTFOLIO_LIGHTBOX_NAVIGATION__ = true;
+      try {
+        control.click();
+      } finally {
+        window.__PORTFOLIO_LIGHTBOX_NAVIGATION__ = false;
+      }
+    }
   };
 
   previous.addEventListener('click', event => {

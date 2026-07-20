@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="AI智能体平台 0–1 全链路产品设计"><title>AI智能体平台—0–1全链路产品设计</title>
-<link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=877870fa9ed1">
-<link rel="stylesheet" href="portfolio-performance.css?v=877870fa9ed1">
-<script src="portfolio-performance.js?v=877870fa9ed1"></script>
+<link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=8f51a417a204">
+<link rel="stylesheet" href="portfolio-performance.css?v=8f51a417a204">
+<link rel="stylesheet" href="portfolio-content-performance.css?v=8f51a417a204">
+<script src="portfolio-performance.js?v=8f51a417a204"></script>
 <link rel="preconnect" href="https://embed.figma.com" crossorigin>
 <link rel="preconnect" href="https://www.figma.com" crossorigin>
 <link rel="dns-prefetch" href="//embed.figma.com">
@@ -32,14 +33,12 @@ body.motion-ready .chapter.in-view,body.motion-ready .page.in-view{opacity:1;tra
 body.motion-ready .page-head,body.motion-ready .page-foot{opacity:0;transform:translateY(10px);transition:opacity .55s ease .12s,transform .65s cubic-bezier(.2,.72,.18,1) .12s}
 body.motion-ready .page.in-view .page-head,body.motion-ready .page.in-view .page-foot{opacity:1;transform:none}
 .chapter{position:relative;isolation:isolate;overflow:hidden;padding-top:54px;padding-bottom:38px;border-top:1px solid rgba(19,19,19,.12)}
+.chapter-copy{width:min(100%,1280px);margin-inline:auto}.chapter-kicker{font-family:'Portfolio DIN','Staatliches','Alibaba PuHuiTi 3.0',"Microsoft YaHei",sans-serif!important}
 .chapter::after{content:attr(data-index);position:absolute;z-index:-1;right:20px;top:-38px;color:rgba(0,89,255,.055);font-size:clamp(110px,16vw,250px);font-weight:800;line-height:1;pointer-events:none}
 .page{position:relative;transition:filter .45s ease}
-.page::before{content:"";position:absolute;left:24px;right:24px;top:0;height:1px;background:linear-gradient(90deg,var(--blue),rgba(0,89,255,0));transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.2,.72,.18,1)}
-.page.is-current::before{transform:scaleX(1)}
 .page .frame{transform:translateY(var(--frame-shift,0px)) scale(var(--frame-scale,1));transform-origin:center;transition:box-shadow .5s ease,border-color .5s ease}
 .page.is-current .frame{border-color:rgba(0,89,255,.32);box-shadow:0 34px 90px rgba(25,38,70,.18)}
 .page.is-current .page-no{color:var(--blue);font-weight:700}
-@media(max-width:650px){.chapter::after{right:10px}.page::before{left:14px;right:14px}}
 @media(prefers-reduced-motion:reduce){body.motion-ready .chapter,body.motion-ready .page,body.motion-ready .page-head,body.motion-ready .page-foot{opacity:1;transform:none}.page .frame{transform:none!important}}
 
 /* ReactBits LineSidebar, adapted to the portfolio palette and page anchors. */
@@ -71,7 +70,7 @@ body::before{content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;op
 .intro{position:relative;min-height:min(900px,96vh);padding:168px 24px 112px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.9),rgba(255,255,255,.22) 46%,transparent 72%),linear-gradient(155deg,#edf3ff 0%,#f6f9ff 48%,#e8f0ff 100%);border-bottom:1px solid rgba(19,19,19,.12)}
 .intro::before{content:"02";position:absolute;right:clamp(20px,7vw,140px);top:74px;font-size:clamp(170px,30vw,520px);font-weight:800;line-height:.8;letter-spacing:-.09em;color:rgba(0,89,255,.035);pointer-events:none}
 .intro::after{content:"AI AGENT / FULL-LINK PRODUCT DESIGN";position:absolute;left:30px;bottom:28px;font:10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;color:#7b828d}
-.aurora-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;pointer-events:none;opacity:.84;filter:saturate(1.04) brightness(1.1);mask-image:linear-gradient(to bottom,rgba(0,0,0,.96),rgba(0,0,0,.84) 68%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.96),rgba(0,0,0,.84) 68%,transparent 100%)}
+.aurora-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;contain:strict;pointer-events:none;opacity:.84;filter:saturate(1.04) brightness(1.1);mask-image:linear-gradient(to bottom,rgba(0,0,0,.96),rgba(0,0,0,.84) 68%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.96),rgba(0,0,0,.84) 68%,transparent 100%)}
 .intro>*:not(.aurora-canvas){position:relative;z-index:1}
 .intro .hero-mark{position:absolute;z-index:1;left:50%;top:12%;width:clamp(96px,7.5vw,136px);height:auto;transform:translate3d(-50%,0,0);filter:drop-shadow(0 24px 42px rgba(0,89,255,.2));animation:hero-mark-float 7.5s ease-in-out infinite;pointer-events:none}
 .intro-content{align-self:center;width:min(1420px,calc(100vw - 48px));transform:translateY(48px)}
@@ -85,8 +84,8 @@ body::before{content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;op
 .intro.motion-paused .hero-mark,.intro.motion-paused .hero-title-motion{animation-play-state:paused!important}
 .intro p{max-width:700px;font-size:14px;line-height:26px;color:#69717d}.legend{margin-top:34px}.legend span{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.48);border:1px solid rgba(19,19,19,.08)}
 .chapter{max-width:1600px;margin-top:108px;margin-bottom:22px;padding-top:62px;padding-bottom:40px;border-top-color:rgba(19,19,19,.16)}
-.chapter::before{content:"";position:absolute;left:24px;top:-2px;width:74px;height:3px;background:var(--ink)}
-.chapter::after{right:24px;top:10px;color:rgba(19,19,19,.035);font-size:clamp(130px,17vw,270px)}
+.chapter::before{content:"";position:absolute;left:max(24px,calc(50% - 640px));top:-2px;width:74px;height:3px;background:var(--ink)}
+.chapter::after{right:max(24px,calc(50% - 640px));top:10px;color:rgba(19,19,19,.035);font-size:clamp(130px,17vw,270px)}
 .chapter span{color:#737b87;font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em}.chapter h2{max-width:1050px;margin:14px 0 12px;font-size:clamp(38px,5vw,76px);line-height:1.08;letter-spacing:-.045em}.chapter h2 .saas-case{font:inherit;color:inherit;letter-spacing:inherit}.chapter p{max-width:720px;color:#737b87}
 .page{padding-top:16px;padding-bottom:38px}.page-head{margin-bottom:11px}.page-no{font:600 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;color:#858c97}.live-badge{font-size:10px;letter-spacing:.04em}.live-badge i{background:var(--green);box-shadow:0 0 0 5px rgba(19,238,137,.12)}.page-foot{display:none}
 .frame{border-color:rgba(19,19,19,.13);border-radius:12px;background:#f4f5f7;box-shadow:0 2px 3px rgba(28,38,55,.04),0 24px 64px rgba(28,38,55,.11);transition:box-shadow .55s cubic-bezier(.2,.72,.18,1),border-color .4s ease,transform .55s cubic-bezier(.2,.72,.18,1)!important}
@@ -96,13 +95,13 @@ body::before{content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;op
 .lightbox-backdrop{position:fixed;z-index:190;inset:0;background:linear-gradient(145deg,rgba(25,30,38,.38),rgba(8,12,18,.5));backdrop-filter:blur(28px) saturate(72%);-webkit-backdrop-filter:blur(28px) saturate(72%);opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease}.lightbox-backdrop.open{opacity:1;visibility:visible}
 .frame.is-expanded{position:fixed!important;z-index:200!important;left:50%!important;top:50%!important;width:min(94vw,167.111vh)!important;height:auto!important;max-width:none!important;aspect-ratio:16/9!important;margin:0!important;transform:translate(-50%,-50%) scale(1)!important;border-radius:14px;border-color:rgba(255,255,255,.22);box-shadow:0 40px 140px rgba(0,0,0,.5);animation:frame-expand-in .42s cubic-bezier(.16,1,.3,1) both}.frame.is-expanded .frame-expand{top:16px;right:16px;background:rgba(19,19,19,.74);border-color:rgba(255,255,255,.24);color:#fff}.frame.is-expanded .frame-expand:hover{background:#fff;color:#131313}.frame.is-expanded>img{cursor:zoom-out}.lightbox-open{overflow:hidden}
 @keyframes frame-expand-in{from{opacity:.25;transform:translate(-50%,-50%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-.page::before{left:24px;right:auto;width:84px;background:var(--ink);transform-origin:left}.page.is-current .page-no{color:var(--ink)}
+.page.is-current .page-no{color:var(--ink)}
 .page-foot{margin-top:15px;color:#8a919c;font:10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em}.page-foot a{color:#747b86;text-decoration:none}.page-foot a:hover{color:var(--ink)}
 .bottom-nav{position:relative;margin-top:88px;padding:108px 24px 90px;background:#111318}.bottom-nav::before{content:"END / PROJECT 02";position:absolute;top:30px;left:30px;color:#727987;font:10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em}.projects{gap:0;border:1px solid #343944}.projects a{border:0;border-right:1px solid #343944;transition:background .25s ease,color .25s ease}.projects a:last-child{border-right:0}.projects a:hover{background:#f2f4f7;color:#131313}.projects a:hover span{color:#656d79}.project-card__body{display:grid;gap:5px}.project-card__subtitle{display:block;color:#7f8794;font-family:'Portfolio DIN','DIN Pro','D-DIN',sans-serif;font-size:11px;font-weight:700;line-height:16px;letter-spacing:0}.projects a:hover .project-card__subtitle{color:#656d79}
 .top{width:44px;height:44px;background:rgba(19,19,19,.9);backdrop-filter:blur(12px);box-shadow:0 10px 28px rgba(19,19,19,.18)}
 .line-sidebar-shell{padding:14px 0}.line-sidebar{--text-color:#afb5be;--marker-color:#bbc0c8}.line-sidebar__label{letter-spacing:.01em}
 @media(max-width:1050px){.topbar{padding:0 18px}.intro{min-height:min(900px,96vh);padding-top:140px}.intro::after{left:18px}.chapter{margin-top:110px}.chapter::before{left:14px}.projects{border-left:0;border-right:0}}
-@media(max-width:650px){.intro{min-height:760px;padding-top:120px;padding-bottom:90px}.intro .hero-mark{top:12%;width:76px}.intro-content{width:100%;transform:translateY(38px)}.intro h1{font-size:clamp(42px,13vw,68px)}.intro::before{right:-24px}.chapter{margin-top:78px;padding-top:58px}.page{padding-bottom:52px}.frame{border-radius:7px}.frame-expand{opacity:1;transform:none;top:8px;right:8px}.frame.is-expanded{width:96vw!important;border-radius:8px}.bottom-nav{padding-top:100px}.projects{border:0}.projects a{border:1px solid #343944;margin-top:-1px}.projects a:last-child{border-right:1px solid #343944}}
+@media(max-width:650px){.intro{min-height:760px;padding-top:120px;padding-bottom:90px}.intro .hero-mark{top:12%;width:76px}.intro-content{width:100%;transform:translateY(38px)}.intro h1{font-size:clamp(42px,13vw,68px)}.intro::before{right:-24px}.chapter{margin-top:78px;padding-top:58px}.chapter::after{right:10px}.page{padding-bottom:52px}.frame{border-radius:7px}.frame-expand{opacity:1;transform:none;top:8px;right:8px}.frame.is-expanded{width:96vw!important;border-radius:8px}.bottom-nav{padding-top:100px}.projects{border:0}.projects a{border:1px solid #343944;margin-top:-1px}.projects a:last-child{border-right:1px solid #343944}}
 /* Keep the presentation canvas outside the fixed sidebar hit area on mainstream displays. */
 @media(min-width:1381px) and (max-width:2050px){.page,.chapter{width:calc(100% - 238px);margin-left:214px;margin-right:24px}}
 @media(min-width:1051px) and (max-width:1380px){.page,.chapter{width:calc(100% - 94px);max-width:none;margin-left:70px;margin-right:24px}}
@@ -130,17 +129,18 @@ a.interaction-guide__step{color:inherit;text-decoration:none;cursor:pointer}.int
 @media(min-width:1800px){body.speaker-notes-open .page,body.speaker-notes-open .chapter{max-width:calc(100vw - 650px);margin-left:220px;margin-right:auto}}
 @media(max-width:900px){.speaker-notes{left:12px;right:12px;top:auto;bottom:78px;width:auto;max-height:58vh}.speaker-notes-toggle{right:70px}.speaker-notes__text{font-size:14px;line-height:1.85}}
 @media(prefers-reduced-motion:reduce){.speaker-notes,.speaker-notes-toggle{transition:none}}
-</style><style>.projects{grid-template-columns:repeat(4,1fr)}.projects .appendix-card{background:rgba(255,255,255,.025)}@media(max-width:1050px){.projects{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.projects{grid-template-columns:1fr}}</style><link rel="stylesheet" href="portfolio-typography.css?v=877870fa9ed1"><link rel="stylesheet" href="portfolio-project-meta.css?v=877870fa9ed1"><link rel="stylesheet" href="portfolio-project-header.css?v=877870fa9ed1"></head><body><div class="progress"></div>
+</style><style>.projects{grid-template-columns:repeat(4,1fr)}.projects .appendix-card{background:rgba(255,255,255,.025)}@media(max-width:1050px){.projects{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.projects{grid-template-columns:1fr}}</style><link rel="stylesheet" href="portfolio-typography.css?v=8f51a417a204"><link rel="stylesheet" href="portfolio-project-meta.css?v=8f51a417a204"><link rel="stylesheet" href="portfolio-project-header.css?v=8f51a417a204"></head><body><div class="progress"></div>
 <aside class="line-sidebar-shell" aria-label="项目二页面导航"><nav class="line-sidebar" aria-label="当前模块页面锚点"><ul class="line-sidebar__list"></ul></nav></aside>
 <header class="topbar"><a class="home" href="portfolio-home-v2-editorial.html" aria-label="返回作品集首页"><span class="home__icon" aria-hidden="true">←</span><span class="home__label">AI 智能体平台</span></a><nav class="anchors"><a href="#background">项目背景</a><a href="#config">智能体配置</a><a href="#workflow">工作流后台</a><a href="#saas"><span class="saas-case">SaaS</span>融合</a><a href="#dialogue">对话与动效</a></nav><div class="project-menu"><a href="portfolio-project1-saas.html">项目一</a><a class="current" href="#top">项目二</a><a href="portfolio-project3-vibe-coding.html">项目三</a><a href="portfolio-project4-appendix.html">附录</a></div></header>
 <main id="top"><section class="intro"><canvas class="aurora-canvas" aria-hidden="true"></canvas><img class="hero-mark" src="../portfolio-assets/project2/media/hero-icon.png" srcset="assets/responsive/hero-icons/project2/hero-icon-96.png 96w, assets/responsive/hero-icons/project2/hero-icon-192.png 192w, assets/responsive/hero-icons/project2/hero-icon-288.png 288w, assets/responsive/hero-icons/project2/hero-icon-408.png 408w, assets/responsive/hero-icons/project2/hero-icon-544.png 544w" sizes="(max-width:650px) 76px, (max-width:1280px) 96px, (max-width:1813px) 7.5vw, 136px" width="1924" height="1916" alt="" aria-hidden="true" decoding="async" fetchpriority="high"><div class="intro-content"><span class="eyebrow">PROJECT 02 / AI AGENT PLATFORM</span><h1><span class="hero-title-motion">AI智能体平台</span><br><span>0–1全链路产品设计</span></h1><p>从智能体配置、工作流编排到 SaaS 业务融合与 Multi-Agent 对话，完整呈现企业级 AI 能力从底层搭建、产品设计到场景落地的全链路过程。</p><div class="legend"><span><i></i>静态设计页面</span><span class="live"><i></i>交互 / 动效演示</span></div></div><span class="project-time">项目时间 2025–2026</span></section><div id="pages"></div>
 <section class="bottom-nav"><h2>继续查看其他项目</h2><div class="projects"><a href="portfolio-project1-saas.html"><span>PROJECT 01</span><div class="project-card__body"><b><span class="saas-case">SaaS</span> 低代码平台</b><small class="project-card__subtitle">SAAS LOW-CODE PLATFORM</small></div></a><a href="#top"><span>PROJECT 02 / CURRENT</span><div class="project-card__body"><b>AI 智能体平台</b><small class="project-card__subtitle">AI AGENT PLATFORM</small></div></a><a href="portfolio-project3-vibe-coding.html"><span>PROJECT 03</span><div class="project-card__body"><b>AI 设计交付流程</b><small class="project-card__subtitle">AI-NATIVE DESIGN DELIVERY</small></div></a><a class="appendix-card" href="portfolio-project4-appendix.html"><span>OPTIONAL APPENDIX</span><div class="project-card__body"><b>早期方案与设计补充</b><small class="project-card__subtitle">EARLY CONCEPTS &amp; DESIGN ARCHIVE</small></div></a></div></section></main><button class="top" aria-label="返回顶部">↑</button>
-<script src="portfolio-project2-interaction-guides.js?v=877870fa9ed1"></script>
-<script src="portfolio-project2-speaker-notes.js?v=877870fa9ed1"></script>
+<script src="portfolio-project2-interaction-guides.js?v=8f51a417a204"></script>
+<script src="portfolio-project2-speaker-notes.js?v=8f51a417a204"></script>
 <script>
 const F='OFdihd4QHDOGSCu6pbpcYe';
 const nodes={1:'4:61916',2:'4:61971',3:'4:62102',4:'4:65433',5:'4:63053',6:'4:62261',7:'4:62335',8:'4:62453',9:'4:65375',10:'4:62620',11:'4:62716',12:'4:62799',13:'4:62948',14:'4:63237',15:'4:63113',16:'4:63448',17:'4:63357',18:'4:65284',19:'4:64477',20:'4:64565',21:'4:64657',22:'4:64827',23:'4:65024',24:'4:65093',25:'4:65160',26:'4:64943',27:'4:63170',28:'4:64882',29:'4:65211',30:'4:64415',31:'4:63663',32:'4:63736',33:'4:64398'};
 const SOURCE_PAGES=Array.from({length:32},(_,index)=>index+2),TOTAL_PAGES=SOURCE_PAGES.length,sourcePageForDisplay=n=>SOURCE_PAGES[n-1];
+const contentResponsiveBase='assets/responsive/project2/webp',contentResponsiveVersion='20260720-content1',contentResponsiveWidths=[640,960,1280,1440,1920],contentResponsiveSizes='(max-width: 650px) 100vw, (max-width: 1050px) calc(100vw - 28px), (max-width: 1380px) calc(100vw - 142px), (max-width: 1566px) calc(100vw - 286px), 1280px';
 const live=new Set([7,10,11,20,21,24,25,29,30,31,32]);
 const chapters={1:['background','01','项目背景','从通用 SaaS 的体验瓶颈，到项目主导方式与竞品实操验证。'],4:['config','02','智能体配置','模型、人设、数据库、变量与个性化体验的配置底座。'],8:['workflow','03','工作流后台','工作流画布、运行调试与日志体系。'],14:['saas','04','AI 与 SaaS 深度融合','把智能体能力嵌入真实业务入口并沉淀为可复用资产。'],26:['dialogue','05','对话与动效','让思考、执行、来源、异常和任务状态对用户可见。']};
 const formatCase=text=>text.replaceAll('SaaS','<span class="saas-case">SaaS</span>');
@@ -149,15 +149,20 @@ for(let n=1;n<=TOTAL_PAGES;n++){
   const sourcePage=sourcePageForDisplay(n);
   if(chapters[n]){
     const c=chapters[n];
-    root.insertAdjacentHTML('beforeend',`<section class="chapter" id="${c[0]}" data-index="${c[1]}"><span>CHAPTER ${c[1]}</span><h2>${formatCase(c[2])}</h2><p>${formatCase(c[3])}</p></section>`)
+    root.insertAdjacentHTML('beforeend',`<section class="chapter" id="${c[0]}" data-index="${c[1]}"><div class="chapter-copy"><span class="chapter-kicker">CHAPTER ${c[1]}</span><h2>${formatCase(c[2])}</h2><p>${formatCase(c[3])}</p></div></section>`)
   }
-  const pad=String(n).padStart(2,'0'),sourcePad=String(sourcePage).padStart(2,'0'),isLive=live.has(sourcePage);
-  root.insertAdjacentHTML('beforeend',`<article class="page ${isLive?'interactive':''}" id="p${pad}" data-source-page="${sourcePage}"><header class="page-head"><span class="page-no">P${pad} / ${TOTAL_PAGES}</span><span class="live-badge"><i></i>整页交互演示</span></header><div class="frame" data-page="${sourcePage}" data-display-page="${n}"><img
-    src="../项目2_3px/${sourcePage}.png?v=20260715-1724"
-    srcset="assets/responsive/project2/960/${sourcePage}.png?v=20260719-r2 960w, assets/responsive/project2/1440/${sourcePage}.png?v=20260719-r2 1440w, assets/responsive/project2/1920/${sourcePage}.png?v=20260719-r2 1920w, assets/responsive/project2/2880/${sourcePage}.png?v=20260719-r2 2880w, assets/responsive/project2/3840/${sourcePage}.png?v=20260719-r2 3840w"
-    sizes="(max-width: 650px) 100vw, (max-width: 1600px) calc(100vw - 48px), 1552px"
-    data-full-src="../项目2_3px/${sourcePage}.png?v=20260715-1724"
-    alt="第二项目页面 P${pad}（源页 P${sourcePad}，3×）" loading="lazy" fetchpriority="low" decoding="async"><span class="fallback">交互内容加载失败，已保留静态首帧</span></div><footer class="page-foot"><span>FIGMA SOURCE / PAGE ${sourcePad}</span><a href="#top">返回顶部 ↑</a></footer></article>`)
+  const pad=String(n).padStart(2,'0'),sourcePad=String(sourcePage).padStart(2,'0'),isLive=live.has(sourcePage),contentSrcset=contentResponsiveWidths.map(width=>`${contentResponsiveBase}/${width}/${sourcePage}.webp?v=${contentResponsiveVersion} ${width}w`).join(', '),contentDefault=`${contentResponsiveBase}/1280/${sourcePage}.webp?v=${contentResponsiveVersion}`,contentFull=`${contentResponsiveBase}/1920/${sourcePage}.webp?v=${contentResponsiveVersion}`;
+  root.insertAdjacentHTML('beforeend',`<article class="page ${isLive?'interactive':''}" id="p${pad}" data-source-page="${sourcePage}"><header class="page-head"><span class="page-no">P${pad} / ${TOTAL_PAGES}</span><span class="live-badge"><i></i>整页交互演示</span></header><div class="frame" data-page="${sourcePage}" data-display-page="${n}"><img class="static-frame"
+    src="${contentDefault}"
+    srcset="${contentSrcset}"
+    sizes="${contentResponsiveSizes}"
+    data-responsive-src="${contentDefault}"
+    data-responsive-srcset="${contentSrcset}"
+    data-responsive-sizes="${contentResponsiveSizes}"
+    data-full-src="${contentFull}"
+    data-full-srcset="${contentSrcset}"
+    width="1920" height="1080"
+    alt="第二项目页面 P${pad}（源页 P${sourcePad}）" loading="lazy" fetchpriority="low" decoding="async"><span class="fallback">交互内容加载失败，已保留静态首帧</span></div><footer class="page-foot"><span>FIGMA SOURCE / PAGE ${sourcePad}</span><a href="#top">返回顶部 ↑</a></footer></article>`)
 }
 const pageTitles=['项目封面','SaaS 体验瓶颈','独立主导 AI 落地','竞品学习与实操验证','智能体配置概览','配置框架与产品适配','个性化对话体验','数据库与变量底座','工作流后台概览','节点分类与画布设计','运行调试与参数设置','单节点调试日志','全局日志框架','后台配置链路总结','AI 与 SaaS 深度融合','多入口嵌入与发布','表单搭建助手','工作台搭建助手','数据详情 AI 总结','Multi-Agent 对话入口','轻量悬浮唤起','业务赋能闭环','模板中心定位','模板中心落地','模板创建与复用','商业交付链路总结','对话与动效体系','交互价值与设计目标','Multi-Agent 业务对话','Multi-Agent 通用会话','工作流助手过渡','任务执行与思考可视化','异常闭环与体验升级'];
 /* Public interaction-guide UI: isolated for clean future removal. */
@@ -290,7 +295,7 @@ const upgradeFrameImage=frame=>{
   const activate=()=>{
     if(settled)return;
     settled=true;
-    if(expandedFrame!==frame||image._fullSourceRequest!==requestId||preload.naturalWidth<5760)return;
+    if(expandedFrame!==frame||image._fullSourceRequest!==requestId||preload.naturalWidth<1920)return;
     image.removeAttribute('srcset');
     image.removeAttribute('sizes');
     image.src=image.dataset.fullSrc;
@@ -356,7 +361,16 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hero=document.querySelector('.intro');
 if(hero){
   const canvas=hero.querySelector('.aurora-canvas');
-  const gl=canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:true,antialias:true});
+  const gl=canvas.getContext('webgl2',{
+    alpha:true,
+    premultipliedAlpha:true,
+    antialias:false,
+    depth:false,
+    stencil:false,
+    preserveDrawingBuffer:false,
+    powerPreference:'low-power',
+    desynchronized:true
+  });
   if(gl){
     const vertexSource=`#version 300 es
 in vec2 position;
@@ -414,22 +428,74 @@ void main(){
         };
         const colors=new Float32Array([0.0,.18,1.0,.08,.78,1.0,.05,.34,1.0]);
         gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.clearColor(0,0,0,0);
-        let inViewport=true,visible=!document.hidden,raf=0,lastAuroraFrame=0;
-        const constrainedAurora=document.documentElement.dataset.portfolioTier!=='full',auroraFrameInterval=constrainedAurora?1000/30:0;
-        const resizeAurora=()=>{const rect=hero.getBoundingClientRect(),dpr=constrainedAurora?1:Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);gl.viewport(0,0,canvas.width,canvas.height);if(reduceMotion)renderAurora(0)};
-        const renderAurora=time=>{
-          raf=0;if(!visible||document.hidden)return;
-          if(!reduceMotion&&auroraFrameInterval&&lastAuroraFrame&&time-lastAuroraFrame<auroraFrameInterval){raf=requestAnimationFrame(renderAurora);return}
-          lastAuroraFrame=time;
+        gl.detachShader(program,vertex);gl.detachShader(program,fragment);gl.deleteShader(vertex);gl.deleteShader(fragment);
+        const performanceTier=window.PortfolioPerformance?.tier||document.documentElement.dataset.portfolioTier||'full';
+        const constrainedAurora=performanceTier!=='full',liteAurora=performanceTier==='lite';
+        const auroraFrameInterval=1000/(liteAurora?20:constrainedAurora?30:45);
+        const maxBackingEdge=liteAurora?1440:constrainedAurora?1920:2304;
+        const auroraIdleDelay=liteAurora?6500:constrainedAurora?9000:12000;
+        let inViewport=true,visible=!document.hidden,idle=false,raf=0,frameTimer=0,resizeRaf=0,idleTimer=0,lastAuroraFrame=0,lastInteraction=0;
+        const drawAurora=time=>{
           gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(program);
           gl.uniform1f(uniforms.time,time*.00068);gl.uniform1f(uniforms.amplitude,.82);gl.uniform3fv(uniforms.colors,colors);gl.uniform2f(uniforms.resolution,canvas.width,canvas.height);gl.uniform1f(uniforms.blend,.62);
           gl.drawArrays(gl.TRIANGLES,0,3);
-          if(!reduceMotion&&visible&&!document.hidden)raf=requestAnimationFrame(renderAurora);
         };
-        const syncAurora=()=>{visible=inViewport&&!document.hidden;hero.classList.toggle('motion-paused',!visible||reduceMotion);if(!visible&&raf){cancelAnimationFrame(raf);raf=0}else if(visible&&!reduceMotion&&!raf){raf=requestAnimationFrame(renderAurora)}};
-        new IntersectionObserver(([entry])=>{inViewport=entry.isIntersecting;syncAurora()},{threshold:0}).observe(hero);
-        document.addEventListener('visibilitychange',syncAurora);
-        addEventListener('resize',resizeAurora,{passive:true});resizeAurora();renderAurora(0);
+        const cancelAuroraFrame=()=>{if(raf){cancelAnimationFrame(raf);raf=0}if(frameTimer){clearTimeout(frameTimer);frameTimer=0}};
+        const requestAuroraFrame=(immediate=false)=>{
+          if(reduceMotion||!visible||idle||raf||frameTimer)return;
+          const delay=immediate?0:Math.max(0,auroraFrameInterval-(performance.now()-lastAuroraFrame));
+          if(delay<=1)raf=requestAnimationFrame(renderAurora);
+          else frameTimer=setTimeout(()=>{frameTimer=0;if(visible&&!idle&&!document.hidden)raf=requestAnimationFrame(renderAurora)},delay);
+        };
+        const renderAurora=time=>{
+          raf=0;if(!visible||document.hidden||idle)return;
+          lastAuroraFrame=time;drawAurora(time);requestAuroraFrame();
+        };
+        const resizeAurora=()=>{
+          resizeRaf=0;
+          const rect=hero.getBoundingClientRect(),dpr=constrainedAurora?1:Math.min(devicePixelRatio||1,1.5);
+          let width=Math.max(1,Math.round(rect.width*dpr)),height=Math.max(1,Math.round(rect.height*dpr));
+          const edge=Math.max(width,height);
+          if(edge>maxBackingEdge){const scale=maxBackingEdge/edge;width=Math.max(1,Math.round(width*scale));height=Math.max(1,Math.round(height*scale))}
+          if(canvas.width===width&&canvas.height===height)return;
+          canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);
+          if(visible)drawAurora(reduceMotion?0:performance.now());
+        };
+        const scheduleAuroraResize=()=>{if(!resizeRaf)resizeRaf=requestAnimationFrame(resizeAurora)};
+        const clearAuroraIdle=()=>{if(idleTimer){clearTimeout(idleTimer);idleTimer=0}};
+        const scheduleAuroraIdle=()=>{
+          clearAuroraIdle();
+          if(reduceMotion||!visible)return;
+          idleTimer=setTimeout(()=>{idleTimer=0;idle=true;syncAurora()},auroraIdleDelay);
+        };
+        const syncAurora=()=>{
+          visible=inViewport&&!document.hidden;
+          const paused=!visible||reduceMotion||idle;
+          hero.classList.toggle('motion-paused',paused);
+          if(paused)cancelAuroraFrame();else requestAuroraFrame(true);
+          if(visible&&reduceMotion)drawAurora(0);
+        };
+        const wakeAurora=()=>{
+          const now=performance.now();
+          if(!idle&&now-lastInteraction<600)return;
+          lastInteraction=now;idle=false;syncAurora();scheduleAuroraIdle();
+        };
+        new IntersectionObserver(([entry])=>{
+          const wasInViewport=inViewport;
+          inViewport=entry.isIntersecting&&entry.intersectionRatio>.01;
+          if(inViewport&&!wasInViewport){idle=false;scheduleAuroraIdle()}else if(!inViewport)clearAuroraIdle();
+          syncAurora();
+        },{threshold:[0,.02]}).observe(hero);
+        document.addEventListener('visibilitychange',()=>{
+          if(document.hidden)clearAuroraIdle();else{idle=false;scheduleAuroraIdle()}
+          syncAurora();
+        });
+        hero.addEventListener('pointermove',wakeAurora,{passive:true});
+        hero.addEventListener('pointerdown',wakeAurora,{passive:true});
+        hero.addEventListener('focusin',wakeAurora);
+        addEventListener('resize',scheduleAuroraResize,{passive:true});
+        addEventListener('pagehide',()=>{clearAuroraIdle();cancelAuroraFrame();if(resizeRaf)cancelAnimationFrame(resizeRaf)},{once:true});
+        resizeAurora();drawAurora(0);syncAurora();scheduleAuroraIdle();
       }
     }
   }
@@ -441,7 +507,7 @@ const visibleDepthPages=new Set(),depthFrames=new Map(pageCards.map(page=>[page,
 const depthObserver=new IntersectionObserver(entries=>entries.forEach(entry=>entry.isIntersecting?visibleDepthPages.add(entry.target):visibleDepthPages.delete(entry.target)),{rootMargin:'18% 0px 18%',threshold:0});pageCards.forEach(page=>depthObserver.observe(page));
 const focusObserver=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('is-current',entry.isIntersecting)),{rootMargin:'-22% 0px -48%',threshold:0});pageCards.forEach(page=>focusObserver.observe(page));
 const sideObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)setSideFocus(+entry.target.id.slice(1))}),{rootMargin:'-38% 0px -54%',threshold:0});pageCards.forEach(page=>sideObserver.observe(page));
-const topBtn=document.querySelector('.top'),progressBar=document.querySelector('.progress');let scrollTick=false;const updateScrollFrame=()=>{scrollTick=false;const d=document.documentElement,h=d.scrollHeight-d.clientHeight,y=d.scrollTop;progressBar.style.width=(h?y/h*100:0)+'%';topBtn.classList.toggle('show',y>700);if(reduceMotion)return;const vh=innerHeight;visibleDepthPages.forEach(page=>{if(page.id==='p29')return;const frame=depthFrames.get(page),rect=page.getBoundingClientRect();if(!frame||rect.bottom<0||rect.top>vh)return;const center=rect.top+rect.height/2;const distance=Math.max(-1,Math.min(1,(center-vh/2)/vh));frame.style.setProperty('--frame-shift',`${(-distance*6).toFixed(2)}px`);frame.style.setProperty('--frame-scale',(1-Math.abs(distance)*.0025).toFixed(4))})};const scheduleScrollFrame=()=>{if(scrollTick)return;scrollTick=true;requestAnimationFrame(updateScrollFrame)};addEventListener('scroll',scheduleScrollFrame,{passive:true});addEventListener('resize',scheduleScrollFrame,{passive:true});updateScrollFrame();
+const topBtn=document.querySelector('.top'),progressBar=document.querySelector('.progress');let scrollTick=false;const updateScrollFrame=()=>{scrollTick=false;const d=document.documentElement,h=d.scrollHeight-d.clientHeight,y=d.scrollTop;progressBar.style.width=(h?y/h*100:0)+'%';topBtn.classList.toggle('show',y>700);if(reduceMotion)return;const vh=innerHeight;visibleDepthPages.forEach(page=>{const frame=depthFrames.get(page);if(page.id==='p29'||frame?.classList.contains('is-expanded'))return;const rect=page.getBoundingClientRect();if(!frame||rect.bottom<0||rect.top>vh)return;const center=rect.top+rect.height/2;const distance=Math.max(-1,Math.min(1,(center-vh/2)/vh));frame.style.setProperty('--frame-shift',`${(-distance*6).toFixed(2)}px`);frame.style.setProperty('--frame-scale',(1-Math.abs(distance)*.0025).toFixed(4))})};const scheduleScrollFrame=()=>{if(scrollTick)return;scrollTick=true;requestAnimationFrame(updateScrollFrame)};addEventListener('scroll',scheduleScrollFrame,{passive:true});addEventListener('resize',scheduleScrollFrame,{passive:true});updateScrollFrame();
 const anchorNav=document.querySelector('.anchors'),anchors=[...anchorNav.querySelectorAll('a')],sections=anchors.map(a=>document.querySelector(a.getAttribute('href'))),navGlider=document.createElement('i');
 navGlider.className='nav-glider';anchorNav.prepend(navGlider);
 let navMoveTimer=0,anchorPointerRaf=0,anchorPointerX=0,anchorPointerInside=false;
@@ -451,4 +517,4 @@ anchorNav.addEventListener('pointermove',event=>{anchorPointerInside=true;anchor
 anchorNav.addEventListener('pointerleave',()=>{anchorPointerInside=false;if(anchorPointerRaf){cancelAnimationFrame(anchorPointerRaf);anchorPointerRaf=0}anchors.forEach(anchor=>{anchor.style.removeProperty('--dock-scale');anchor.style.removeProperty('--dock-y')})});
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){anchors.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));syncNavIndicator()}}),{rootMargin:'-25% 0px -65%'});sections.forEach(s=>spy.observe(s));addEventListener('resize',syncNavIndicator,{passive:true});requestAnimationFrame(syncNavIndicator);document.querySelectorAll('.project-menu a').forEach(link=>link.addEventListener('pointermove',event=>{const r=link.getBoundingClientRect();link.style.setProperty('--spot-x',`${event.clientX-r.left}px`);link.style.setProperty('--spot-y',`${event.clientY-r.top}px`)}));
 topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
-</script><script src="portfolio-lightbox-navigation.js?v=877870fa9ed1"></script><script src="portfolio-page-transition.js?v=877870fa9ed1"></script></body></html>
+</script><script src="portfolio-content-performance.js?v=8f51a417a204"></script><script src="portfolio-lightbox-navigation.js?v=8f51a417a204"></script><script src="portfolio-page-transition.js?v=8f51a417a204"></script></body></html>

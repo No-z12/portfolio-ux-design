@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="SaaS 低代码 0→1 全链路设计作品集项目">
   <title>SaaS 低代码 0→1 全链路设计</title>
-  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=877870fa9ed1">
-  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=877870fa9ed1">
-  <link rel="stylesheet" href="portfolio-performance.css?v=877870fa9ed1">
-  <script src="portfolio-performance.js?v=877870fa9ed1"></script>
+  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-performance.css?v=8f51a417a204">
+  <script src="portfolio-performance.js?v=8f51a417a204"></script>
   <link rel="dns-prefetch" href="//embed.figma.com">
   <link rel="dns-prefetch" href="//www.figma.com">
   <link rel="preconnect" href="https://embed.figma.com" crossorigin>
@@ -567,9 +567,22 @@
       transform: scale(var(--prototype-canvas-scale, 1));
       transform-origin: 0 0;
       background: #f4f5f7;
+      transition: opacity .28s ease;
     }
     .frame.interactive-ready > img { opacity: 0; pointer-events: none; }
     .frame.interactive-ready iframe { z-index: 5; }
+    /* Arrow navigation reveals the already-pooled Figma iframe only after its
+       ready state. The optimized poster remains an immediate, zero-blank fallback. */
+    .frame.lightbox-prototype-pending > img {
+      z-index: 6;
+      opacity: 1 !important;
+      pointer-events: none;
+    }
+    .frame.lightbox-prototype-pending > iframe {
+      z-index: 5;
+      opacity: 0;
+      pointer-events: none;
+    }
     .fallback {
       position: absolute;
       z-index: 8;
@@ -877,6 +890,15 @@
     }
     body.motion-ready .chapter.in-view,
     body.motion-ready .page.in-view { opacity: 1; transform: none; }
+    /* A lightbox target can live several pages outside the viewport. Remove the
+       reveal transform only for that source page so its fixed frame is anchored
+       to the viewport instead of the offscreen article. */
+    body.motion-ready .page.lightbox-source-active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      transition: none !important;
+    }
     body.motion-ready .page-head,
     body.motion-ready .page-foot {
       opacity: 0;
@@ -979,14 +1001,19 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .hero-mark {
+        animation: none !important;
+        transform: translate3d(-50%, 0, 0) !important;
+      }
       .hero-title-motion {
-        opacity: 1;
-        filter: none;
-        transform: none;
-        clip-path: none;
-        color: var(--hero-title-ink);
-        background: none;
-        -webkit-text-fill-color: currentColor;
+        animation: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        clip-path: none !important;
+        color: var(--hero-title-ink) !important;
+        background: none !important;
+        -webkit-text-fill-color: currentColor !important;
       }
       .hero-grid { opacity: .72; }
       body.motion-ready .chapter,
@@ -1003,9 +1030,9 @@
     @media (max-width:1050px) { .projects { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width:650px) { .projects { grid-template-columns: 1fr; } }
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css?v=877870fa9ed1">
-  <link rel="stylesheet" href="portfolio-project-meta.css?v=877870fa9ed1">
-  <link rel="stylesheet" href="portfolio-project-header.css?v=877870fa9ed1">
+  <link rel="stylesheet" href="portfolio-typography.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-project-meta.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=8f51a417a204">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -1064,7 +1091,7 @@
 
   <button class="top" type="button" aria-label="返回顶部">↑</button>
 
-  <script src="portfolio-project1-interaction-guides.js?v=877870fa9ed1"></script>
+  <script src="portfolio-project1-interaction-guides.js?v=8f51a417a204"></script>
   <script>
     const FIGMA_FILE = "s8kmgucUlwLnqj90hKE8xF";
     const FIGMA_TOKEN = "HfM09U8aV9AyiBuD-1";
@@ -1081,7 +1108,7 @@
     };
     const SOURCE_PAGES = Array.from({ length: 33 }, (_, index) => index + 2);
     const TOTAL_PAGES = SOURCE_PAGES.length;
-    const PROTOTYPE_PAGES = new Set([7, 8, 10, 20, 24, 26, 33]);
+    const PROTOTYPE_PAGES = new Set([8, 10, 20, 24, 26, 33]);
     const PROTOTYPE_SOURCES = {
       8: {
         file: "2ZLfxsIcv67SoVBlp2Hfod",
@@ -1091,6 +1118,30 @@
       }
     };
     const NATIVE_MEDIA = {
+      7: {
+        kind: "gif-group",
+        lightboxNavigable: true,
+        items: [
+          {
+            src: "assets/perf-media/project1-p6-external-control.gif",
+            alt: "外部控件拖拽演示",
+            x: 4.1667,
+            y: 35.1852,
+            width: 16.8546,
+            height: 17.5926,
+            radius: 11
+          },
+          {
+            src: "assets/perf-media/project1-p6-child-control.gif",
+            alt: "子控件拖拽演示",
+            x: 4.1667,
+            y: 66.2037,
+            width: 16.8038,
+            height: 17.5533,
+            radius: 11
+          }
+        ]
+      },
       11: {
         kind: "video",
         src: "assets/perf-media/workbench-p1-p11-p4-p14-96w.mp4",
@@ -1232,8 +1283,9 @@
       const isWideTransition = sourcePage === 27;
       const demoClass = isPrototype ? "prototype-demo" : nativeMedia ? "native-demo" : "";
       const imageSizes = "(max-width: 650px) 100vw, (max-width: 1050px) calc(100vw - 28px), (max-width: 1380px) calc(100vw - 142px), (max-width: 1566px) calc(100vw - 286px), 1280px";
+      const imageVersion = sourcePage === 7 ? "20260720-p1p6gif1" : "20260720-p1w2";
       const imageSrcset = [640, 960, 1280, 1440, 1920]
-        .map(width => `assets/responsive/project1/webp/${width}/${sourcePage}.webp?v=20260720-p1w2 ${width}w`)
+        .map(width => `assets/responsive/project1/webp/${width}/${sourcePage}.webp?v=${imageVersion} ${width}w`)
         .join(", ");
       const badgeLabel = nativeMedia
         ? nativeMedia.kind === "video" ? "播放视频演示" : "暂停 GIF 动效"
@@ -1243,6 +1295,9 @@
         : nativeMedia
           ? `<button class="live-badge" type="button" aria-pressed="${nativeMedia.kind === "gif" ? "true" : "false"}" title="切换演示状态"><i></i><span>${badgeLabel}</span></button>`
           : "";
+      const nativeMediaItems = nativeMedia
+        ? Array.isArray(nativeMedia.items) ? nativeMedia.items : [nativeMedia]
+        : [];
       const nativeMediaMarkup = nativeMedia
         ? nativeMedia.kind === "video"
           ? `<video class="embedded-media native-video${nativeMedia.clickToPlay ? " click-to-play" : ""}" data-src="${nativeMedia.src}"${nativeMedia.playOnce ? ` data-play-once="true"` : ""} muted${nativeMedia.playOnce ? "" : " loop"} playsinline preload="none"
@@ -1250,23 +1305,24 @@
               style="--media-x:${nativeMedia.x}%;--media-y:${nativeMedia.y}%;--media-w:${nativeMedia.width}%;--media-h:${nativeMedia.height}%;--media-radius:${nativeMedia.radius}px"></video>
               ${nativeMedia.clickToPlay ? `<button class="native-video-control" type="button" aria-label="播放视频演示"
                 style="--media-x:${nativeMedia.x}%;--media-y:${nativeMedia.y}%;--media-w:${nativeMedia.width}%;--media-h:${nativeMedia.height}%;--media-radius:${nativeMedia.radius}px"><span aria-hidden="true"></span></button>` : ""}`
-          : `<img class="embedded-media native-gif" data-src="${nativeMedia.src}" data-srcset="${nativeMedia.srcset || ""}" data-sizes="${nativeMedia.sizes || ""}" alt="${nativeMedia.alt}" loading="lazy" decoding="async"
-              style="--media-x:${nativeMedia.x}%;--media-y:${nativeMedia.y}%;--media-w:${nativeMedia.width}%;--media-h:${nativeMedia.height}%;--media-radius:${nativeMedia.radius}px">`
+          : nativeMediaItems.map(item => `<img class="embedded-media native-gif" data-src="${item.src}" data-srcset="${item.srcset || ""}" data-sizes="${item.sizes || ""}" alt="${item.alt}" loading="lazy" decoding="async"
+              style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.width}%;--media-h:${item.height}%;--media-radius:${item.radius}px">`).join("")
         : "";
+      const lightboxNavigable = nativeMedia?.lightboxNavigable ? ` data-lightbox-navigable="true"` : "";
       root.insertAdjacentHTML("beforeend",
         `<article class="page ${isInteractive ? `interactive demo-page ${demoClass}` : ""}" id="p${number}" data-source-page="${sourcePage}">
           <header class="page-head">
             <span class="page-no">P${number} / ${TOTAL_PAGES}</span>
             ${liveBadgeMarkup}
           </header>
-          <div class="frame${isWideTransition ? " transition-frame" : ""}" data-page="${sourcePage}" data-display-page="${displayPage}">
-            <img class="static-frame" src="assets/responsive/project1/webp/1280/${sourcePage}.webp?v=20260720-p1w2"
+          <div class="frame${isWideTransition ? " transition-frame" : ""}" data-page="${sourcePage}" data-display-page="${displayPage}"${lightboxNavigable}>
+            <img class="static-frame" src="assets/responsive/project1/webp/1280/${sourcePage}.webp?v=${imageVersion}"
               srcset="${imageSrcset}"
               sizes="${imageSizes}"
-              data-responsive-src="assets/responsive/project1/webp/1280/${sourcePage}.webp?v=20260720-p1w2"
+              data-responsive-src="assets/responsive/project1/webp/1280/${sourcePage}.webp?v=${imageVersion}"
               data-responsive-srcset="${imageSrcset}"
               data-responsive-sizes="${imageSizes}"
-              data-full-src="assets/responsive/project1/webp/1920/${sourcePage}.webp?v=20260720-p1w2"
+              data-full-src="assets/responsive/project1/webp/1920/${sourcePage}.webp?v=${imageVersion}"
               data-full-srcset="${imageSrcset}"
               width="1920" height="${isWideTransition ? 480 : 1080}"
               alt="第一个项目页面 P${number}：${PAGE_TITLES[sourcePage - 1]}" loading="lazy" fetchpriority="low" decoding="async">
@@ -1316,6 +1372,7 @@
     });
 
     const prototypeFrames = [...document.querySelectorAll(".prototype-demo .frame")];
+    prototypeFrames.forEach(frame => { frame.dataset.lightboxNavigable = "true"; });
     const PROTOTYPE_FILL_SCALE = 1.15;
     const syncPrototypeCanvas = frame => {
       if (!frame) return;
@@ -1340,8 +1397,11 @@
     // Figma 讲解体验优先：所有性能档都在进入前 5 页开始预热。
     const PREWARM_PAGE_LEAD = 5;
     const PROTOTYPE_POOL_SIZE = 3;
+    const PROTOTYPE_READY_SETTLE_DELAY = 900;
+    const PROTOTYPE_SINGLE_LOAD_FALLBACK_DELAY = 6500;
     const PROTOTYPE_READY_RETENTION = 90000;
     const PROTOTYPE_BACKGROUND_RELEASE_DELAY = 120000;
+    const PROTOTYPE_CONNECTIVITY_URL = "https://embed.figma.com/favicon.ico";
     const prototypeFramesByDisplayPage = new Map(
       prototypeFrames.map(frame => [Number(frame.dataset.displayPage), frame])
     );
@@ -1351,6 +1411,42 @@
     let prototypeProtectedFrames = new Set();
     let prototypeBackgroundTimer = 0;
     let prototypeIdleHandle = 0;
+    let prototypeConnectivityPromise = null;
+
+    function probePrototypeConnectivity() {
+      if (navigator.onLine === false) return Promise.resolve(false);
+      if (prototypeConnectivityPromise) return prototypeConnectivityPromise;
+      const controller = "AbortController" in window ? new AbortController() : null;
+      const timeout = window.setTimeout(() => controller?.abort(), 4500);
+      prototypeConnectivityPromise = fetch(PROTOTYPE_CONNECTIVITY_URL, {
+        mode: "no-cors",
+        cache: "force-cache",
+        signal: controller?.signal
+      })
+        .then(() => true)
+        .catch(() => false)
+        .finally(() => window.clearTimeout(timeout));
+      return prototypeConnectivityPromise;
+    }
+    window.addEventListener("online", () => { prototypeConnectivityPromise = null; }, { passive: true });
+
+    function schedulePrototypeReady(frame, state, delay = PROTOTYPE_READY_SETTLE_DELAY) {
+      window.clearTimeout(state.readyTimer);
+      state.readyTimer = window.setTimeout(async () => {
+        if (frame._prototypeState !== state || state.failedAt || frame.classList.contains("failed")) return;
+        const reachable = await probePrototypeConnectivity();
+        if (frame._prototypeState !== state || state.failedAt || frame.classList.contains("failed")) return;
+        if (!reachable) {
+          state.failedAt = Date.now();
+          frame.classList.add("failed");
+          return;
+        }
+        window.clearTimeout(state.timeout);
+        state.readyAt = Date.now();
+        frame.classList.add("interactive-ready");
+        revealExpandedPrototype(frame, state);
+      }, delay);
+    }
 
     function mountPrototype(frame) {
       if (frame._prototypeState?.iframe) return frame._prototypeState.iframe;
@@ -1377,6 +1473,9 @@
 
       const timeout = window.setTimeout(() => {
         if (frame._prototypeState?.iframe !== iframe) return;
+        window.clearTimeout(state.readyTimer);
+        window.clearTimeout(state.fallbackTimer);
+        state.failedAt = Date.now();
         frame.classList.add("failed");
       }, 15000);
       const now = Date.now();
@@ -1384,20 +1483,38 @@
         iframe,
         timeout,
         readyTimer: 0,
+        fallbackTimer: 0,
+        loadCount: 0,
+        firstLoadAt: 0,
         readyAt: 0,
+        failedAt: 0,
         mountedAt: now,
         lastUsedAt: now,
         useOrder: ++prototypeUseOrder
       };
       frame._prototypeState = state;
       iframe.addEventListener("load", () => {
-        window.clearTimeout(timeout);
+        if (frame._prototypeState !== state || state.failedAt || state.readyAt) return;
+        state.loadCount += 1;
+        if (state.loadCount === 1) {
+          state.firstLoadAt = Date.now();
+          window.clearTimeout(state.fallbackTimer);
+          state.fallbackTimer = window.setTimeout(() => {
+            if (frame._prototypeState !== state || state.loadCount !== 1 || state.failedAt || state.readyAt) return;
+            schedulePrototypeReady(frame, state, 0);
+          }, PROTOTYPE_SINGLE_LOAD_FALLBACK_DELAY);
+          return;
+        }
+        window.clearTimeout(state.fallbackTimer);
+        schedulePrototypeReady(frame, state);
+      });
+      iframe.addEventListener("error", () => {
         if (frame._prototypeState !== state) return;
-        state.readyTimer = window.setTimeout(() => {
-          if (frame._prototypeState !== state) return;
-          state.readyAt = Date.now();
-          frame.classList.add("interactive-ready");
-        }, 800);
+        window.clearTimeout(timeout);
+        window.clearTimeout(state.readyTimer);
+        window.clearTimeout(state.fallbackTimer);
+        state.failedAt = Date.now();
+        frame.classList.add("failed");
       }, { once: true });
       frame.appendChild(iframe);
       return iframe;
@@ -1408,6 +1525,7 @@
       if (!state || (!force && frame.classList.contains("is-expanded"))) return;
       window.clearTimeout(state.timeout);
       window.clearTimeout(state.readyTimer);
+      window.clearTimeout(state.fallbackTimer);
       state.iframe.remove();
       frame._prototypeState = null;
       frame.classList.remove("interactive-ready", "failed");
@@ -1644,6 +1762,7 @@
       frame.classList.add("whole-page-demo");
       prototypeObserver.observe(frame);
       const warmFromFrame = () => {
+        if (window.__PORTFOLIO_LIGHTBOX_NAVIGATION__ === true) return;
         const displayPage = Number(frame.dataset.displayPage);
         setPrototypeIntent(displayPage, prototypeScrollDirection);
       };
@@ -1679,6 +1798,15 @@
         return;
       }
       setPrototypeIntent(prototypeIntentPage, prototypeScrollDirection);
+      if (expandedFrame?.closest(".prototype-demo")) {
+        const frame = expandedFrame;
+        frame.classList.add("lightbox-prototype-pending");
+        const protectedFrames = new Set(prototypeProtectedFrames);
+        protectedFrames.add(frame);
+        activatePrototype(frame, protectedFrames);
+        syncPrototypeCanvas(frame);
+        revealExpandedPrototype(frame);
+      }
     });
 
     const initialPrototypePage = displayPageFromHash(location.hash) || 1;
@@ -1688,7 +1816,9 @@
     function playNativeMedia(page, restart = true) {
       const frame = page.querySelector(".frame");
       const button = page.querySelector(".live-badge");
-      const media = frame.querySelector(".embedded-media");
+      const mediaItems = [...frame.querySelectorAll(".embedded-media")];
+      const media = mediaItems[0];
+      if (!media) return;
       if (media.matches("video")) {
         const playOnce = media.dataset.playOnce === "true";
         const source = media.dataset.src;
@@ -1720,15 +1850,20 @@
         else media.addEventListener("loadedmetadata", start, { once: true });
         return;
       }
-      const source = media.dataset.src || media.getAttribute("src");
-      const sourceSet = media.dataset.srcset;
-      const sizes = media.dataset.sizes;
-      media.dataset.src = source;
-      ["src", "srcset", "sizes"].forEach(attribute => media.removeAttribute(attribute));
+      mediaItems.forEach(item => {
+        const source = item.dataset.src || item.getAttribute("src");
+        if (source) item.dataset.src = source;
+        ["src", "srcset", "sizes"].forEach(attribute => item.removeAttribute(attribute));
+      });
       window.requestAnimationFrame(() => {
-        if (sizes) media.setAttribute("sizes", sizes);
-        if (sourceSet) media.setAttribute("srcset", sourceSet);
-        media.setAttribute("src", source);
+        mediaItems.forEach(item => {
+          const source = item.dataset.src;
+          const sourceSet = item.dataset.srcset;
+          const sizes = item.dataset.sizes;
+          if (sizes) item.setAttribute("sizes", sizes);
+          if (sourceSet) item.setAttribute("srcset", sourceSet);
+          if (source) item.setAttribute("src", source);
+        });
         frame.classList.remove("native-media-paused");
         button.setAttribute("aria-pressed", "true");
         button.querySelector("span").textContent = "暂停 GIF 动效";
@@ -1739,7 +1874,9 @@
     nativeDemoPages.forEach(page => {
       const frame = page.querySelector(".frame");
       const button = page.querySelector(".live-badge");
-      const media = frame.querySelector(".embedded-media");
+      const mediaItems = [...frame.querySelectorAll(".embedded-media")];
+      const media = mediaItems[0];
+      if (!media) return;
       const playOnce = media.dataset.playOnce === "true";
       page.dataset.mediaEnabled = String(!media.matches("video"));
       page.dataset.mediaVisible = "false";
@@ -1780,7 +1917,9 @@
         if (isPlaying) {
           page.dataset.mediaEnabled = "false";
           frame.classList.add("native-media-paused");
-          ["src", "srcset", "sizes"].forEach(attribute => media.removeAttribute(attribute));
+          mediaItems.forEach(item => {
+            ["src", "srcset", "sizes"].forEach(attribute => item.removeAttribute(attribute));
+          });
         } else {
           page.dataset.mediaEnabled = "true";
           playNativeMedia(page);
@@ -1796,7 +1935,9 @@
 
     const syncNativeDemo = (page, restart = false) => {
       const frame = page.querySelector(".frame");
-      const media = frame.querySelector(".embedded-media");
+      const mediaItems = [...frame.querySelectorAll(".embedded-media")];
+      const media = mediaItems[0];
+      if (!media) return;
       const isVisible = page.dataset.mediaVisible === "true" && !document.hidden;
       if (media.matches("video")) {
         const playOnce = media.dataset.playOnce === "true";
@@ -1810,10 +1951,12 @@
         return;
       }
       if (isVisible && page.dataset.mediaEnabled === "true") {
-        if (!media.getAttribute("src") || restart) playNativeMedia(page, restart);
+        if (mediaItems.some(item => !item.getAttribute("src")) || restart) playNativeMedia(page, restart);
       } else {
         frame.classList.add("native-media-paused");
-        ["src", "srcset", "sizes"].forEach(attribute => media.removeAttribute(attribute));
+        mediaItems.forEach(item => {
+          ["src", "srcset", "sizes"].forEach(attribute => item.removeAttribute(attribute));
+        });
       }
     };
 
@@ -1866,6 +2009,17 @@
       dpr: window.devicePixelRatio || 1
     };
     let responsiveResizeTimer = 0;
+
+    function revealExpandedPrototype(frame, state = frame?._prototypeState) {
+      if (!frame || expandedFrame !== frame || document.hidden) return;
+      if (!state || frame._prototypeState !== state || !state.readyAt || state.failedAt) return;
+      if (frame.classList.contains("failed") || !frame.classList.contains("interactive-ready")) return;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (expandedFrame !== frame || document.hidden || frame._prototypeState !== state) return;
+        if (!state.readyAt || state.failedAt || frame.classList.contains("failed")) return;
+        frame.classList.remove("lightbox-prototype-pending");
+      }));
+    }
 
     window.addEventListener("resize", () => {
       const nextViewport = {
@@ -1958,12 +2112,15 @@
     function closeExpanded(preserveImageIntent = false) {
       if (!expandedFrame) return;
       const frame = expandedFrame;
-      frame.classList.remove("is-expanded");
+      const sourcePage = frame.closest(".page");
+      frame.classList.remove("is-expanded", "lightbox-prototype-pending");
+      sourcePage?.classList.remove("lightbox-source-active");
       frame.style.removeProperty("--lightbox-target-width");
       const button = frame.querySelector(".frame-expand");
       button.setAttribute("aria-label", "放大查看");
       button.title = "放大查看";
       restoreFrameImage(frame);
+      if (sourcePage?.classList.contains("native-demo")) syncNativeDemo(sourcePage);
       expandedFrame = null;
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
@@ -1990,18 +2147,41 @@
         : targetPage > staticImageIntentPage ? 1 : -1;
       setStaticImageIntent(targetPage, targetDirection);
       activateStaticImage(frame.querySelector(":scope > img.static-frame"), true);
+      const sourcePage = frame.closest(".page");
+      sourcePage?.classList.add("lightbox-source-active");
+      const isPrototypeFrame = sourcePage?.classList.contains("prototype-demo");
+      const isNativeFrame = sourcePage?.classList.contains("native-demo");
+      const deferPrototypeReveal = isPrototypeFrame && window.__PORTFOLIO_LIGHTBOX_NAVIGATION__ === true;
+      frame.classList.toggle("lightbox-prototype-pending", deferPrototypeReveal);
+      if (isPrototypeFrame) {
+        const protectedFrames = new Set(prototypeProtectedFrames);
+        protectedFrames.add(frame);
+        activatePrototype(frame, protectedFrames);
+      }
+      if (isNativeFrame && sourcePage.dataset.mediaEnabled === "true") {
+        playNativeMedia(sourcePage, false);
+      }
       const inlineWidth = frame.getBoundingClientRect().width;
       const targetWidth = Math.min(1920, Math.max(1, Math.round(inlineWidth * 1.5)));
       frame.style.setProperty("--lightbox-target-width", `${targetWidth}px`);
       expandedFrame = frame;
       frame.classList.add("is-expanded");
+      if (isPrototypeFrame) {
+        syncPrototypeCanvas(frame);
+        requestAnimationFrame(() => syncPrototypeCanvas(frame));
+        if (deferPrototypeReveal && frame.classList.contains("interactive-ready")) {
+          revealExpandedPrototype(frame);
+        }
+      }
       const button = frame.querySelector(".frame-expand");
       button.setAttribute("aria-label", "关闭放大查看");
       button.title = "关闭";
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");
-      upgradeFrameImage(frame);
+      /* The Figma transition only needs the responsive poster for a brief fallback.
+         Avoid decoding an extra 1920px image while the pooled live iframe is readying. */
+      if (!isPrototypeFrame) upgradeFrameImage(frame);
     }
     document.querySelectorAll(".frame").forEach(frame => {
       const button = document.createElement("button");
@@ -2047,6 +2227,7 @@
         page.classList.toggle("is-current", entry.isIntersecting);
         if (!page.classList.contains("native-demo")) return;
         const media = page.querySelector(".embedded-media");
+        if (!media) return;
         if (media.matches("video.click-to-play")) return;
         const playOnce = media.dataset.playOnce === "true";
         if (playOnce) {
@@ -2200,6 +2381,7 @@
     const gridContext = gridCanvas.getContext("2d");
     const gridCell = 52;
     const gridPointer = { x: -9999, y: -9999 };
+    let gridPointerCell = "";
     const gridGlows = Array.from({ length: 18 }, (_, index) => ({
       x: (index * 7 + 3) % 31,
       y: (index * 11 + 5) % 19,
@@ -2210,70 +2392,128 @@
     let gridInViewport = true;
     let gridVisible = !document.hidden;
     let gridRaf = 0;
+    let gridTimer = 0;
+    let gridResizeRaf = 0;
     let gridLastFrame = 0;
     const constrainedGrid = document.documentElement.dataset.portfolioTier !== "full";
-    const gridFrameInterval = constrainedGrid ? 1000 / 30 : 0;
+    const gridFrameInterval = 1000 / (constrainedGrid ? 30 : 60);
+
+    function cancelHeroGridFrame() {
+      if (gridRaf) {
+        cancelAnimationFrame(gridRaf);
+        gridRaf = 0;
+      }
+      if (gridTimer) {
+        clearTimeout(gridTimer);
+        gridTimer = 0;
+      }
+    }
+
+    function requestHeroGridFrame(immediate = false) {
+      if (reduceMotion || !gridVisible || document.hidden) return;
+      if (immediate && gridTimer) {
+        clearTimeout(gridTimer);
+        gridTimer = 0;
+      }
+      if (gridRaf || gridTimer) return;
+      if (immediate || !gridLastFrame) {
+        gridRaf = requestAnimationFrame(drawHeroGrid);
+        return;
+      }
+      const delay = Math.max(0, gridFrameInterval - (performance.now() - gridLastFrame));
+      gridTimer = window.setTimeout(() => {
+        gridTimer = 0;
+        if (reduceMotion || !gridVisible || document.hidden) return;
+        drawHeroGrid(performance.now());
+      }, delay);
+    }
 
     function resizeHeroGrid() {
       const rect = hero.getBoundingClientRect();
       const dpr = constrainedGrid ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
-      gridWidth = rect.width;
-      gridHeight = rect.height;
-      gridCanvas.width = Math.round(gridWidth * dpr);
-      gridCanvas.height = Math.round(gridHeight * dpr);
+      const nextGridWidth = rect.width;
+      const nextGridHeight = rect.height;
+      const nextCanvasWidth = Math.round(nextGridWidth * dpr);
+      const nextCanvasHeight = Math.round(nextGridHeight * dpr);
+      const backingStoreChanged = gridCanvas.width !== nextCanvasWidth || gridCanvas.height !== nextCanvasHeight;
+      gridWidth = nextGridWidth;
+      gridHeight = nextGridHeight;
+      if (!backingStoreChanged) return;
+      gridCanvas.width = nextCanvasWidth;
+      gridCanvas.height = nextCanvasHeight;
       gridContext.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (reduceMotion) drawHeroGrid(0);
-      else if (!gridRaf) gridRaf = requestAnimationFrame(drawHeroGrid);
+      else requestHeroGridFrame(true);
+    }
+
+    function scheduleHeroGridResize() {
+      if (gridResizeRaf) return;
+      gridResizeRaf = requestAnimationFrame(() => {
+        gridResizeRaf = 0;
+        resizeHeroGrid();
+      });
     }
 
     function drawHeroGrid(time) {
       gridRaf = 0;
-      if (!reduceMotion && gridFrameInterval && gridLastFrame && time - gridLastFrame < gridFrameInterval) {
-        if (gridVisible && !document.hidden) gridRaf = requestAnimationFrame(drawHeroGrid);
-        return;
-      }
       gridLastFrame = time;
+      gridContext.globalAlpha = 1;
       gridContext.clearRect(0, 0, gridWidth, gridHeight);
       const offset = reduceMotion ? 0 : (time * .000025 * gridCell) % gridCell;
       gridContext.lineWidth = 1;
       gridContext.strokeStyle = "rgba(19,19,19,.09)";
+      gridContext.beginPath();
       for (let x = -gridCell + offset; x < gridWidth + gridCell; x += gridCell) {
-        gridContext.beginPath();
         gridContext.moveTo(x, 0);
         gridContext.lineTo(x, gridHeight);
-        gridContext.stroke();
       }
+      gridContext.stroke();
+      gridContext.beginPath();
       for (let y = -gridCell + offset * .35; y < gridHeight + gridCell; y += gridCell) {
-        gridContext.beginPath();
         gridContext.moveTo(0, y);
         gridContext.lineTo(gridWidth, y);
-        gridContext.stroke();
       }
-      gridGlows.forEach(glow => {
+      gridContext.stroke();
+      gridContext.fillStyle = "#0059ff";
+      for (let index = 0; index < gridGlows.length; index += 1) {
+        const glow = gridGlows[index];
         const x = ((glow.x * gridCell + offset * 2) % (gridWidth + gridCell)) - gridCell;
         const y = (glow.y * gridCell) % (gridHeight + gridCell);
         const pulse = reduceMotion ? .065 : .035 + Math.max(0, Math.sin(time * .00045 + glow.phase)) * .08;
-        gridContext.fillStyle = `rgba(0,89,255,${pulse})`;
+        gridContext.globalAlpha = pulse;
         gridContext.fillRect(x + 1, y + 1, gridCell - 2, gridCell - 2);
-      });
+      }
       const activeX = Math.floor((gridPointer.x - offset) / gridCell) * gridCell + offset;
       const activeY = Math.floor((gridPointer.y - offset * .35) / gridCell) * gridCell + offset * .35;
       if (gridPointer.x > -gridCell) {
-        gridContext.fillStyle = "rgba(19,19,19,.14)";
+        gridContext.fillStyle = "#131313";
+        gridContext.globalAlpha = .14;
         gridContext.fillRect(activeX + 1, activeY + 1, gridCell - 2, gridCell - 2);
       }
-      if (!reduceMotion && gridVisible && !document.hidden) gridRaf = requestAnimationFrame(drawHeroGrid);
+      gridContext.globalAlpha = 1;
+      requestHeroGridFrame();
     }
 
     hero.addEventListener("pointermove", event => {
       if (event.pointerType === "touch") return;
-      const rect = hero.getBoundingClientRect();
-      gridPointer.x = event.clientX - rect.left;
-      gridPointer.y = event.clientY - rect.top;
+      const rect = gridCanvas.getBoundingClientRect();
+      const nextX = (event.clientX - rect.left) * (gridWidth / rect.width);
+      const nextY = (event.clientY - rect.top) * (gridHeight / rect.height);
+      const pointerTime = gridLastFrame || performance.now();
+      const offset = (pointerTime * .000025 * gridCell) % gridCell;
+      const nextCell = `${Math.floor((nextX - offset) / gridCell)}:${Math.floor((nextY - offset * .35) / gridCell)}`;
+      gridPointer.x = nextX;
+      gridPointer.y = nextY;
+      if (nextCell === gridPointerCell) return;
+      gridPointerCell = nextCell;
+      requestHeroGridFrame(true);
     }, { passive: true });
     hero.addEventListener("pointerleave", () => {
+      const hadActiveCell = Boolean(gridPointerCell);
+      gridPointerCell = "";
       gridPointer.x = -9999;
       gridPointer.y = -9999;
+      if (hadActiveCell) requestHeroGridFrame(true);
     });
     const syncHeroMotionState = () => {
       hero.classList.toggle("motion-paused", !gridVisible || reduceMotion);
@@ -2282,24 +2522,17 @@
       const wasVisible = gridVisible;
       gridInViewport = entry.isIntersecting;
       gridVisible = gridInViewport && !document.hidden;
-      if (!gridVisible && gridRaf) {
-        cancelAnimationFrame(gridRaf);
-        gridRaf = 0;
-      }
-      if (!wasVisible && gridVisible && !reduceMotion && !gridRaf) gridRaf = requestAnimationFrame(drawHeroGrid);
+      if (!gridVisible) cancelHeroGridFrame();
+      if (!wasVisible && gridVisible) requestHeroGridFrame(true);
       syncHeroMotionState();
     }, { threshold: 0 }).observe(hero);
     document.addEventListener("visibilitychange", () => {
       gridVisible = gridInViewport && !document.hidden;
-      if (!gridVisible && gridRaf) {
-        cancelAnimationFrame(gridRaf);
-        gridRaf = 0;
-      } else if (gridVisible && !reduceMotion && !gridRaf) {
-        gridRaf = requestAnimationFrame(drawHeroGrid);
-      }
+      if (!gridVisible) cancelHeroGridFrame();
+      else requestHeroGridFrame(true);
       syncHeroMotionState();
     });
-    window.addEventListener("resize", resizeHeroGrid, { passive: true });
+    window.addEventListener("resize", scheduleHeroGridResize, { passive: true });
     resizeHeroGrid();
     syncHeroMotionState();
 
@@ -2344,9 +2577,9 @@
     updateScrollUI();
   </script>
   <!-- INTERVIEW REHEARSAL MODULE — remove these two scripts and the stylesheet link above to delete. -->
-  <script src="portfolio-lightbox-navigation.js?v=877870fa9ed1"></script>
-  <script src="portfolio-page-transition.js?v=877870fa9ed1"></script>
-  <script src="portfolio-project1-speaker-notes.js?v=877870fa9ed1"></script>
-  <script src="portfolio-speaker-notes.js?v=877870fa9ed1"></script>
+  <script src="portfolio-lightbox-navigation.js?v=8f51a417a204"></script>
+  <script src="portfolio-page-transition.js?v=8f51a417a204"></script>
+  <script src="portfolio-project1-speaker-notes.js?v=8f51a417a204"></script>
+  <script src="portfolio-speaker-notes.js?v=8f51a417a204"></script>
 </body>
 </html>

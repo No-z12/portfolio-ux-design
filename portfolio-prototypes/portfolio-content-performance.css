@@ -1,0 +1,50 @@
+/* Shared content-stage contract for projects 02, 03 and the appendix.
+   Hero artwork intentionally stays outside this file. */
+
+.page .page-head,
+.page .frame,
+.page .page-foot,
+.page .interaction-guide {
+  width: min(100%, 1280px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page .frame:not(.is-long) {
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+}
+
+.page .frame > img.static-frame {
+  object-fit: cover;
+}
+
+/* Figma keeps its authored 1920x1080 viewport internally.  Only the outer
+   presentation frame responds, matching the Project 01 display contract. */
+.frame[data-portfolio-prototype="true"] iframe {
+  left: var(--prototype-canvas-left, 0px) !important;
+  top: var(--prototype-canvas-top, 0px) !important;
+  width: 1920px !important;
+  height: 1080px !important;
+  max-width: none !important;
+  border: 0 !important;
+  transform: scale(var(--prototype-canvas-scale, 1)) !important;
+  transform-origin: 0 0 !important;
+  background: #f2f3f5;
+  transition: opacity .28s ease;
+}
+
+/* Inline artwork is capped at 1280px.  The lightbox may grow to 1.5x the
+   actual inline width, but never beyond the 1920px delivery master. */
+body.lightbox-open .frame.is-expanded:not(.is-long) {
+  width: min(var(--lightbox-target-width, 1920px), calc(100vw - 144px), 167.111vh, 1920px) !important;
+  max-width: none !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+@media (max-width: 650px) {
+  body.lightbox-open .frame.is-expanded:not(.is-long) {
+    width: min(var(--lightbox-target-width, 1920px), 96vw, 160vh, 1920px) !important;
+  }
+}
+

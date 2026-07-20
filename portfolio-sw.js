@@ -1,4 +1,4 @@
-const BUILD_REV = '877870fa9ed1';
+const BUILD_REV = '8f51a417a204';
 const CACHE_PREFIX = 'portfolio-runtime-';
 const CACHE_NAME = `${CACHE_PREFIX}${BUILD_REV}`;
 
