@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Vibe Coding：AI 协作重构 B 端设计交付链路">
   <title>Vibe Coding — AI 协作重构 B 端设计交付链路</title>
-  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-performance.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-content-performance.css?v=8f51a417a204">
-  <script src="portfolio-performance.js?v=8f51a417a204"></script>
+  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-performance.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-content-performance.css?v=0f6f0905545f">
+  <script src="portfolio-performance.js?v=0f6f0905545f"></script>
   <style>
     @font-face{font-family:"Portfolio DIN";src:local("DINPro-Bold"),local("DIN Pro Bold"),local("D-DIN-PRO-Bold");font-display:swap}
     :root{--ink:#131313;--paper:#edf1f6;--muted:#727b88;--line:rgba(19,19,19,.12);--violet:#5a19ff;--blue:#2368ff;--cyan:#63d8ff;--font:"Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",Arial,sans-serif;--heading:"Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",Arial,sans-serif}
@@ -108,9 +108,9 @@
     @media(max-width:1050px){.projects{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:650px){.projects{grid-template-columns:1fr}}
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-project-meta.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-project-header.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-typography.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-project-meta.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=0f6f0905545f">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -206,10 +206,10 @@ const p4Frame=document.querySelector('#p04 .frame'),p4Guide=document.createEleme
     let tick=false;function update(){tick=false;const d=document.documentElement,h=d.scrollHeight-d.clientHeight,y=d.scrollTop;document.querySelector('.progress').style.width=(h?y/h*100:0)+'%';document.querySelector('.top').classList.toggle('show',y>700);document.body.classList.toggle('story-started',y>document.querySelector('.hero').offsetHeight*.62);if(!reduce)visibleDepthPages.forEach(p=>{const frame=p.querySelector('.frame');if(frame?.classList.contains('is-expanded'))return;const r=p.getBoundingClientRect();if(!frame||r.bottom<0||r.top>innerHeight)return;const distance=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight));frame.style.setProperty('--shift',(-distance*6).toFixed(2)+'px')})}addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});update();document.querySelector('.top').onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   </script>
   <!-- INTERVIEW REHEARSAL MODULE — remove these two scripts and the stylesheet link above to delete. -->
-  <script src="portfolio-content-performance.js?v=8f51a417a204"></script>
-  <script src="portfolio-lightbox-navigation.js?v=8f51a417a204"></script>
-  <script src="portfolio-page-transition.js?v=8f51a417a204"></script>
-  <script src="portfolio-project3-speaker-notes.js?v=8f51a417a204"></script>
-  <script src="portfolio-speaker-notes.js?v=8f51a417a204"></script>
+  <script src="portfolio-content-performance.js?v=0f6f0905545f"></script>
+  <script src="portfolio-lightbox-navigation.js?v=0f6f0905545f"></script>
+  <script src="portfolio-page-transition.js?v=0f6f0905545f"></script>
+  <script src="portfolio-project3-speaker-notes.js?v=0f6f0905545f"></script>
+  <script src="portfolio-speaker-notes.js?v=0f6f0905545f"></script>
 </body>
 </html>

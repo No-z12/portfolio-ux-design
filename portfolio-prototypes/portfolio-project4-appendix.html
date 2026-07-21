@@ -9,10 +9,10 @@
   <link rel="dns-prefetch" href="//www.figma.com">
   <link rel="preconnect" href="https://embed.figma.com" crossorigin>
   <link rel="preconnect" href="https://www.figma.com" crossorigin>
-  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-performance.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-content-performance.css?v=8f51a417a204">
-  <script src="portfolio-performance.js?v=8f51a417a204"></script>
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-performance.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-content-performance.css?v=0f6f0905545f">
+  <script src="portfolio-performance.js?v=0f6f0905545f"></script>
   <style>
     @font-face{font-family:"Portfolio DIN";src:local("DINPro-Bold"),local("DIN Pro Bold"),local("D-DIN-PRO-Bold");font-display:swap}
     :root{--ink:#131313;--paper:#edf1f6;--muted:#727b88;--line:rgba(19,19,19,.12);--slate:#526175;--blue:#4568ff;--font:"Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",Arial,sans-serif;--heading:"Alibaba PuHuiTi 3.0 115 Black","AlibabaPuHuiTi-3-115-Black","Alibaba PuHuiTi 3.0","Microsoft YaHei","PingFang SC",sans-serif}
@@ -39,7 +39,7 @@
     button.live-badge{cursor:pointer}button.live-badge:hover{color:var(--ink)}
     .live-badge i{width:7px;height:7px;border-radius:50%;background:#24d990;box-shadow:0 0 0 4px rgba(36,217,144,.15)}
     .frame>.static-frame{z-index:3;transition:opacity .42s ease}
-    .frame>.embedded-media{position:absolute;z-index:4;inset:auto;left:var(--media-x);top:var(--media-y);width:var(--media-w);height:var(--media-h);object-fit:cover;border-radius:var(--media-radius,0);transform:rotate(var(--media-rotation,0deg)) scaleX(var(--media-scale-x,1));transform-origin:center;pointer-events:none;transition:opacity .22s ease}
+    .frame>.embedded-media{position:absolute;z-index:4;inset:auto;left:var(--media-x);top:var(--media-y);width:var(--media-w);height:var(--media-h);object-fit:cover;object-position:var(--media-position,center);border-radius:var(--media-radius,0);transform:rotate(var(--media-rotation,0deg)) scaleX(var(--media-scale-x,1));transform-origin:center;pointer-events:none;transition:opacity .22s ease}
     .frame>.native-gif:not(.is-media-ready){opacity:0}
     .frame>.media-foreground{position:absolute;z-index:5;inset:auto;left:var(--media-x);top:var(--media-y);width:var(--media-w);height:var(--media-h);object-fit:fill;pointer-events:none;transition:opacity .22s ease}
     .frame.native-media-paused>.native-gif,.frame.native-media-paused>.media-foreground{opacity:0}
@@ -62,8 +62,8 @@
     @media(max-width:760px){.interaction-guide{align-items:flex-start;flex-direction:column;gap:7px;margin-left:-4px;margin-right:-4px}.interaction-guide__steps{width:100%;align-items:stretch;flex-direction:column}.interaction-guide__step{width:100%}.interaction-guide__copy strong,.interaction-guide__copy span{white-space:normal}}
     @media(prefers-reduced-motion:reduce){.interaction-guide__step,.frame>.embedded-media{transition:none}}
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-project-header.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-typography.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=0f6f0905545f">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -155,19 +155,20 @@
     const moduleForPage=n=>chapters.find(chapter=>n>=chapter.start&&n<=chapter.end)||chapters[0];
     const FIGMA_FILE='2vQipjJOKXdAFosgtJHBMA';
     const FIGMA_TOKEN='wl9MO0lHPfi3e5Lc-1';
-    const PROTOTYPE_NODES={32:'1:12414',33:'1:12532'};
+    const PROTOTYPE_NODES={33:'1:12532'};
     const GIFS={
+      32:[{src:'assets/perf-media/project4-p3-help-framework.gif?v=20260721-p4p3gif1',alt:'帮助体系分层策略与通用框架动效演示',x:36.075,y:68.4407407,w:11.4878125,h:11.9907407,radius:'3.627% / 6.178%',position:'left center'}],
       11:[
         {src:'assets/perf-media/project4-p11-mobile-layout-256w.webp',alt:'P11 移动端工作台布局 Smart Animate 演示',x:33.1771,y:24.9074,w:13.3333,h:14.0741},
         {src:'assets/perf-media/project4-p11-web-layout-256w.webp',alt:'P11 Web 端工作台布局 Smart Animate 演示',x:82.5,y:24.9074,w:13.3333,h:14.0741}
       ],
-      14:[{kind:'video',src:'assets/perf-media/workbench-p1-p11-p4-p14-96w.mp4',alt:'P14 移动端工作台同源配置动效',x:75.7,y:25.2778,w:4.1217,h:7.0923,rotation:-1}],
+      14:[{kind:'video',src:'assets/perf-media/workbench-p1-p11-p4-p14-96w.mp4',alt:'P14 移动端工作台同源配置动效',x:75.7,y:25.2778,w:4.1217,h:7.0923,rotation:-1,loop:false}],
       33:[
         {kind:'video',src:'assets/perf-media/project4-p33-dropdown-search-320w.mp4',alt:'下拉搜索框帮助动效',x:55.8301,y:25.1678,w:9.0497,h:9.555},
         {kind:'video',src:'assets/perf-media/project4-p33-button-dialog-320w.mp4',alt:'按钮与弹窗帮助动效',x:62.1695,y:25.0861,w:9.0956,h:9.6367},
         {kind:'video',src:'assets/perf-media/project4-p33-dropdown-320w.mp4',alt:'下拉框帮助动效',x:68.6007,y:25.0861,w:9.0956,h:9.6367}
       ],
-      34:[{kind:'video',src:'assets/perf-media/project4-p34-ai-helper-128w.mp4',alt:'AI 助手即时提示动效',x:54.9479,y:43.9815,w:3.0729,h:6.6667,flipX:true}]
+      34:[{kind:'video',src:'assets/perf-media/project4-p34-ai-helper-128w.mp4',alt:'AI 助手即时提示动效',x:54.9479,y:43.9815,w:3.0729,h:6.6667,flipX:true,loop:false}]
     };
     const MEDIA_FOREGROUNDS={
       14:[{src:'assets/project4/p14-gif-foreground@3x.png',x:63.9335378,y:26.3888889,w:16.5937996,h:11.215549}]
@@ -179,14 +180,14 @@
       33:{label:'交互提示',action:'点击右侧示例卡片顶部的「‹ / ›」箭头',result:'切换 3 组帮助示例，查看不同图片与对应说明'},
       34:{label:'动效演示',action:'AI 助手即时反馈',result:'进入本页后从头播放'}
     };
-    const gifMarkup=items=>(items||[]).map(item=>item.kind==='video'?`<video class="embedded-media native-gif native-video" data-src="${item.src}" muted loop playsinline preload="none" aria-label="${item.alt}" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%;--media-rotation:${item.rotation||0}deg;--media-scale-x:${item.flipX?-1:1}"></video>`:`<img class="embedded-media native-gif" data-src="${item.src}" data-srcset="${item.srcset||''}" data-sizes="${item.sizes||''}" alt="${item.alt}" loading="lazy" decoding="async" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%;--media-rotation:${item.rotation||0}deg;--media-scale-x:${item.flipX?-1:1}">`).join('');
+    const gifMarkup=items=>(items||[]).map(item=>item.kind==='video'?`<video class="embedded-media native-gif native-video" data-src="${item.src}" muted${item.loop===false?'':' loop'} playsinline preload="none" aria-label="${item.alt}" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%;--media-rotation:${item.rotation||0}deg;--media-scale-x:${item.flipX?-1:1};--media-radius:${item.radius||0};--media-position:${item.position||'center'}"></video>`:`<img class="embedded-media native-gif" data-src="${item.src}" data-srcset="${item.srcset||''}" data-sizes="${item.sizes||''}" alt="${item.alt}" loading="lazy" decoding="async" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%;--media-rotation:${item.rotation||0}deg;--media-scale-x:${item.flipX?-1:1};--media-radius:${item.radius||0};--media-position:${item.position||'center'}">`).join('');
     const foregroundMarkup=items=>(items||[]).map(item=>`<img class="media-foreground" src="${item.src}" alt="" aria-hidden="true" loading="lazy" decoding="async" style="--media-x:${item.x}%;--media-y:${item.y}%;--media-w:${item.w}%;--media-h:${item.h}%">`).join('');
     const root=document.querySelector('#pages'),responsiveBase='assets/responsive/project4/webp',responsiveVersion='20260720-content1',responsiveWidths=[640,960,1280,1440,1920],responsiveSizes='(max-width: 650px) 100vw, (max-width: 1050px) calc(100vw - 28px), (max-width: 1380px) calc(100vw - 142px), (max-width: 1566px) calc(100vw - 286px), 1280px',longTileHeights=[1080,1080,1080,1080,570];
     DISPLAY_ORDER.forEach((sourcePage,orderIndex)=>{
       const displayPage=orderIndex+1,page=pages[sourcePage-1],pad=String(displayPage).padStart(2,'0'),sourcePad=String(sourcePage).padStart(2,'0'),isPrototype=Boolean(PROTOTYPE_NODES[sourcePage]),hasGif=Boolean(GIFS[sourcePage]),isInteractive=isPrototype||hasGif,defaultSrc=`${responsiveBase}/1280/${sourcePage}.webp?v=${responsiveVersion}`,fullSrc=`${responsiveBase}/1920/${sourcePage}.webp?v=${responsiveVersion}`,srcset=responsiveWidths.map(width=>`${responsiveBase}/${width}/${sourcePage}.webp?v=${responsiveVersion} ${width}w`).join(', '),alt=`附录第 ${displayPage} 页：${page.title}（源页 ${sourcePad}）`,staticMarkup=page.long?`<div class="static-frame static-frame-tiles" role="img" aria-label="${alt}">${longTileHeights.map((height,index)=>{const part=String(index+1).padStart(2,'0'),tileDefault=`${responsiveBase}/23-tiles/1280/part-${part}.webp?v=${responsiveVersion}`,tileSrcset=responsiveWidths.map(width=>`${responsiveBase}/23-tiles/${width}/part-${part}.webp?v=${responsiveVersion} ${width}w`).join(', ');return `<img src="${tileDefault}" srcset="${tileSrcset}" sizes="${responsiveSizes}" data-responsive-src="${tileDefault}" data-responsive-srcset="${tileSrcset}" data-responsive-sizes="${responsiveSizes}" alt="" aria-hidden="true" loading="lazy" fetchpriority="low" decoding="async" width="1920" height="${height}">`}).join('')}</div>`:`<img class="static-frame" src="${defaultSrc}" srcset="${srcset}" sizes="${responsiveSizes}" data-responsive-src="${defaultSrc}" data-responsive-srcset="${srcset}" data-responsive-sizes="${responsiveSizes}" data-full-src="${fullSrc}" data-full-srcset="${srcset}" alt="${alt}" loading="lazy" fetchpriority="low" decoding="async" width="1920" height="1080">`;
       if(page.chapter){const chapter=page.chapter;root.insertAdjacentHTML('beforeend',`<section class="chapter" id="${chapter[0]}" data-index="${chapter[1]}"><div class="chapter-copy"><span>CHAPTER ${chapter[1]}</span><h2>${chapter[2]}</h2><p>${chapter[3]}</p></div></section>`)}
       const badge=isPrototype?'<span class="live-badge"><i></i><span>整页交互 / 动效演示</span></span>':hasGif?'<button class="live-badge" type="button" aria-pressed="false" title="切换 GIF 播放状态"><i></i><span>播放 GIF 动效</span></button>':'';
-      root.insertAdjacentHTML('beforeend',`<article class="page${isInteractive?' interactive demo-page':''}${isPrototype?' prototype-demo':''}${hasGif?' native-demo':''}" id="p${pad}" data-source-page="${sourcePage}"><header class="page-head"><span class="page-no">P${pad} / 35</span><span class="page-title">${page.title}</span>${badge}</header><div class="frame${page.long?' is-long':''}" data-page="${sourcePage}" data-display-page="${displayPage}">${staticMarkup}${gifMarkup(GIFS[sourcePage])}${foregroundMarkup(MEDIA_FOREGROUNDS[sourcePage])}<span class="fallback">交互内容加载失败，已保留静态首帧</span><button class="frame-expand" aria-label="放大查看"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg></button></div></article>`);
+      root.insertAdjacentHTML('beforeend',`<article class="page${isInteractive?' interactive demo-page':''}${isPrototype?' prototype-demo':''}${hasGif?' native-demo':''}" id="p${pad}" data-source-page="${sourcePage}"><header class="page-head"><span class="page-no">P${pad} / 35</span><span class="page-title">${page.title}</span>${badge}</header><div class="frame${page.long?' is-long':''}" data-page="${sourcePage}" data-display-page="${displayPage}"${hasGif?' data-lightbox-navigable="true"':''}>${staticMarkup}${gifMarkup(GIFS[sourcePage])}${foregroundMarkup(MEDIA_FOREGROUNDS[sourcePage])}<span class="fallback">交互内容加载失败，已保留静态首帧</span><button class="frame-expand" aria-label="放大查看"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg></button></div></article>`);
     });
 
     const guideMouseIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 3v5"/></svg>';
@@ -271,7 +272,7 @@
       if(button){button.setAttribute('aria-pressed',String(playing));button.querySelector('span').textContent=playing?'暂停 GIF 动效':'播放 GIF 动效'}
     }
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,nativeDemos=[...document.querySelectorAll('.native-demo')];
-    const syncGifArticle=(article,restart=false)=>{const frame=article.querySelector('.frame'),shouldPlay=!reduce&&article.dataset.gifEnabled==='true'&&article.dataset.gifVisible==='true'&&!document.hidden&&!frame.classList.contains('interactive-ready');setGifState(article,shouldPlay,restart&&shouldPlay)};
+    const syncGifArticle=(article,restart=false)=>{const frame=article.querySelector('.frame'),shouldPlay=!reduce&&article.dataset.gifEnabled==='true'&&(article.dataset.gifVisible==='true'||frame.classList.contains('is-expanded'))&&!document.hidden&&!frame.classList.contains('interactive-ready');setGifState(article,shouldPlay,restart&&shouldPlay)};
     nativeDemos.forEach(article=>{article.dataset.gifEnabled=String(!reduce);article.dataset.gifVisible='false';article.querySelectorAll('.native-gif').forEach(media=>media.addEventListener(media.matches('video')?'loadeddata':'load',()=>{if(article.dataset.gifPlaying==='true')media.classList.add('is-media-ready')}));setGifState(article,false);const button=article.querySelector('button.live-badge');button?.addEventListener('click',()=>{article.dataset.gifEnabled=String(article.dataset.gifEnabled!=='true');syncGifArticle(article,true)})});
     if('IntersectionObserver'in window){const gifFocus=new IntersectionObserver(entries=>entries.forEach(entry=>{entry.target.dataset.gifVisible=String(entry.isIntersecting);syncGifArticle(entry.target,entry.isIntersecting)}),{rootMargin:'80px 0px',threshold:0});nativeDemos.forEach(article=>gifFocus.observe(article))}else nativeDemos.forEach(article=>{article.dataset.gifVisible='true';syncGifArticle(article)});
     document.addEventListener('visibilitychange',()=>{
@@ -316,13 +317,13 @@
     const lightbox=document.querySelector('.lightbox-backdrop');let expandedFrame=null;
     const restoreResponsiveImage=frame=>{const img=frame?.querySelector(':scope>img[data-full-src]');if(!img?.dataset.savedSrcset)return;img.src=img.dataset.fallbackSrc;img.setAttribute('srcset',img.dataset.savedSrcset);img.setAttribute('sizes',img.dataset.savedSizes);delete img.dataset.fallbackSrc;delete img.dataset.savedSrcset;delete img.dataset.savedSizes};
     const upgradeExpandedImage=frame=>{const img=frame.querySelector(':scope>img[data-full-src]');if(!img)return;const fullSrc=img.dataset.fullSrc,preload=new Image();let applied=false;const apply=()=>{if(applied||expandedFrame!==frame||!frame.classList.contains('is-expanded'))return;applied=true;img.dataset.fallbackSrc=img.getAttribute('src')||fullSrc;img.dataset.savedSrcset=img.getAttribute('srcset')||'';img.dataset.savedSizes=img.getAttribute('sizes')||'';img.removeAttribute('srcset');img.removeAttribute('sizes');img.src=fullSrc};preload.onload=apply;preload.src=fullSrc;if(preload.decode)preload.decode().then(apply).catch(()=>{})};
-    const closeExpanded=()=>{if(!expandedFrame)return;const frame=expandedFrame;expandedFrame=null;restoreResponsiveImage(frame);frame.classList.remove('is-expanded');const button=frame.querySelector('.frame-expand');button.setAttribute('aria-label','放大查看');button.title='放大查看';lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open')};
-    const openExpanded=frame=>{if(expandedFrame===frame){closeExpanded();return}if(expandedFrame)closeExpanded();expandedFrame=frame;frame.classList.add('is-expanded');const button=frame.querySelector('.frame-expand');button.setAttribute('aria-label','关闭放大查看');button.title='关闭';lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');upgradeExpandedImage(frame)};
+    const closeExpanded=()=>{if(!expandedFrame)return;const frame=expandedFrame;expandedFrame=null;restoreResponsiveImage(frame);frame.classList.remove('is-expanded');const article=frame.closest('.native-demo');if(article)syncGifArticle(article);const button=frame.querySelector('.frame-expand');button.setAttribute('aria-label','放大查看');button.title='放大查看';lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open')};
+    const openExpanded=frame=>{if(expandedFrame===frame){closeExpanded();return}if(expandedFrame)closeExpanded();expandedFrame=frame;frame.classList.add('is-expanded');const article=frame.closest('.native-demo');if(article)syncGifArticle(article,true);const button=frame.querySelector('.frame-expand');button.setAttribute('aria-label','关闭放大查看');button.title='关闭';lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');upgradeExpandedImage(frame)};
     document.querySelectorAll('.frame').forEach(frame=>{const img=frame.querySelector('.static-frame'),button=frame.querySelector('.frame-expand');if(!frame.classList.contains('is-long')&&!frame.closest('.prototype-demo'))img.addEventListener('click',()=>openExpanded(frame));button.addEventListener('click',event=>{event.stopPropagation();openExpanded(frame)})});lightbox.addEventListener('click',closeExpanded);addEventListener('keydown',event=>{if(event.key==='Escape')closeExpanded()});
     let tick=false;function update(){tick=false;const doc=document.documentElement,height=doc.scrollHeight-doc.clientHeight,y=doc.scrollTop;document.querySelector('.progress').style.width=(height?y/height*100:0)+'%';document.querySelector('.top').classList.toggle('show',y>700);document.body.classList.toggle('story-started',y>hero.offsetHeight*.62);if(!reduce)visibleDepthPages.forEach(article=>{const rect=article.getBoundingClientRect(),frame=depthFrames.get(article);if(!frame||frame.classList.contains('is-expanded')||rect.bottom<0||rect.top>innerHeight)return;const distance=Math.max(-1,Math.min(1,(rect.top+rect.height/2-innerHeight/2)/innerHeight));frame.style.setProperty('--shift',(-distance*6).toFixed(2)+'px')})}addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',()=>{if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});update();document.querySelector('.top').onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   </script>
-  <script src="portfolio-content-performance.js?v=8f51a417a204"></script>
-  <script src="portfolio-lightbox-navigation.js?v=8f51a417a204"></script>
-  <script src="portfolio-page-transition.js?v=8f51a417a204"></script>
+  <script src="portfolio-content-performance.js?v=0f6f0905545f"></script>
+  <script src="portfolio-lightbox-navigation.js?v=0f6f0905545f"></script>
+  <script src="portfolio-page-transition.js?v=0f6f0905545f"></script>
 </body>
 </html>

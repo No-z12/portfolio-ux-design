@@ -12,8 +12,8 @@
     1920
   ],
   "pixelVerification": "decoded RGBA equals generated tier RGBA",
-  "source1920PngBytes": 21603060,
-  "allGeneratedWebpBytes": 32311016,
+  "source1920PngBytes": 21268896,
+  "allGeneratedWebpBytes": 32124388,
   "pages": [
     {
       "sourcePage": 2,
@@ -346,7 +346,7 @@
     {
       "sourcePage": 10,
       "source": "assets/responsive/project1/1920/10.png",
-      "sourceBytes": 537831,
+      "sourceBytes": 430556,
       "normalizedSize": [
         1920,
         1080
@@ -355,32 +355,32 @@
         {
           "width": 640,
           "height": 360,
-          "bytes": 53016,
-          "sha256": "37484ab5163525b14882fb0b860affcdbb6dbb152acfa43916dbbcc3889c7c09"
+          "bytes": 50800,
+          "sha256": "fbcdce2f54660003ddf846fb4564a380c57189ad6610d8823584ccac21a9e238"
         },
         {
           "width": 960,
           "height": 540,
-          "bytes": 97254,
-          "sha256": "14364ac03fe9ea1f244318e2c05371938f88ab9033bb17139e40f249fb36d97d"
+          "bytes": 93714,
+          "sha256": "11085bd502099c971d1b7ff38fdded3add470cf7fad25e703ea9c013851e115b"
         },
         {
           "width": 1280,
           "height": 720,
-          "bytes": 155786,
-          "sha256": "d17f8097b9277500c0db019e26a212cbb72548cbe84c69318f6eee8fdcb737c3"
+          "bytes": 149350,
+          "sha256": "3bbe5fff3357dd62b9f0970b437ecd21df27abb35b3b38ddd15378050e3e6b6a"
         },
         {
           "width": 1440,
           "height": 810,
-          "bytes": 192966,
-          "sha256": "c9e2d43abf710b1594ff51c26792227eae17a073236a67f7d8db68d204371014"
+          "bytes": 180678,
+          "sha256": "87c762f7c59e2203a962d9f9e7193ff1c24b21d11815cb84529475e26f631e34"
         },
         {
           "width": 1920,
           "height": 1080,
-          "bytes": 268116,
-          "sha256": "eb529486d295e27a17fee2cbec7618a0cf55b83b100ce3be26a9278fa83764e6"
+          "bytes": 235688,
+          "sha256": "f65ce0b23c3c2873302007fcd50d7bb2ddeb4886c1ba932537abe68ad8fd57ba"
         }
       ]
     },
@@ -1002,7 +1002,7 @@
     {
       "sourcePage": 26,
       "source": "assets/responsive/project1/1920/26.png",
-      "sourceBytes": 847858,
+      "sourceBytes": 489285,
       "normalizedSize": [
         1920,
         1080
@@ -1011,32 +1011,32 @@
         {
           "width": 640,
           "height": 360,
-          "bytes": 89906,
-          "sha256": "1d158cbf59e81bb923f2f1e2399a43108331d3585504059cf8e00c942d4b25f8"
+          "bytes": 88264,
+          "sha256": "d5310938cd4d1af4a0e0ef4b48ce0458619dfd5e37225d61587e19447d5ecf6d"
         },
         {
           "width": 960,
           "height": 540,
-          "bytes": 168940,
-          "sha256": "8a5a57715f0264ee8e79c85ca8f8352f6b3ce8de741147fde6adb372271420ee"
+          "bytes": 164222,
+          "sha256": "884e82d1ce3ebafa409c7bd8fc1a50b2ccb91f940e04b8c88b41c1103961e5e6"
         },
         {
           "width": 1280,
           "height": 720,
-          "bytes": 265976,
-          "sha256": "a70ee209bffa5979d4bd85fa8cb2512bd6a149f44bd3f3f7ec99b35fbc4f661f"
+          "bytes": 255890,
+          "sha256": "088e86465741aa4596990bc115d9b23d1a963327f02f0666c9b2d7a48274cecf"
         },
         {
           "width": 1440,
           "height": 810,
-          "bytes": 328636,
-          "sha256": "e0e67a3f7bac8f922c2c1f81dccefefa52355d844fe4b428b1a2f43fa507d96f"
+          "bytes": 308760,
+          "sha256": "5b9449321a79f9be286dd3cd22114cc1127230dd4c05c7ca5640493e6ee9b620"
         },
         {
           "width": 1920,
           "height": 1080,
-          "bytes": 429722,
-          "sha256": "f163913b465cd9da1c3816b4d7268ddd9ee7fec34eaf919ea0cb504909cf3cce"
+          "bytes": 239732,
+          "sha256": "50302bec3b9e93742169cd960a816685cb98cf7c9d0daa0043c3010c1d1d1081"
         }
       ]
     },
@@ -1289,7 +1289,7 @@
     {
       "sourcePage": 33,
       "source": "assets/responsive/project1/1920/33.png",
-      "sourceBytes": 1025304,
+      "sourceBytes": 1156988,
       "normalizedSize": [
         1920,
         1080
@@ -1298,32 +1298,32 @@
         {
           "width": 640,
           "height": 360,
-          "bytes": 98544,
-          "sha256": "81416c133e483c2163bd2e8311906c89a0ca717a3e0b28aa9882055363dab8ba"
+          "bytes": 97944,
+          "sha256": "73db1ab7a993772a925a54b109fd02de6ff40147d785c1df533e05a9166e47ff"
         },
         {
           "width": 960,
           "height": 540,
-          "bytes": 189390,
-          "sha256": "748f1114cf4e72b8c77645a3e81d2d97f78afa6b19983e305b20c3322a0ba5ea"
+          "bytes": 193710,
+          "sha256": "0261ac48aaba7b2b846c319f78bb8fcf434efac812a75730075dc2769d208396"
         },
         {
           "width": 1280,
           "height": 720,
-          "bytes": 333240,
-          "sha256": "a9b31b277d0cc3505214c91bb50507c24514b9d98877e3cfb90786d596cda850"
+          "bytes": 360540,
+          "sha256": "171c67a7fa6c4b9a06a82550776bfc8ba6abe767d607f69d90e744c303a652db"
         },
         {
           "width": 1440,
           "height": 810,
-          "bytes": 429818,
-          "sha256": "9ea605fb3a504122894d060463214eaa48843ba18be302c2149da8b1d9dc88fb"
+          "bytes": 466070,
+          "sha256": "9649386842bd890bcde41fa3969931181cdfab9dfe50b1105fc9eb850ed2628d"
         },
         {
           "width": 1920,
           "height": 1080,
-          "bytes": 627486,
-          "sha256": "c701ad1877f96fdd727993aaa8a29b1b938c957ceebdf18b4f4f18896608ff5d"
+          "bytes": 656806,
+          "sha256": "5240827c6fad9c3dae392f1b0df2da8f1b2e9f07a733191d2bcaeedcc63c5366"
         }
       ]
     },

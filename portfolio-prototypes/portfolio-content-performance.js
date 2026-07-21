@@ -3,7 +3,7 @@
   const configs = {
     'portfolio-project2-ai-agent.html': {
       key: 'project2',
-      prototypeSelector: '.interactive .frame'
+      prototypeSelector: '.prototype-demo .frame'
     },
     'portfolio-project3-vibe-coding.html': {
       key: 'project3',

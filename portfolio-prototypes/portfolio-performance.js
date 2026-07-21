@@ -1,5 +1,5 @@
 (() => {
-  const BUILD_REV = '8f51a417a204';
+  const BUILD_REV = '0f6f0905545f';
   const root = document.documentElement;
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -57,6 +57,8 @@
     const prefetchedDocuments = new Set();
     const currentDocument = new URL(location.href);
     const documentBase = new URL(window.PortfolioDocumentBase || '.', document.baseURI);
+    let previousDocumentPath = '';
+    try { previousDocumentPath = sessionStorage.getItem('portfolio-previous-document') || ''; } catch (_) {}
     currentDocument.hash = '';
 
     const appendDocumentPrefetch = rawHref => {
@@ -64,7 +66,7 @@
       try { target = new URL(rawHref, documentBase); } catch (_) { return; }
       if (target.origin !== location.origin || !/\.html$/i.test(target.pathname)) return;
       target.hash = '';
-      if (target.href === currentDocument.href || prefetchedDocuments.has(target.href) || prefetchedDocuments.size >= 4) return;
+      if (target.href === currentDocument.href || target.pathname === previousDocumentPath || prefetchedDocuments.has(target.href) || prefetchedDocuments.size >= 4) return;
 
       prefetchedDocuments.add(target.href);
       const hint = document.createElement('link');

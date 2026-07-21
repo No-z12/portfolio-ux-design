@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="SaaS 低代码 0→1 全链路设计作品集项目">
   <title>SaaS 低代码 0→1 全链路设计</title>
-  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-performance.css?v=8f51a417a204">
-  <script src="portfolio-performance.js?v=8f51a417a204"></script>
+  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-performance.css?v=0f6f0905545f">
+  <script src="portfolio-performance.js?v=0f6f0905545f"></script>
   <link rel="dns-prefetch" href="//embed.figma.com">
   <link rel="dns-prefetch" href="//www.figma.com">
   <link rel="preconnect" href="https://embed.figma.com" crossorigin>
@@ -1030,9 +1030,9 @@
     @media (max-width:1050px) { .projects { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width:650px) { .projects { grid-template-columns: 1fr; } }
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-project-meta.css?v=8f51a417a204">
-  <link rel="stylesheet" href="portfolio-project-header.css?v=8f51a417a204">
+  <link rel="stylesheet" href="portfolio-typography.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-project-meta.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=0f6f0905545f">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -1091,7 +1091,7 @@
 
   <button class="top" type="button" aria-label="返回顶部">↑</button>
 
-  <script src="portfolio-project1-interaction-guides.js?v=8f51a417a204"></script>
+  <script src="portfolio-project1-interaction-guides.js?v=0f6f0905545f"></script>
   <script>
     const FIGMA_FILE = "s8kmgucUlwLnqj90hKE8xF";
     const FIGMA_TOKEN = "HfM09U8aV9AyiBuD-1";
@@ -1108,7 +1108,7 @@
     };
     const SOURCE_PAGES = Array.from({ length: 33 }, (_, index) => index + 2);
     const TOTAL_PAGES = SOURCE_PAGES.length;
-    const PROTOTYPE_PAGES = new Set([8, 10, 20, 24, 26, 33]);
+    const PROTOTYPE_PAGES = new Set([8, 20, 24]);
     const PROTOTYPE_SOURCES = {
       8: {
         file: "2ZLfxsIcv67SoVBlp2Hfod",
@@ -1142,6 +1142,21 @@
           }
         ]
       },
+      10: {
+        kind: "gif-group",
+        lightboxNavigable: true,
+        items: [
+          {
+            src: "assets/perf-media/project1-p9-ai-generation.gif",
+            alt: "AI 助手表单生成动效",
+            x: 74.4693,
+            y: 41.8296,
+            width: 20.7147,
+            height: 44.4881,
+            radius: 0
+          }
+        ]
+      },
       11: {
         kind: "video",
         src: "assets/perf-media/workbench-p1-p11-p4-p14-96w.mp4",
@@ -1163,6 +1178,36 @@
         height: 46.2963,
         radius: 12,
         clickToPlay: true
+      },
+      26: {
+        kind: "gif-group",
+        lightboxNavigable: true,
+        items: [
+          {
+            src: "assets/perf-media/project1-p25-data-detail-review.gif",
+            alt: "数据详情加载状态动效",
+            x: 60.1042,
+            y: 65.3157,
+            width: 6.1895,
+            height: 6.4606,
+            radius: 5
+          }
+        ]
+      },
+      33: {
+        kind: "gif-group",
+        lightboxNavigable: true,
+        items: [
+          {
+            src: "assets/perf-media/project1-p32-ai-summary-loading.webp",
+            alt: "AI 总结加载动效",
+            x: 57.3833,
+            y: 28.1833,
+            width: 42.6168,
+            height: 71.8171,
+            radius: 0
+          }
+        ]
       }
     };
     const PAGE_TITLES = [
@@ -1283,7 +1328,15 @@
       const isWideTransition = sourcePage === 27;
       const demoClass = isPrototype ? "prototype-demo" : nativeMedia ? "native-demo" : "";
       const imageSizes = "(max-width: 650px) 100vw, (max-width: 1050px) calc(100vw - 28px), (max-width: 1380px) calc(100vw - 142px), (max-width: 1566px) calc(100vw - 286px), 1280px";
-      const imageVersion = sourcePage === 7 ? "20260720-p1p6gif1" : "20260720-p1w2";
+      const imageVersion = sourcePage === 7
+        ? "20260720-p1p6gif1"
+        : sourcePage === 10
+          ? "20260721-p1p9gif1"
+          : sourcePage === 26
+            ? "20260721-p1p25gif1"
+            : sourcePage === 33
+              ? "20260721-p1p32gif1"
+              : "20260720-p1w2";
       const imageSrcset = [640, 960, 1280, 1440, 1920]
         .map(width => `assets/responsive/project1/webp/${width}/${sourcePage}.webp?v=${imageVersion} ${width}w`)
         .join(", ");
@@ -2577,9 +2630,9 @@
     updateScrollUI();
   </script>
   <!-- INTERVIEW REHEARSAL MODULE — remove these two scripts and the stylesheet link above to delete. -->
-  <script src="portfolio-lightbox-navigation.js?v=8f51a417a204"></script>
-  <script src="portfolio-page-transition.js?v=8f51a417a204"></script>
-  <script src="portfolio-project1-speaker-notes.js?v=8f51a417a204"></script>
-  <script src="portfolio-speaker-notes.js?v=8f51a417a204"></script>
+  <script src="portfolio-lightbox-navigation.js?v=0f6f0905545f"></script>
+  <script src="portfolio-page-transition.js?v=0f6f0905545f"></script>
+  <script src="portfolio-project1-speaker-notes.js?v=0f6f0905545f"></script>
+  <script src="portfolio-speaker-notes.js?v=0f6f0905545f"></script>
 </body>
 </html>

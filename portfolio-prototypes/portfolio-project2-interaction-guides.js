@@ -127,17 +127,6 @@ window.PROJECT2_INTERACTION_GUIDES = {
       thumbOrigin: '17% 71%'
     }
   ],
-  30: [
-    {
-      image: 'assets/responsive/project2/thumb/30.png?v=20260719-r2',
-      alt: '点击完整产品演示区域可逐步推进的思考过程可视化',
-      action: '点击演示区域任意位置',
-      result: '逐步查看思考过程；真实业务流程会自动流转',
-      areaClick: true,
-      thumbScale: 1.75,
-      thumbOrigin: '67% 56%'
-    }
-  ],
   31: [
     {
       image: 'assets/project2-guides/p31-send.png',

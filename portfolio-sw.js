@@ -1,4 +1,4 @@
-const BUILD_REV = '8f51a417a204';
+const BUILD_REV = '0f6f0905545f';
 const CACHE_PREFIX = 'portfolio-runtime-';
 const CACHE_NAME = `${CACHE_PREFIX}${BUILD_REV}`;
 
@@ -13,6 +13,30 @@ self.addEventListener('activate', event => {
           .map(key => caches.delete(key))
       ))
     ])
+  );
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type !== 'PURGE_DOCUMENT') return;
+  let pathname = '';
+  try {
+    const url = new URL(event.data.url, self.location.origin);
+    if (url.origin !== self.location.origin) return;
+    pathname = url.pathname;
+  } catch (_) {
+    return;
+  }
+
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key.startsWith(CACHE_PREFIX)).map(async key => {
+        const cache = await caches.open(key);
+        const requests = await cache.keys();
+        await Promise.all(requests
+          .filter(request => new URL(request.url).pathname === pathname)
+          .map(request => cache.delete(request)));
+      })
+    )).catch(() => {})
   );
 });
 

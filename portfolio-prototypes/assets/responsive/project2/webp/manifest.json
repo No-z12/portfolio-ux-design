@@ -14,7 +14,7 @@
     1920
   ],
   "pixelVerification": "decoded WebP RGBA equals generated tier RGBA",
-  "sourcePngBytes": 21821300,
+  "sourcePngBytes": 21662923,
   "generatedWebpBytes": 33171496,
   "pages": [
     {
@@ -348,7 +348,7 @@
     {
       "sourcePage": 10,
       "source": "assets/responsive/project2/1920/10.png",
-      "sourceBytes": 619084,
+      "sourceBytes": 468625,
       "sourceSize": [
         1920,
         1080
@@ -389,7 +389,7 @@
     {
       "sourcePage": 11,
       "source": "assets/responsive/project2/1920/11.png",
-      "sourceBytes": 678781,
+      "sourceBytes": 668117,
       "sourceSize": [
         1920,
         1080
@@ -1168,7 +1168,7 @@
     {
       "sourcePage": 30,
       "source": "assets/responsive/project2/1920/30.png",
-      "sourceBytes": 508504,
+      "sourceBytes": 511250,
       "sourceSize": [
         1920,
         1080
