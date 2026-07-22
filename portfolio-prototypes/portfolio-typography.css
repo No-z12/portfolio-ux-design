@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: "Portfolio Staatliches";
-  src: url("../portfolio-assets/fonts/staatliches-latin.woff2?v=0f6f0905545f") format("woff2");
+  src: url("../portfolio-assets/fonts/staatliches-latin.woff2?v=780a8d6eab68") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -55,8 +55,7 @@ body h4,
 body h5,
 body h6,
 body .projects b,
-body .project-card strong,
-body .speaker-notes__title {
+body .project-card strong {
   font-family: var(--portfolio-font-heading) !important;
 }
 
@@ -115,8 +114,6 @@ body .projects > a > span,
 body .project-card > span,
 body .project-card__subtitle,
 body .line-sidebar__index,
-body .speaker-notes__label,
-body .speaker-notes__page,
 body .interaction-guide__marker {
   font-family: var(--portfolio-font-latin) !important;
 }

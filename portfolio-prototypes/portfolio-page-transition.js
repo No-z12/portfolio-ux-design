@@ -1,8 +1,9 @@
 (() => {
   const PROJECT_PAGE_PATTERN = /\/portfolio-project(?:1-saas|2-ai-agent|3-vibe-coding|4-appendix)\.html$/i;
   const HOME_PAGE_PATTERN = /\/(?:index\.html|portfolio-home-v2-editorial\.html)?$/i;
+  const RESUME_PAGE_PATTERN = /\/portfolio-resume\.html$/i;
   const isProjectPage = url => PROJECT_PAGE_PATTERN.test(url.pathname);
-  const isPortfolioPage = url => isProjectPage(url) || HOME_PAGE_PATTERN.test(url.pathname);
+  const isPortfolioPage = url => isProjectPage(url) || HOME_PAGE_PATTERN.test(url.pathname) || RESUME_PAGE_PATTERN.test(url.pathname);
 
   // Each portfolio document owns a large, independent media surface. Keeping the
   // previous document in the back/forward cache would make it compete with the next

@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="SaaS 低代码 0→1 全链路设计作品集项目">
   <title>SaaS 低代码 0→1 全链路设计</title>
-  <link rel="stylesheet" href="portfolio-speaker-notes.css?v=0f6f0905545f">
-  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=0f6f0905545f">
-  <link rel="stylesheet" href="portfolio-performance.css?v=0f6f0905545f">
-  <script src="portfolio-performance.js?v=0f6f0905545f"></script>
+  <link rel="stylesheet" href="portfolio-lightbox-navigation.css?v=780a8d6eab68">
+  <link rel="stylesheet" href="portfolio-performance.css?v=780a8d6eab68">
+  <script src="portfolio-performance.js?v=780a8d6eab68"></script>
   <link rel="dns-prefetch" href="//embed.figma.com">
   <link rel="dns-prefetch" href="//www.figma.com">
   <link rel="preconnect" href="https://embed.figma.com" crossorigin>
@@ -1030,9 +1029,9 @@
     @media (max-width:1050px) { .projects { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width:650px) { .projects { grid-template-columns: 1fr; } }
   </style>
-  <link rel="stylesheet" href="portfolio-typography.css?v=0f6f0905545f">
-  <link rel="stylesheet" href="portfolio-project-meta.css?v=0f6f0905545f">
-  <link rel="stylesheet" href="portfolio-project-header.css?v=0f6f0905545f">
+  <link rel="stylesheet" href="portfolio-typography.css?v=780a8d6eab68">
+  <link rel="stylesheet" href="portfolio-project-meta.css?v=780a8d6eab68">
+  <link rel="stylesheet" href="portfolio-project-header.css?v=780a8d6eab68">
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -1091,7 +1090,7 @@
 
   <button class="top" type="button" aria-label="返回顶部">↑</button>
 
-  <script src="portfolio-project1-interaction-guides.js?v=0f6f0905545f"></script>
+  <script src="portfolio-project1-interaction-guides.js?v=780a8d6eab68"></script>
   <script>
     const FIGMA_FILE = "s8kmgucUlwLnqj90hKE8xF";
     const FIGMA_TOKEN = "HfM09U8aV9AyiBuD-1";
@@ -1866,6 +1865,47 @@
     prototypeIntentPage = initialPrototypePage;
     schedulePrototypeWarmup(initialPrototypePage, 1);
 
+    const nativeMediaTier = window.PortfolioPerformance?.tier
+      || document.documentElement.dataset.portfolioTier
+      || "full";
+    const NATIVE_VIDEO_RELEASE_DELAY = nativeMediaTier === "lite"
+      ? 12000
+      : nativeMediaTier === "balanced" ? 16000 : 20000;
+
+    function cancelNativeVideoRelease(page) {
+      if (!page?._nativeVideoReleaseTimer) return;
+      window.clearTimeout(page._nativeVideoReleaseTimer);
+      page._nativeVideoReleaseTimer = 0;
+    }
+
+    function releaseNativeVideo(page) {
+      cancelNativeVideoRelease(page);
+      const frame = page?.querySelector(".frame");
+      const media = frame?.querySelector("video.embedded-media");
+      if (!media || !media.getAttribute("src")) return;
+      const shouldRetain = !document.hidden
+        && (page.dataset.mediaVisible === "true" || frame.classList.contains("is-expanded"));
+      if (shouldRetain) return;
+      const currentTime = Number(media.currentTime);
+      if (Number.isFinite(currentTime) && currentTime >= 0) {
+        page.dataset.mediaTime = String(currentTime);
+      }
+      page._nativeMediaPlayRequest = (page._nativeMediaPlayRequest || 0) + 1;
+      media.pause();
+      media.removeAttribute("src");
+      media.load();
+      media.classList.remove("is-ready");
+      page.dataset.mediaReleased = "true";
+    }
+
+    function scheduleNativeVideoRelease(page) {
+      if (!page || page._nativeVideoReleaseTimer) return;
+      page._nativeVideoReleaseTimer = window.setTimeout(
+        () => releaseNativeVideo(page),
+        NATIVE_VIDEO_RELEASE_DELAY
+      );
+    }
+
     function playNativeMedia(page, restart = true) {
       const frame = page.querySelector(".frame");
       const button = page.querySelector(".live-badge");
@@ -1873,18 +1913,37 @@
       const media = mediaItems[0];
       if (!media) return;
       if (media.matches("video")) {
+        cancelNativeVideoRelease(page);
+        const playRequest = (page._nativeMediaPlayRequest || 0) + 1;
+        page._nativeMediaPlayRequest = playRequest;
         const playOnce = media.dataset.playOnce === "true";
         const source = media.dataset.src;
         if (!media.getAttribute("src") && source) {
           media.setAttribute("src", source);
           media.load();
+          page.dataset.mediaReleased = "false";
         }
         const start = () => {
+          if (page._nativeMediaPlayRequest !== playRequest) return;
           if (playOnce && (page.dataset.mediaCurrent !== "true" || document.hidden)) return;
           if (restart) {
             try { media.currentTime = 0; } catch (error) { /* metadata may still be settling */ }
+            delete page.dataset.mediaTime;
+          } else {
+            const savedTime = Number(page.dataset.mediaTime);
+            if (Number.isFinite(savedTime) && savedTime >= 0) {
+              const maxTime = Number.isFinite(media.duration) && media.duration > .1
+                ? Math.max(0, media.duration - .05)
+                : savedTime;
+              try { media.currentTime = Math.min(savedTime, maxTime); } catch (error) { /* seek waits for metadata */ }
+              delete page.dataset.mediaTime;
+            }
           }
           media.play().then(() => {
+            if (page._nativeMediaPlayRequest !== playRequest) {
+              media.pause();
+              return;
+            }
             if (playOnce && (page.dataset.mediaCurrent !== "true" || document.hidden)) {
               media.pause();
               page.dataset.mediaResume = "false";
@@ -1935,10 +1994,11 @@
       page.dataset.mediaVisible = "false";
       page.dataset.mediaCurrent = "false";
       page.dataset.mediaResume = String(media.matches("video") && !media.classList.contains("click-to-play") && !playOnce);
+      page.dataset.mediaReleased = "false";
       if (media.matches("video")) {
         media.addEventListener("play", () => page.classList.add("media-playing"));
         media.addEventListener("pause", () => page.classList.remove("media-playing"));
-        media.addEventListener("canplay", () => media.classList.add("is-ready"), { once: true });
+        media.addEventListener("canplay", () => media.classList.add("is-ready"));
         media.addEventListener("ended", () => {
           if (playOnce) {
             page.dataset.mediaResume = "false";
@@ -1991,15 +2051,21 @@
       const mediaItems = [...frame.querySelectorAll(".embedded-media")];
       const media = mediaItems[0];
       if (!media) return;
-      const isVisible = page.dataset.mediaVisible === "true" && !document.hidden;
+      const isVisible = (page.dataset.mediaVisible === "true" || frame.classList.contains("is-expanded"))
+        && !document.hidden;
       if (media.matches("video")) {
         const playOnce = media.dataset.playOnce === "true";
         const isCurrent = page.dataset.mediaCurrent === "true";
         if (!isVisible || (playOnce && !isCurrent)) {
           if (!media.paused) page.dataset.mediaResume = String(!playOnce || isCurrent);
+          page._nativeMediaPlayRequest = (page._nativeMediaPlayRequest || 0) + 1;
           media.pause();
+          scheduleNativeVideoRelease(page);
         } else if (page.dataset.mediaResume === "true") {
+          cancelNativeVideoRelease(page);
           playNativeMedia(page, false);
+        } else {
+          cancelNativeVideoRelease(page);
         }
         return;
       }
@@ -2448,8 +2514,15 @@
     let gridTimer = 0;
     let gridResizeRaf = 0;
     let gridLastFrame = 0;
-    const constrainedGrid = document.documentElement.dataset.portfolioTier !== "full";
+    let gridIdleTimer = 0;
+    let gridIdle = false;
+    let gridLastInteraction = 0;
+    const gridTier = window.PortfolioPerformance?.tier
+      || document.documentElement.dataset.portfolioTier
+      || "full";
+    const constrainedGrid = gridTier !== "full";
     const gridFrameInterval = 1000 / (constrainedGrid ? 30 : 60);
+    const gridIdleDelay = gridTier === "lite" ? 6500 : gridTier === "balanced" ? 9000 : 12000;
 
     function cancelHeroGridFrame() {
       if (gridRaf) {
@@ -2462,8 +2535,42 @@
       }
     }
 
-    function requestHeroGridFrame(immediate = false) {
+    function clearHeroGridIdleTimer() {
+      if (!gridIdleTimer) return;
+      window.clearTimeout(gridIdleTimer);
+      gridIdleTimer = 0;
+    }
+
+    function syncHeroMotionState() {
+      const paused = !gridVisible || reduceMotion || gridIdle;
+      hero.classList.toggle("motion-paused", paused);
+      gridCanvas.dataset.gridState = paused ? (gridIdle ? "idle" : "paused") : "running";
+      if (paused) cancelHeroGridFrame();
+    }
+
+    function scheduleHeroGridIdle() {
+      clearHeroGridIdleTimer();
       if (reduceMotion || !gridVisible || document.hidden) return;
+      gridIdleTimer = window.setTimeout(() => {
+        gridIdleTimer = 0;
+        gridIdle = true;
+        syncHeroMotionState();
+      }, gridIdleDelay);
+    }
+
+    function wakeHeroGrid(immediate = false) {
+      if (reduceMotion || !gridVisible || document.hidden) return;
+      const now = performance.now();
+      if (!immediate && !gridIdle && now - gridLastInteraction < 600) return;
+      gridLastInteraction = now;
+      gridIdle = false;
+      syncHeroMotionState();
+      requestHeroGridFrame(true);
+      scheduleHeroGridIdle();
+    }
+
+    function requestHeroGridFrame(immediate = false) {
+      if (reduceMotion || !gridVisible || document.hidden || gridIdle) return;
       if (immediate && gridTimer) {
         clearTimeout(gridTimer);
         gridTimer = 0;
@@ -2495,8 +2602,7 @@
       gridCanvas.width = nextCanvasWidth;
       gridCanvas.height = nextCanvasHeight;
       gridContext.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (reduceMotion) drawHeroGrid(0);
-      else requestHeroGridFrame(true);
+      drawHeroGrid(reduceMotion ? 0 : (gridLastFrame || performance.now()));
     }
 
     function scheduleHeroGridResize() {
@@ -2549,6 +2655,7 @@
 
     hero.addEventListener("pointermove", event => {
       if (event.pointerType === "touch") return;
+      wakeHeroGrid();
       const rect = gridCanvas.getBoundingClientRect();
       const nextX = (event.clientX - rect.left) * (gridWidth / rect.width);
       const nextY = (event.clientY - rect.top) * (gridHeight / rect.height);
@@ -2568,26 +2675,38 @@
       gridPointer.y = -9999;
       if (hadActiveCell) requestHeroGridFrame(true);
     });
-    const syncHeroMotionState = () => {
-      hero.classList.toggle("motion-paused", !gridVisible || reduceMotion);
-    };
+    hero.addEventListener("pointerdown", () => wakeHeroGrid(true), { passive: true });
+    hero.addEventListener("focusin", () => wakeHeroGrid(true));
     new IntersectionObserver(([entry]) => {
       const wasVisible = gridVisible;
       gridInViewport = entry.isIntersecting;
       gridVisible = gridInViewport && !document.hidden;
-      if (!gridVisible) cancelHeroGridFrame();
-      if (!wasVisible && gridVisible) requestHeroGridFrame(true);
+      if (!gridVisible) {
+        clearHeroGridIdleTimer();
+        cancelHeroGridFrame();
+      }
+      if (!wasVisible && gridVisible) wakeHeroGrid(true);
       syncHeroMotionState();
     }, { threshold: 0 }).observe(hero);
     document.addEventListener("visibilitychange", () => {
       gridVisible = gridInViewport && !document.hidden;
-      if (!gridVisible) cancelHeroGridFrame();
-      else requestHeroGridFrame(true);
+      if (!gridVisible) {
+        clearHeroGridIdleTimer();
+        cancelHeroGridFrame();
+      } else {
+        wakeHeroGrid(true);
+      }
       syncHeroMotionState();
     });
+    window.addEventListener("pagehide", () => {
+      clearHeroGridIdleTimer();
+      cancelHeroGridFrame();
+      if (gridResizeRaf) cancelAnimationFrame(gridResizeRaf);
+    }, { once: true });
     window.addEventListener("resize", scheduleHeroGridResize, { passive: true });
     resizeHeroGrid();
     syncHeroMotionState();
+    scheduleHeroGridIdle();
 
     let scrollQueued = false;
     const visibleDepthPages = new Set();
@@ -2629,10 +2748,7 @@
     document.querySelector(".top").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     updateScrollUI();
   </script>
-  <!-- INTERVIEW REHEARSAL MODULE — remove these two scripts and the stylesheet link above to delete. -->
-  <script src="portfolio-lightbox-navigation.js?v=0f6f0905545f"></script>
-  <script src="portfolio-page-transition.js?v=0f6f0905545f"></script>
-  <script src="portfolio-project1-speaker-notes.js?v=0f6f0905545f"></script>
-  <script src="portfolio-speaker-notes.js?v=0f6f0905545f"></script>
+  <script src="portfolio-lightbox-navigation.js?v=780a8d6eab68"></script>
+  <script src="portfolio-page-transition.js?v=780a8d6eab68"></script>
 </body>
 </html>
